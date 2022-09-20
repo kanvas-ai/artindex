@@ -7,6 +7,15 @@ st.title('Kanvas.AI Art Index')
 
 st.header('Allee Galerii Auctions - Map of Art Market')
 
+df_hist = pd.read_csv('historical_avg_price.csv')
+st.subheader('Is art getting more expensive? The relationship between the average price of an art work and year')
+fig = px.area(df_hist, x="date", y="avg_price", color="src")
+st.plotly_chart(fig, use_container_width=True)
+
+st.subheader('Is the art market growing in volume? The relationship between the volume of sold art works sold and year')
+fig = px.area(df_hist, x="date", y="volume", color="src")
+st.plotly_chart(fig, use_container_width=True)
+
 st.subheader('Who are the best selling artists? Total art auction sales by overbidding percentage')
 
 df = pd.read_csv('allee_clean.csv')
