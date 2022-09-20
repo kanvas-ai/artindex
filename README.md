@@ -14,3 +14,6 @@ $ pip install streamlit
 ## Install Requirements
 
 $ pip install -r requiments.txt
+$ streamlit run Home.py
+
+This should launch a browser on localhost:8501.
