@@ -38,5 +38,6 @@ fig = px.scatter(df, x="dimension", y="end_price", color="category",
 
 st.plotly_chart(fig, use_container_width=True)
 
+st.text('Copyright Kanvas.ai')
 st.text('Authors: Markus Sulg, Julian Kaljuvee')
 st.text('Source: Allee Galerii auctions (2020-2022)')
