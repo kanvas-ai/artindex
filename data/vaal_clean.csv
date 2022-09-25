@@ -1,0 +1,916 @@
+date,author,start_price,end_price,year,tech,decade,dimension,technique,category
+2021.0,Jüri Arrak,450.0,1000.0,1967.0,linoollõige,1960.0,2127.25,Linoleum,Graphics
+2021.0,Paul Burman,2900.0,4800.0,1920.0,"õli, vineer",1920.0,2352.25,Oil on wood,Oil paint
+2021.0,Jaan Grünberg,2300.0,3300.0,1933.0,"õli, paber, dubleeritud papile.",1930.0,1729.0,Oil on cardboard,Oil paint
+2021.0,Eerik Haamer,3600.0,5400.0,1943.0,pliiatsijoonistus,1940.0,1026.0,Drawing,Drawing
+2021.0,Alo Hoidre,3400.0,7600.0,1992.0,"õli, lõuend",1990.0,8000.0,Oil on canvas,Oil paint
+2021.0,Andrus Johani,5600.0,10400.0,1938.0,"segatehnika, dubleeritud papile",1930.0,2193.5,Mixed tech,Other
+2021.0,Avo Keerend,350.0,350.0,1960.0,linoollõige,1960.0,930.25,Linoleum,Graphics
+2021.0,Miljard Kilk,2200.0,3100.0,2002.0,"õli, lõuend",2000.0,3640.0,Oil on canvas,Oil paint
+2021.0,Elmar Kits,3800.0,3800.0,1943.0,"õli, vineer",1940.0,1260.0,Oil on wood,Oil paint
+2021.0,Alfred Kongo,2000.0,5000.0,1970.0,"õli, tempera, papp",1970.0,3748.5,Tempera,Other paint
+2021.0,Nikolai Kormašov,6500.0,9100.0,1950.0,"õli, lõuend",1950.0,2420.0,Oil on canvas,Oil paint
+2021.0,Nikolai Kormašov,4400.0,4400.0,1961.0,"tempera, papp",1960.0,3385.5,Tempera,Other paint
+2021.0,Laurentsius,3500.0,4100.0,2007.0,"õli, lõuend",2000.0,3600.0,Oil on canvas,Oil paint
+2021.0,Enno Lehis,400.0,700.0,1962.0,akvarell,1960.0,1354.5,Watercolour,Other paint
+2021.0,Malle Leis,1600.0,4100.0,1985.0,akvarell,1980.0,3422.25,Watercolour,Other paint
+2021.0,Esko Lepp,500.0,500.0,1956.0,tušijoonistus,1950.0,609.0,Drawing,Drawing
+2021.0,Valerian Loik,1500.0,2800.0,1970.0,"õli, lõuend",1970.0,1725.0,Oil on canvas,Oil paint
+2021.0,Karin Luts,3600.0,5400.0,1952.0,"õli, lõuend",1950.0,4416.5,Oil on canvas,Oil paint
+2021.0,Lepo Mikko,4700.0,32000.0,1973.0,"õli, lõuend",1970.0,5134.5,Oil on canvas,Oil paint
+2021.0,Lepo Mikko,3900.0,25000.0,1972.0,"õli, lõuend, papp",1970.0,3718.0,Oil on cardboard,Oil paint
+2021.0,Olev Mikiver,1500.0,2800.0,1960.0,"õli, lõuend",1960.0,7150.0,Oil on canvas,Oil paint
+2021.0,Peeter Mudist,7200.0,16500.0,1972.0,"õli, lõuend",1970.0,4500.0,Oil on canvas,Oil paint
+2021.0,Konrad Mägi,48000.0,48500.0,1915.0,"õli, lõuend",1910.0,1280.0,Oil on canvas,Oil paint
+2021.0,Ella Mätik,700.0,700.0,1938.0,puugravüür,1930.0,446.5,Wood cut,Other
+2021.0,Kalju Nagel,2900.0,2900.0,1966.0,"õli, papp",1960.0,3150.0,Oil on cardboard,Oil paint
+2021.0,Valdur Ohakas,900.0,1950.0,1957.0,"õli, papp",1950.0,966.0,Oil on cardboard,Oil paint
+2021.0,Evald Okas,700.0,1550.0,1997.0,"õli, papp",1990.0,882.0,Oil on cardboard,Oil paint
+2021.0,Jüri Palm,7200.0,7200.0,1987.0,"õli, lõuend",1980.0,17199.0,Oil on canvas,Oil paint
+2021.0,Agu Pilt,750.0,2400.0,1989.0,akvarell,1980.0,1524.25,Watercolour,Other paint
+2021.0,Kaljo Põllu,3600.0,6600.0,1997.0,"õli, kollaaž, vineer",1990.0,8190.0,Oil on wood,Oil paint
+2021.0,Aleksander Remmel,900.0,1000.0,1945.0,"õli, vineer",1940.0,2304.0,Oil on wood,Oil paint
+2021.0,Mari Roosvalt,2900.0,2900.0,1991.0,"õli, lõuend",1990.0,7275.0,Oil on canvas,Oil paint
+2021.0,Ülo Sooster,3800.0,4100.0,1947.0,"õli, vineer",1940.0,769.5,Oil on wood,Oil paint
+2021.0,Rein Tammik,3900.0,6000.0,1998.0,"õli, giclee, lõuend",1990.0,11440.0,Oil on canvas,Oil paint
+2021.0,Evi Tihemets,900.0,1200.0,1973.0,"värviline litograafia, söövitus, siiditrükk",1970.0,2850.0,Silk print,Other
+2021.0,Richard Uutmaa,7200.0,25000.0,1971.0,"õli, lõuend",1970.0,4860.0,Oil on canvas,Oil paint
+2021.0,Richard Uutmaa,2800.0,3600.0,1975.0,akvarell,1970.0,3932.25,Watercolour,Other paint
+2021.0,Lüüdia Vallimäe-Mark,2800.0,7000.0,1977.0,"õli, lõuend, papp",1970.0,3381.0,Oil on cardboard,Oil paint
+2021.0,Johannes Võerahansu,900.0,1000.0,1971.0,söejoonistus,1970.0,2921.0,Drawing,Drawing
+2020.0,Oskar Kallis,1200.0,1200.0,1912.0,akvarell,1910.0,230.0,Watercolour,Other paint
+2020.0,Ado Vabbe,900.0,900.0,1920.0,"linoollõige, papp",1920.0,106.25,Linoleum,Graphics
+2020.0,Ado Vabbe,1500.0,1600.0,1920.0,linoollõige,1920.0,351.0,Linoleum,Graphics
+2020.0,August Kilgas,4750.0,7650.0,1924.0,"õli, lõuend",1920.0,1159.0,Oil on canvas,Oil paint
+2020.0,Ülo Sooster,1600.0,3300.0,1940.0,"segatehnika, lõuend",1940.0,648.0,Mixed tech,Other
+2020.0,Ado Vabbe,1600.0,2550.0,1940.0,segatehnika,1940.0,700.0,Mixed tech,Other
+2020.0,Ülo Sooster,2200.0,4100.0,1954.0,"õli, papp",1950.0,1598.0,Oil on cardboard,Oil paint
+2020.0,Nikolai Kormašov,4300.0,7200.0,1959.0,"õli, papp",1950.0,3415.5,Oil on cardboard,Oil paint
+2020.0,Ülo Sooster,1000.0,1600.0,1962.0,tušijoonistus,1960.0,412.5,Drawing,Drawing
+2020.0,Richard Uutmaa,8200.0,17500.0,1969.0,"õli, vineer",1960.0,3650.0,Oil on wood,Oil paint
+2020.0,Ludmilla Siim,5700.0,25500.0,1970.0,"õli, lõuend",1970.0,8977.5,Oil on canvas,Oil paint
+2020.0,Valdur Ohakas,950.0,950.0,1960.0,"õli, vineer, kahepoolne",1960.0,1572.5,Oil on wood,Oil paint
+2020.0,Märt Bormeister,1200.0,1200.0,1973.0,"õli, papp",1970.0,4000.0,Oil on cardboard,Oil paint
+2020.0,Richard Uutmaa,7600.0,10000.0,1974.0,"õli, papp",1970.0,3500.0,Oil on cardboard,Oil paint
+2020.0,Tõnis Vint,5000.0,6200.0,1981.0,"tušš, guašš",1980.0,1722.25,Gouache,Other paint
+2020.0,Epp-Maria Kokamägi,1500.0,1500.0,1989.0,"segatehnika, paber",1980.0,3249.0,Mixed tech,Other
+2020.0,Peeter Mudist,5300.0,6600.0,2000.0,"akvarell, kahepoolne",2000.0,9832.5,Watercolour,Other paint
+2020.0,Balder Tomasberg,1500.0,1500.0,1917.0,"akvarell, paber",1910.0,1944.0,Watercolour,Other paint
+2020.0,Gregor Alexander Heinrich von Bochmann,1900.0,1900.0,1918.0,"akvarell, paber",1910.0,1800.0,Watercolour,Other paint
+2020.0,Eduard Wiiralt,1600.0,1750.0,1918.0,"linoollõige, paber",1910.0,1865.5,Linoleum,Graphics
+2020.0,Karl Burman senior,1400.0,1600.0,1920.0,"akvarell, paber",1920.0,2401.25,Watercolour,Other paint
+2020.0,Andrei Jegorov,1500.0,1500.0,1920.0,"õli, guašš, papp",1920.0,1433.5,Gouache,Other paint
+2020.0,Kristjan Raud,3000.0,4600.0,1920.0,"guašš, pliiats, paber",1920.0,358.75,Gouache,Other paint
+2020.0,Hando Mugasto,500.0,500.0,1937.0,"puugravüür, paber",1930.0,475.0,Wood cut,Other
+2020.0,Eduard Wiiralt,1700.0,2100.0,1938.0,"pehmelakk, akvatinta",1930.0,1189.5,Aquatint,Graphics
+2020.0,Avo Keerend,350.0,350.0,1940.0,"õli, papp",1940.0,341.0,Oil on cardboard,Oil paint
+2020.0,Endel Kõks,1600.0,2700.0,1944.0,"õli, papp",1940.0,1113.75,Oil on cardboard,Oil paint
+2020.0,Aleksander Remmel,1400.0,3600.0,1946.0,"õli, papp masoniidil",1940.0,10101.0,Oil on cardboard,Oil paint
+2020.0,Richard Uutmaa,4800.0,6200.0,1953.0,"õli, papp",1950.0,1323.0,Oil on cardboard,Oil paint
+2020.0,Lepo Mikko,15500.0,19000.0,1955.0,"õli, lõuend  ",1950.0,22327.5,Oil on canvas,Oil paint
+2020.0,Ülo Sooster,850.0,4100.0,1956.0,"segatehnika, paber",1950.0,513.0,Mixed tech,Other
+2020.0,Aleksander Vardi,13500.0,17500.0,1957.0,"õli, lõuend  ",1950.0,19332.0,Oil on canvas,Oil paint
+2020.0,Evald Okas,3800.0,3800.0,1958.0,"õli, lõuend  ",1950.0,7300.0,Oil on canvas,Oil paint
+2020.0,Richard Uutmaa,9800.0,9800.0,1960.0,"õli, papp",1960.0,3744.0,Oil on cardboard,Oil paint
+2020.0,Raivo Korstnik,950.0,1250.0,1964.0,"õli, papp",1960.0,1557.5,Oil on cardboard,Oil paint
+2020.0,Olev Subbi,8400.0,9600.0,1965.0,"õli, kartong",1960.0,2040.0,Oil on cardboard,Oil paint
+2020.0,Kaljo Põllu,1500.0,1500.0,1967.0,"õli, kartong",1960.0,3266.5,Oil on cardboard,Oil paint
+2020.0,Kalju Nagel,950.0,1800.0,1969.0,"õli, papp",1960.0,2990.0,Oil on cardboard,Oil paint
+2020.0,Viktor Turp,350.0,350.0,1975.0,"guašš, paber",1970.0,2883.0,Gouache,Other paint
+2020.0,Aleksander Pilar,400.0,400.0,1970.0,"akvarell, paber",1970.0,2830.5,Watercolour,Other paint
+2020.0,Jaan Toomik,2800.0,3800.0,2003.0,"õli, lõuend  ",2000.0,12000.0,Oil on canvas,Oil paint
+2019.0,Eduard Wiiralt,2450.0,2450.0,1920.0,"linoollõige, paber",1920.0,638.0,Linoleum,Graphics
+2019.0,Anna Luik-Püümann,900.0,1650.0,1923.0,"õli, papp",1920.0,3036.0,Oil on cardboard,Oil paint
+2019.0,Eduard Wiiralt,2000.0,2000.0,1933.0,"puugravüür, paber",1930.0,520.0,Wood cut,Other
+2019.0,Viktor Turp,1500.0,2450.0,1930.0,"õli, lõuend",1930.0,6424.0,Oil on canvas,Oil paint
+2019.0,Eduard Wiiralt,2600.0,2600.0,1939.0,"puulõige, paber",1930.0,1335.0,Wood cut,Other
+2019.0,Kristjan Teder,4300.0,4300.0,1940.0,"õli, vineer",1940.0,3136.5,Oil on wood,Oil paint
+2019.0,Varmo Pirk,2200.0,3600.0,1944.0,"õli, lõuend",1940.0,3315.0,Oil on canvas,Oil paint
+2019.0,Richard Sagrits,4900.0,5700.0,1958.0,"õli, papp",1950.0,1750.0,Oil on cardboard,Oil paint
+2019.0,Lepo Mikko,2200.0,6200.0,1962.0,"õli, papp",1960.0,3500.0,Oil on cardboard,Oil paint
+2019.0,Kalju Nagel,3000.0,4000.0,1966.0,"õli, lõuend",1960.0,28425.5,Oil on canvas,Oil paint
+2019.0,Malle Leis,13000.0,18100.0,1967.0,"õli, lõuend",1960.0,8050.0,Oil on canvas,Oil paint
+2019.0,Jüri Arrak,300.0,300.0,1969.0,"akvatinta, ofort, paber",1960.0,676.0,Aquatint,Graphics
+2019.0,Lembit Saarts,1400.0,3700.0,1960.0,"õli, lõuend",1960.0,3190.0,Oil on canvas,Oil paint
+2019.0,Malle Leis,2900.0,2900.0,1973.0,"akvarell, paber",1970.0,3422.25,Watercolour,Other paint
+2019.0,Aleksander Vardi,3200.0,3200.0,1977.0,"õli, lõuend",1970.0,8100.0,Oil on canvas,Oil paint
+2019.0,Ivo Lill,900.0,1250.0,1986.0,"õli, lõuend ",1980.0,8000.0,Oil on canvas,Oil paint
+2019.0,Rudolf JuliusMühlen,2500.0,2500.0,,"õli, lõuend",,3503.5,Oil on canvas,Oil paint
+2019.0,Hando Mugasto,500.0,500.0,1924.0,"puulõige, paber",1920.0,253.75,Wood cut,Other
+2019.0,Eduard Wiiralt,4200.0,9200.0,1926.0,"ofort, akvatinta, paber",1920.0,2686.0,Aquatint,Graphics
+2019.0,Andrei Jegorov,1500.0,2500.0,1930.0,"tempera, papp",1930.0,1555.5,Tempera,Other paint
+2019.0,Varmo Pirk,550.0,1100.0,1941.0,"õli, vineer",1940.0,1165.25,Oil on wood,Oil paint
+2019.0,Arno Vihalemm,800.0,1550.0,1942.0,"õli, lõuend",1940.0,3275.0,Oil on canvas,Oil paint
+2019.0,Elmar Leppik,1900.0,2600.0,1942.0,"õli, lõuend",1940.0,5460.0,Oil on canvas,Oil paint
+2019.0,Ann Audova,1900.0,1900.0,1947.0,"õli, lõuend",1940.0,840.75,Oil on canvas,Oil paint
+2019.0,Ülo Sooster,4800.0,12600.0,1956.0,"õli, lõuend",1950.0,2430.0,Oil on canvas,Oil paint
+2019.0,Ülo Sooster,7200.0,19200.0,1958.0,"õli, papp",1950.0,1666.0,Oil on cardboard,Oil paint
+2019.0,Richard Uutmaa,4900.0,5500.0,1960.0,"õli, papp",1960.0,3500.0,Oil on cardboard,Oil paint
+2019.0,Richard Sagrits,2900.0,5000.0,1962.0,"õli, papp",1960.0,1567.5,Oil on cardboard,Oil paint
+2019.0,Efraim Allsalu,3000.0,5300.0,1968.0,"õli, lõuend",1960.0,9355.5,Oil on canvas,Oil paint
+2019.0,Ludmilla Siim,2700.0,11000.0,1970.0,"õli, lõuend",1970.0,8670.0,Oil on canvas,Oil paint
+2019.0,Richard Uutmaa,2900.0,2900.0,1972.0,"õli, lõuend papil",1970.0,3996.0,Oil on cardboard,Oil paint
+2019.0,Jüri Arrak,450.0,450.0,1974.0,"akvarell, paber",1970.0,543.25,Watercolour,Other paint
+2019.0,Varmo Pirk,2600.0,2600.0,1974.0,"õli, papp",1970.0,13464.0,Oil on cardboard,Oil paint
+2019.0,Miljard Kilk,15000.0,15000.0,1979.0,"õli, lõuend",1970.0,15350.25,Oil on canvas,Oil paint
+2019.0,Kristiina Kaasik,3500.0,4700.0,1981.0,"õli, lõuend",1980.0,12600.0,Oil on canvas,Oil paint
+2019.0,Tiit Pääsuke,1000.0,3100.0,1991.0,"õli, lõuend",1990.0,1168.0,Oil on canvas,Oil paint
+2019.0,Agu Pilt,500.0,900.0,1997.0,"akvarell, paber",1990.0,2570.75,Watercolour,Other paint
+2018.0,Alfred Hirv,5400.0,5400.0,1900.0,"õli, lõuend, papile kleebitud",1900.0,2479.5,Oil on cardboard,Oil paint
+2018.0,Maximilian Maksolly,1800.0,1800.0,1920.0,"õli, lõuend",1920.0,5720.0,Oil on canvas,Oil paint
+2018.0,Roman Nyman,400.0,600.0,1921.0,"segatehnika, paber",1920.0,548.25,Mixed tech,Other
+2018.0,Peet Aren,49000.0,49000.0,1934.0,"õli, lõuend",1930.0,8964.0,Oil on canvas,Oil paint
+2018.0,Aleksander Vardi,4900.0,5700.0,1944.0,"õli, kartong",1940.0,4978.9800000000005,Oil on cardboard,Oil paint
+2018.0,Elmar  Kits,600.0,1650.0,1946.0,"õli, papp",1940.0,2632.5,Oil on cardboard,Oil paint
+2018.0,Elmar Kell,2000.0,2150.0,1953.0,"õli, papp",1950.0,6816.0,Oil on cardboard,Oil paint
+2018.0,Endel  Kõks,900.0,1250.0,1954.0,"segatehnika, paber",1950.0,1638.0,Mixed tech,Other
+2018.0,Richard Uutmaa,5600.0,7200.0,1955.0,"õli, lõuend",1950.0,5265.0,Oil on canvas,Oil paint
+2018.0,Valdur Ohakas,2000.0,4200.0,1957.0,"õli, lõuend",1950.0,5461.0,Oil on canvas,Oil paint
+2018.0,Elmar Kits,950.0,2050.0,1958.0,"tempera, paber",1950.0,2000.0,Tempera,Other paint
+2018.0,Viktor Leškin,1450.0,1650.0,1959.0,"õli, lõuend",1950.0,6500.0,Oil on canvas,Oil paint
+2018.0,Eduard Ole,1200.0,1200.0,1961.0,"akvarell, paber",1960.0,1665.0,Watercolour,Other paint
+2018.0,Ülo Sooster,27000.0,36000.0,1961.0,"õli, pasta, papp",1960.0,3264.0,Oil on cardboard,Oil paint
+2018.0,Evald Okas,600.0,600.0,1963.0,"linoollõige, paber",1960.0,2447.5,Linoleum,Graphics
+2018.0,Silvia Jõgever,2000.0,2000.0,1966.0,"segatehnika, papp",1960.0,3500.0,Mixed tech,Other
+2018.0,Enn Volmere,950.0,1250.0,1971.0,"õli, lõuend",1970.0,5980.0,Oil on canvas,Oil paint
+2018.0,Valdemar Väli,650.0,650.0,1976.0,"õli, papp",1970.0,3910.5,Oil on cardboard,Oil paint
+2018.0,Artur Lokk,800.0,950.0,1982.0,"õli, papp",1980.0,1960.0,Oil on cardboard,Oil paint
+2018.0,Abel  Lee,300.0,300.0,1983.0,"segatehnika, paber",1980.0,484.0,Mixed tech,Other
+2018.0,Ilmar  Kruusamäe,400.0,400.0,1984.0,"akvarell, guašš, paber",1980.0,768.0,Watercolour,Other paint
+2018.0,Paul Raud,9900.0,15600.0,1912.0,"õli, lõuend",1910.0,3072.0,Oil on canvas,Oil paint
+2018.0,Eduard Wiiralt,2600.0,3600.0,1926.0,"puugravüür, paber",1920.0,520.0,Wood cut,Other
+2018.0,Hando Mugasto,4000.0,8000.0,1931.0,"õli, lõuend",1930.0,2820.0,Oil on canvas,Oil paint
+2018.0,Eduard Wiiralt,3400.0,5300.0,1937.0,"akvatinta, paber",1930.0,1818.75,Aquatint,Graphics
+2018.0,Villem Ormisson,22000.0,80500.0,1937.0,"õli, lõuend",1930.0,4277.5,Oil on canvas,Oil paint
+2018.0,Ado Vabbe,1800.0,3300.0,1938.0,"guašš, õli, paber",1930.0,1569.75,Gouache,Other paint
+2018.0,Jaan Grünberg,1500.0,1500.0,1930.0,"segatehnika, paber",1930.0,3250.0,Mixed tech,Other
+2018.0,Gustav Raud,1200.0,2950.0,1930.0,"õli, lõuend",1930.0,3234.0,Oil on canvas,Oil paint
+2018.0,Karl Burman sen.,800.0,800.0,1943.0,"akvarell, paber",1940.0,876.0,Watercolour,Other paint
+2018.0,Elmar Leppik,850.0,2800.0,1944.0,"õli, vineer",1940.0,2378.0,Oil on wood,Oil paint
+2018.0,Erik Haamer,8900.0,8900.0,1940.0,"õli, lõuend",1940.0,4322.25,Oil on canvas,Oil paint
+2018.0,Ott Kangilaski,450.0,450.0,1956.0,"akvatinta, paber",1950.0,858.0,Aquatint,Graphics
+2018.0,Richard Uutmaa,4300.0,8200.0,1958.0,"õli, lõuend",1950.0,3535.0,Oil on canvas,Oil paint
+2018.0,Richard Uutmaa,7900.0,13300.0,1958.0,"õli, lõuend",1950.0,7386.75,Oil on canvas,Oil paint
+2018.0,Ülo Sooster,8200.0,8600.0,1959.0,"õli, vineer",1950.0,1656.0,Oil on wood,Oil paint
+2018.0,Abel Lee,550.0,550.0,1965.0,"segatehnika, paber",1960.0,2273.75,Mixed tech,Other
+2018.0,Märt Laarman,450.0,450.0,1968.0,"linoollõige, paber",1960.0,459.0,Linoleum,Graphics
+2018.0,Malle Leis,1500.0,1500.0,1974.0,"akvarell, paber",1970.0,3600.0,Watercolour,Other paint
+2018.0,Ida Anton-Agu,600.0,850.0,1970.0,"õli, papp",1970.0,845.25,Oil on cardboard,Oil paint
+2018.0,Leonhard Lapin,500.0,1100.0,1987.0,"õli, lõuend",1980.0,1120.0,Oil on canvas,Oil paint
+2018.0,Leonhard Lapin,500.0,1050.0,1987.0,"õli, lõuend",1980.0,1120.0,Oil on canvas,Oil paint
+2018.0,Malle Leis,1300.0,1300.0,1999.0,"akvarell, paber",1990.0,3595.5,Watercolour,Other paint
+2018.0,Peeter Allik,1300.0,1300.0,2002.0,"õli, lõuend",2000.0,11266.0,Oil on canvas,Oil paint
+2018.0,Agur Kruusing,1400.0,1700.0,2005.0,"õli, lõuend",2000.0,12600.0,Oil on canvas,Oil paint
+2017.0,Oskar Hoffmann,2800.0,3400.0,,"õli, lõuend",,492.0,Oil on canvas,Oil paint
+2017.0,Jaan Vahtra,550.0,700.0,1921.0,"puulõige, paber",1920.0,317.75,Wood cut,Other
+2017.0,Jaan Grünberg,900.0,2050.0,1939.0,"õli, papp",1930.0,3250.0,Oil on cardboard,Oil paint
+2017.0,Johannnes Võerahansu,3200.0,3400.0,1940.0,"õli, papp",1940.0,6063.0,Oil on cardboard,Oil paint
+2017.0,Erik Haamer,6400.0,6400.0,1943.0,"õli, vineer",1940.0,2185.5,Oil on wood,Oil paint
+2017.0,Endel Kõks,800.0,4000.0,1943.0,"tempera, paber",1940.0,2227.5,Tempera,Other paint
+2017.0,Elmar Kits,1900.0,2300.0,1948.0,"tempera, paber",1940.0,2832.0,Tempera,Other paint
+2017.0,Ado Vabbe,1500.0,2150.0,1952.0,"akvarell, paber",1950.0,1739.0,Watercolour,Other paint
+2017.0,Erik Schmidt,1200.0,1900.0,1955.0,"õli, lõuend",1950.0,6716.0,Oil on canvas,Oil paint
+2017.0,Ülo Sooster,3400.0,6200.0,1961.0,segatehnika,1960.0,499.5,Mixed tech,Other
+2017.0,Varmo Pirk,2700.0,5100.0,1973.0,"õli, lõuend",1970.0,10972.5,Oil on canvas,Oil paint
+2017.0,Valdur Ohakas,3400.0,3400.0,1973.0,"õli, lõuend",1970.0,12300.0,Oil on canvas,Oil paint
+2017.0,Jüri Arrak,3000.0,6400.0,1973.0,"õli, lõuend",1970.0,12740.0,Oil on canvas,Oil paint
+2017.0,Johannes Uiga,1750.0,1850.0,1983.0,"õli, lõuend",1980.0,9526.5,Oil on canvas,Oil paint
+2017.0,Valdur Ohakas,1500.0,2550.0,1987.0,"õli, lõuend",1980.0,17400.0,Oil on canvas,Oil paint
+2017.0,August Roosileht,1000.0,1850.0,1914.0,"tempera, papp",1910.0,812.0,Tempera,Other paint
+2017.0,Paul Burman,2650.0,3100.0,1920.0,"õli, vineer",1920.0,3710.0,Oil on wood,Oil paint
+2017.0,Anatoli Kaigorodov,2000.0,2000.0,1930.0,"tempera, paber",1930.0,1621.3999999999999,Tempera,Other paint
+2017.0,Boris Ottenberg,700.0,1250.0,1937.0,"õli, lõuend",1930.0,3168.0,Oil on canvas,Oil paint
+2017.0,Elmar Leppik,650.0,3200.0,1938.0,"õli, lõuend",1930.0,7600.0,Oil on canvas,Oil paint
+2017.0,Alfred Kongo,550.0,700.0,1942.0,"õli, vineer",1940.0,1710.0,Oil on wood,Oil paint
+2017.0,Johannnes Võerahansu,3500.0,3500.0,1943.0,"õli, vineer",1940.0,3341.25,Oil on wood,Oil paint
+2017.0,Erich Pehap,500.0,500.0,1946.0,"guašš, paber",1940.0,661.5,Gouache,Other paint
+2017.0,Endel Kõks,3900.0,4800.0,1955.0,"õli, lõuend",1950.0,6716.0,Oil on canvas,Oil paint
+2017.0,Olev Subbi,1250.0,1250.0,1956.0,"õli, lõuend",1950.0,1312.0,Oil on canvas,Oil paint
+2017.0,Endel Kõks,1000.0,1000.0,1960.0,"segatehnika, paber",1960.0,1824.0,Mixed tech,Other
+2017.0,Elmar Kits,1500.0,2050.0,1961.0,"õli, lõuend",1960.0,5120.0,Oil on canvas,Oil paint
+2017.0,Valdur Ohakas,850.0,850.0,1964.0,"õli, papp",1960.0,4814.0,Oil on cardboard,Oil paint
+2017.0,Endel Kõks,700.0,700.0,1975.0,"segatehnika, paber",1970.0,2928.0,Mixed tech,Other
+2017.0,Paul Allik,1400.0,1400.0,1987.0,"segatehnika, lõuend",1980.0,6375.0,Mixed tech,Other
+2017.0,Andres Tolts,1650.0,1650.0,2000.0,"akrüül, lõuend",2000.0,5304.0,Acrylic,Other paint
+2016.0,Paul Raud,800.0,1000.0,1900.0,"õli, lõuendpapp",1900.0,282.0,Oil on cardboard,Oil paint
+2016.0,Hando Mugasto,650.0,650.0,1937.0,värviline puugravüür,1930.0,453.25,Wood cut,Other
+2016.0,Albert Toomapoeg,600.0,700.0,1939.0,"õli, lõuend",1930.0,5880.0,Oil on canvas,Oil paint
+2016.0,Elmar Leppik,650.0,800.0,1940.0,"õli, lõuend",1940.0,3000.0,Oil on canvas,Oil paint
+2016.0,Johannes Greenberg,2500.0,3600.0,1942.0,"õli, vineer",1940.0,1547.6200000000001,Oil on wood,Oil paint
+2016.0,Olga Terri,1600.0,1600.0,1940.0,"õli, lõuend",1940.0,2553.0,Oil on canvas,Oil paint
+2016.0,Endel Kõks,1300.0,1300.0,1954.0,tempera ja guašš paberil,1950.0,2670.0,Tempera,Other paint
+2016.0,Richard Uutmaa,1900.0,2350.0,1961.0,"õli, papp",1960.0,1750.0,Oil on cardboard,Oil paint
+2016.0,Agu Pihelga,1400.0,1400.0,1961.0,"õli, papp",1960.0,3500.0,Oil on cardboard,Oil paint
+2016.0,Jaan Tuuling,500.0,500.0,1968.0,"õli, papp",1960.0,3024.0,Oil on cardboard,Oil paint
+2016.0,Ludmilla Siim,3100.0,3100.0,1976.0,"õli, lõuend",1970.0,11454.0,Oil on canvas,Oil paint
+2016.0,Lembit Saarts,2600.0,8000.0,1981.0,"õli, lõuend",1980.0,64740.0,Oil on canvas,Oil paint
+2016.0,Paul Allik,1600.0,1600.0,1992.0,"õli, lõuend",1990.0,6650.0,Oil on canvas,Oil paint
+2016.0,Andres Tolts,4000.0,5300.0,2001.0,"akrüül, õli, lõuend",2000.0,4260.0,Acrylic,Other paint
+2016.0,Villem Ormisson,18900.0,18900.0,1917.0,"õli, lõuend",1910.0,3238.5,Oil on canvas,Oil paint
+2016.0,Eduard Timbermann,350.0,350.0,1930.0,akvarell,1930.0,1496.0,Watercolour,Other paint
+2016.0,Eduard Wiiralt,2400.0,5500.0,1937.0,akvatinta,1930.0,1935.5,Aquatint,Graphics
+2016.0,Rudolf Sepp,700.0,1750.0,1939.0,"õli, vineer",1930.0,792.0,Oil on wood,Oil paint
+2016.0,Johannes Võerahansu,3900.0,3900.0,1940.0,"õli, vineer",1940.0,4401.0,Oil on wood,Oil paint
+2016.0,Elmar Kits,350.0,350.0,1946.0,"guašš, paber",1940.0,382.5,Gouache,Other paint
+2016.0,Richard Sagrits,2200.0,3600.0,1946.0,"õli, lõuend",1940.0,5305.5,Oil on canvas,Oil paint
+2016.0,Märt Bormeister,1600.0,1600.0,1955.0,"õli, lõuend",1950.0,875.0,Oil on canvas,Oil paint
+2016.0,Valdur Ohakas,3900.0,5500.0,1969.0,"õli, lõuend",1960.0,24871.0,Oil on canvas,Oil paint
+2016.0,Enn Tegova,2300.0,2300.0,1972.0,"õli, lõuend",1970.0,11000.0,Oil on canvas,Oil paint
+2016.0,Vladimir Taiger,5400.0,5400.0,1982.0,"õli, lõuend",1980.0,4800.0,Oil on canvas,Oil paint
+2016.0,Raul Meel,300.0,300.0,1986.0,segatehnika,1980.0,3136.0,Mixed tech,Other
+2016.0,Silvia Jõgever,1300.0,1400.0,1990.0,"õli, papp",1990.0,5950.0,Oil on cardboard,Oil paint
+2016.0,Peeter Mudist,1800.0,1800.0,1990.0,akvarell,1990.0,1800.0,Watercolour,Other paint
+2016.0,Uno Roosvalt,2200.0,2200.0,1991.0,"õli, lõuend",1990.0,19500.0,Oil on canvas,Oil paint
+2016.0,Kaljo Põllu,1450.0,2000.0,1995.0,"õli, kollaaž, vineer",1990.0,7735.0,Oil on wood,Oil paint
+2016.0,Tiit Pääsuke,3400.0,3600.0,2006.0,"akrüül, õli, lõuend",2000.0,9487.5,Acrylic,Other paint
+2015.0,Paul Burman,2800.0,3100.0,1910.0,"tempera, paber",1910.0,3298.0,Tempera,Other paint
+2015.0,Konrad Mägi,54000.0,98800.0,1922.0,"õli, lõuend",1920.0,3790.5,Oil on canvas,Oil paint
+2015.0,Anatoli Kaigorodov,2500.0,2750.0,1930.0,"õli, lõuend",1930.0,7748.0,Oil on canvas,Oil paint
+2015.0,Arkadio Laigo,450.0,700.0,1935.0,värviline puulõige,1930.0,399.0,Wood cut,Other
+2015.0,Endel Kõks,700.0,950.0,1940.0,"õli, lõuend",1940.0,522.0,Oil on canvas,Oil paint
+2015.0,Ellinor Aiki,1300.0,2600.0,1941.0,"õli, vineer",1940.0,2880.0,Oil on wood,Oil paint
+2015.0,Johannes Saal,3500.0,4100.0,1944.0,"õli, vineer",1940.0,2132.0,Oil on wood,Oil paint
+2015.0,Elmar Leppik,650.0,650.0,1945.0,"õli, vineer",1940.0,1971.0,Oil on wood,Oil paint
+2015.0,Eduard Kutsar,950.0,1400.0,1950.0,"õli, lõuend",1950.0,1290.0,Oil on canvas,Oil paint
+2015.0,Hugo Lepik,600.0,600.0,1950.0,"õli, lõuend",1950.0,3282.5,Oil on canvas,Oil paint
+2015.0,Sigrid Uiga,1750.0,2250.0,1957.0,"õli, lõuend",1950.0,6930.0,Oil on canvas,Oil paint
+2015.0,Avo Keerend,300.0,300.0,1964.0,linoollõige,1960.0,1404.0,Linoleum,Graphics
+2015.0,Valdur Ohakas,800.0,800.0,1967.0,"õli, papp",1960.0,1170.0,Oil on cardboard,Oil paint
+2015.0,Lepo Mikko,2400.0,5600.0,1968.0,"õli, lõuend",1960.0,4293.0,Oil on canvas,Oil paint
+2015.0,Saskia Kasemaa,1800.0,1800.0,1971.0,"õli, lõuend",1970.0,34850.0,Oil on canvas,Oil paint
+2015.0,Tõnis Vint,500.0,500.0,1971.0,linoollõige,1970.0,1540.5,Linoleum,Graphics
+2015.0,Lembit Saarts,2900.0,4200.0,1978.0,"õli, lõuend",1970.0,24842.5,Oil on canvas,Oil paint
+2015.0,Jüri Kask,1600.0,1600.0,1978.0,"tempera, paber",1970.0,8585.0,Tempera,Other paint
+2015.0,Miljard Kilk,5500.0,5500.0,1996.0,"õli, lõuend",1990.0,16380.0,Oil on canvas,Oil paint
+2015.0,Roman Nyman,2700.0,2700.0,1909.0,"õli, lõuend papil",1900.0,2100.0,Oil on cardboard,Oil paint
+2015.0,Konrad Mägi,54000.0,75300.0,1922.0,"õli, lõuend",1920.0,2725.0,Oil on canvas,Oil paint
+2015.0,Endel Kõks,1600.0,1600.0,1941.0,"õli, vineer",1940.0,720.0,Oil on wood,Oil paint
+2015.0,Elmar Leppik,900.0,900.0,1944.0,"õli, vineer",1940.0,2440.0,Oil on wood,Oil paint
+2015.0,Johannes Võerahansu,5500.0,6400.0,1945.0,"õli, vineer",1940.0,4880.0,Oil on wood,Oil paint
+2015.0,Kristjan Teder,2000.0,2000.0,1952.0,"õli, lõuend",1950.0,7300.0,Oil on canvas,Oil paint
+2015.0,Richard Uutmaa,7800.0,8800.0,1954.0,"õli, lõuend",1950.0,9396.0,Oil on canvas,Oil paint
+2015.0,Aleksander Suuman,950.0,950.0,1955.0,"õli, papp",1950.0,3196.0,Oil on cardboard,Oil paint
+2015.0,Eerik Haamer,3500.0,4200.0,1970.0,"õli, lõuend",1970.0,11340.0,Oil on canvas,Oil paint
+2015.0,Lepo Mikko,2900.0,11200.0,1973.0,"õli, lõuend",1970.0,11136.0,Oil on canvas,Oil paint
+2015.0,Viktor Leškin,1700.0,1850.0,1974.0,"õli, lõuend",1970.0,6500.0,Oil on canvas,Oil paint
+2014.0,Eduard Wiiralt,900.0,2720.0,1930.0,"akvatinta, pehmelakk, paber",1930.0,792.0,Aquatint,Graphics
+2014.0,Eduard Wiiralt,1000.0,1000.0,1933.0,"puugravüür, paber",1930.0,520.0,Wood cut,Other
+2014.0,Ado Vabbe,1900.0,3200.0,1933.0,"segatehnika, paber",1930.0,1317.5,Mixed tech,Other
+2014.0,Richard Uutmaa,3500.0,7200.0,1938.0,"õli, lõuend",1930.0,5313.0,Oil on canvas,Oil paint
+2014.0,Lepo Mikko,1200.0,1200.0,1942.0,"õli, papp",1940.0,884.0,Oil on cardboard,Oil paint
+2014.0,Hugo Lepik,500.0,500.0,1940.0,"õli, lõuend",1940.0,3250.0,Oil on canvas,Oil paint
+2014.0,Aleksander Vardi,700.0,720.0,1940.0,"õli, papp",1940.0,1518.0,Oil on cardboard,Oil paint
+2014.0,Avo Keerend,300.0,300.0,1964.0,"värviline linool, sügavtrükk, paber",1960.0,1134.0,Linoleum,Graphics
+2014.0,Konrad Mägi,2700.0,3900.0,1923.0,"akvarell, paber",1920.0,857.5,Watercolour,Other paint
+2014.0,Villem Ormisson,43500.0,43500.0,1924.0,"õli, lõuend",1920.0,12750.0,Oil on canvas,Oil paint
+2014.0,Paul Burman,550.0,550.0,1920.0,"segatehnika, paber",1920.0,716.75,Mixed tech,Other
+2014.0,Anatoli Kaigorodov,1700.0,2000.0,1920.0,"tempera, papp",1920.0,1120.0,Tempera,Other paint
+2014.0,Arkadio Laigo,350.0,350.0,1934.0,"puugravüür, paber",1930.0,282.75,Wood cut,Other
+2014.0,Ann Audova,2700.0,3200.0,1930.0,"õli, vineer",1930.0,1738.0,Oil on wood,Oil paint
+2014.0,Rudolf Sepp,550.0,700.0,1930.0,"õli, vineer",1930.0,3050.0,Oil on wood,Oil paint
+2014.0,Endel Kõks,2200.0,2900.0,1942.0,"õli, vineer",1940.0,1824.0,Oil on wood,Oil paint
+2014.0,Lepo Mikko,1350.0,2850.0,1942.0,"õli, vineer",1940.0,2200.0,Oil on wood,Oil paint
+2014.0,Kristjan Teder,1850.0,4200.0,1943.0,"õli, lõuend ",1940.0,2530.0,Oil on canvas,Oil paint
+2014.0,Johannes Saal,1600.0,1850.0,1943.0,"õli, vineer",1940.0,973.5,Oil on wood,Oil paint
+2014.0,Johannes Võerahansu,4600.0,4600.0,1946.0,"õli, vineer",1940.0,6854.0,Oil on wood,Oil paint
+2014.0,Rudolf Sepp,650.0,1200.0,1946.0,"õli, vineer",1940.0,2530.0,Oil on wood,Oil paint
+2014.0,Ellinor Aiki,1850.0,1850.0,1946.0,"õli, papp",1940.0,1170.0,Oil on cardboard,Oil paint
+2014.0,Boris Ottenberg,650.0,1350.0,1940.0,"õli, papp",1940.0,837.5,Oil on cardboard,Oil paint
+2014.0,Ado Vabbe,2300.0,2550.0,1953.0,"segatehnika, paber",1950.0,2397.0,Mixed tech,Other
+2014.0,Johannes Saal,1200.0,1200.0,1955.0,"akvarell, paber",1950.0,1785.0,Watercolour,Other paint
+2014.0,Johannes Võerahansu,3200.0,3200.0,1956.0,"õli, papp",1950.0,1775.5,Oil on cardboard,Oil paint
+2014.0,Elmar Kits,950.0,950.0,1958.0,"tempera, paber",1950.0,858.0,Tempera,Other paint
+2014.0,Hugo Lepik,700.0,700.0,1950.0,"õli, lõuend",1950.0,7500.0,Oil on canvas,Oil paint
+2014.0,Aleksander Vardi,3500.0,3700.0,1961.0,"õli, lõuend",1960.0,5265.0,Oil on canvas,Oil paint
+2014.0,Karl Murakin,1000.0,1000.0,1963.0,"õli, vineer",1960.0,2940.0,Oil on wood,Oil paint
+2014.0,Richard Sagrits,500.0,1350.0,1965.0,"akvarell, paber",1960.0,2109.0,Watercolour,Other paint
+2014.0,Richard Kaljo,650.0,650.0,1965.0,"linoollõige, paber",1960.0,1320.0,Linoleum,Graphics
+2014.0,Richard Uutmaa,3200.0,5100.0,1976.0,"õli, lõuend papil",1970.0,3500.0,Oil on cardboard,Oil paint
+2014.0,Märt Laarman,650.0,950.0,1974.0,"akvarell, tempera, pastapliiats, paber",1970.0,1728.0,Tempera,Other paint
+2014.0,Peeter Mudist,2600.0,4200.0,2001.0,"õli, lõuend",2000.0,4000.0,Oil on canvas,Oil paint
+2014.0,Evald Okas,4000.0,5500.0,2003.0,"õli, puitlaastplaat",2000.0,31200.0,Oil on wood,Oil paint
+2014.0,Eduard Poland,450.0,460.0,1930.0,"õli, lõuend",1930.0,3504.0,Oil on canvas,Oil paint
+2014.0,Eduard Wiiralt,1500.0,2300.0,1933.0,värviline puugravüür,1930.0,344.0,Wood cut,Other
+2014.0,Eduard Wiiralt,1000.0,1080.0,1933.0,värviline puulõige,1930.0,344.0,Wood cut,Other
+2014.0,August Jansen,850.0,850.0,1930.0,"õli, lõuend",1930.0,1518.0,Oil on canvas,Oil paint
+2014.0,Viktor Turp,850.0,1910.0,1938.0,"tempera, vineer",1930.0,11747.5,Tempera,Other paint
+2014.0,Johannes Võerahansu,4600.0,4600.0,1944.0,"õli, vineer",1940.0,4681.0,Oil on wood,Oil paint
+2014.0,Hugo Lepik,750.0,750.0,1940.0,"õli, lõuend",1940.0,7500.0,Oil on canvas,Oil paint
+2014.0,Toomas Vint,1700.0,1850.0,1981.0,"õli, lõuend",1980.0,5265.0,Oil on canvas,Oil paint
+2014.0,Leonhard Lapin,15.0,200.0,1990.0,siiditrükk,1990.0,3700.0,Silk print,Other
+2014.0,Kaido Ole,15.0,840.0,1994.0,"õli, vineer",1990.0,870.25,Oil on wood,Oil paint
+2014.0,Andres Tolts,15.0,1010.0,1997.0,"akrüül, lõuend",1990.0,4224.0,Acrylic,Other paint
+2014.0,Rein Tammik,550.0,550.0,2012.0,"õli, ölõuend",2010.0,2530.0,Oil on canvas,Oil paint
+2013.0,Voldemar Kangro-Pool,1900.0,2600.0,1927.0,"õli, vineer",1920.0,899.0,Oil on wood,Oil paint
+2013.0,Eduard Wiiralt,1500.0,1500.0,1937.0,linoolsügavtrükk,1930.0,612.5,Linoleum,Graphics
+2013.0,Eerik Haamer,6500.0,8500.0,1942.0,"õli, vineer",1940.0,4977.0,Oil on wood,Oil paint
+2013.0,Richard Kaljo,625.0,725.0,1957.0,linoollõige,1950.0,1426.0,Linoleum,Graphics
+2013.0,Raivo Korstnik,600.0,1750.0,1959.0,"õli, lõuend",1950.0,5056.0,Oil on canvas,Oil paint
+2013.0,Richard Uutmaa,3700.0,4200.0,1961.0,"õli, lõuend",1960.0,6500.0,Oil on canvas,Oil paint
+2013.0,Henn Roode,2300.0,3400.0,1967.0,"õli, papp",1960.0,4018.0,Oil on cardboard,Oil paint
+2013.0,Valdur Ohakas,800.0,1100.0,1970.0,"õli, papp",1970.0,1760.0,Oil on cardboard,Oil paint
+2013.0,Uiga Sigrid,1600.0,1600.0,1979.0,"õli, lõuend",1970.0,6800.0,Oil on canvas,Oil paint
+2013.0,Leonhard Lapin,350.0,350.0,1993.0,siiditrükk,1990.0,1147.5,Silk print,Other
+2013.0,Nikolai Kull,1250.0,1850.0,1940.0,"õli, vineer",1940.0,2310.0,Oil on wood,Oil paint
+2013.0,Konstantin Süvalo,1600.0,1600.0,1940.0,"õli, papp",1940.0,1032.5,Oil on cardboard,Oil paint
+2013.0,Karin Luts,1300.0,2500.0,1950.0,"õli, lõuend",1950.0,806.0,Oil on canvas,Oil paint
+2013.0,Richard Kaljo,700.0,700.0,1957.0,"linoollõige, paber",1950.0,3519.0,Linoleum,Graphics
+2013.0,Aino Bach,1250.0,1950.0,1958.0,akvatinta,1950.0,622.75,Aquatint,Graphics
+2013.0,Artur Lokk,1200.0,1850.0,1960.0,"õli, lõuend",1960.0,2400.0,Oil on canvas,Oil paint
+2013.0,Richard Uutmaa,800.0,800.0,1969.0,"akvarell, paber",1960.0,3264.0,Watercolour,Other paint
+2013.0,Malle Leis,2700.0,2700.0,1995.0,"õli, lõuend",1990.0,14400.0,Oil on canvas,Oil paint
+2013.0,Andrei Jegorov,2200.0,2700.0,1921.0,"õli, vineer",1920.0,3798.5,Oil on wood,Oil paint
+2013.0,Erich Leps,3400.0,3400.0,1944.0,"õli, vineer",1940.0,11132.0,Oil on wood,Oil paint
+2013.0,Ülo 22. Sooster,1400.0,1400.0,1961.0,"segatehnika, paber",1960.0,391.0,Mixed tech,Other
+2013.0,Jüri Palm,2300.0,2350.0,1967.0,"õli, lõuend",1960.0,3410.0,Oil on canvas,Oil paint
+2013.0,Enn Tegova,3000.0,3000.0,1984.0,"õli, lõuend",1980.0,27200.0,Oil on canvas,Oil paint
+2012.0,Aleksander Suumann,2400.0,3500.0,1954.0,"õli, lõuend",1950.0,20183.75,Oil on canvas,Oil paint
+2012.0,Ülo Sooster,7500.0,7500.0,1958.0,"õli, lõuend",1950.0,1666.0,Oil on canvas,Oil paint
+2012.0,Leonhard Lapin,1650.0,1650.0,1970.0,"guašš, paber",1970.0,2562.0,Gouache,Other paint
+2012.0,Leonhard Lapin,1500.0,2000.0,1973.0,"tušš, guašš, paber",1970.0,3600.0,Gouache,Other paint
+2012.0,Aili Vint,6600.0,6600.0,1989.0,"õli, lõuend",1980.0,10580.0,Oil on canvas,Oil paint
+2012.0,Hermann Talvik,500.0,500.0,1950.0,"õli, lõuend",1950.0,3630.0,Oil on canvas,Oil paint
+2012.0,Endel Kõks,1600.0,3300.0,1959.0,"õli, lõuend",1950.0,2023.5,Oil on canvas,Oil paint
+2012.0,Eerik Haamer,4000.0,4000.0,1960.0,"õli, lõuend",1960.0,6700.0,Oil on canvas,Oil paint
+2012.0,Endel Kõks,2200.0,2900.0,1960.0,"õli, lõuend",1960.0,5371.0,Oil on canvas,Oil paint
+2012.0,Karl Burman noorem,700.0,700.0,1961.0,"akvarell, paber",1960.0,1372.0,Watercolour,Other paint
+2012.0,Kaljo Põllu,1300.0,1300.0,1967.0,"tempera, guašš, papp",1960.0,3577.0,Tempera,Other paint
+2012.0,Alfred Kongo,1600.0,1600.0,1974.0,"õli, papp",1970.0,3381.0,Oil on cardboard,Oil paint
+2012.0,Rein Tammik,3500.0,4700.0,1975.0,"õli, lõuend",1970.0,3500.0,Oil on canvas,Oil paint
+2012.0,Enn Tegova,3750.0,12050.0,1981.0,"õli, lõuend",1980.0,21672.0,Oil on canvas,Oil paint
+2012.0,Miljard Kilk,11200.0,29100.0,1982.0,"õli, lõuend",1980.0,16848.0,Oil on canvas,Oil paint
+2012.0,Mari Roosvalt,1300.0,1300.0,1987.0,"õli, lõuend",1980.0,7546.0,Oil on canvas,Oil paint
+2012.0,Marko Mäetamm,2000.0,2100.0,1993.0,"õli, vineer",1990.0,4218.75,Oil on wood,Oil paint
+2012.0,Endel Kõks,8000.0,8000.0,1938.0,"õli, lõuend",1930.0,9000.0,Oil on canvas,Oil paint
+2012.0,Eerik Haamer,2700.0,2800.0,1949.0,"õli, lõuend",1940.0,1904.0,Oil on canvas,Oil paint
+2012.0,Ülo Sooster,2200.0,2500.0,1950.0,"õli, lõuend",1950.0,1541.0,Oil on canvas,Oil paint
+2012.0,Endel Kõks,1700.0,2750.0,1960.0,"õli, lõuend",1960.0,1692.0,Oil on canvas,Oil paint
+2012.0,Ülo Sooster,8000.0,8000.0,1961.0,"õli, pasta, papp",1960.0,1632.0,Oil on cardboard,Oil paint
+2012.0,Ülo Sooster,15000.0,24600.0,1966.0,"õli, pasta, lõuend",1960.0,4466.0,Oil on canvas,Oil paint
+2012.0,Ülo Sooster,7000.0,10200.0,1966.0,"õli, pasta, papp",1960.0,1666.0,Oil on cardboard,Oil paint
+2012.0,Richard,600.0,600.0,1972.0,"akvarell, paber",1970.0,3240.0,Watercolour,Other paint
+2012.0,Eerik Haamer,6000.0,7400.0,1970.0,"õli, lõuend",1970.0,13160.0,Oil on canvas,Oil paint
+2012.0,Karl 03. Pärsimägi,3000.0,3200.0,1920.0,"õli, lõuend vineeril ",1920.0,2990.0,Oil on wood,Oil paint
+2012.0,Heitti Polli,2300.0,2600.0,1972.0,"õli, lõuend",1970.0,4000.0,Oil on canvas,Oil paint
+2012.0,Valve Janov,550.0,650.0,1975.0,"õli, papp",1970.0,1470.0,Oil on cardboard,Oil paint
+2012.0,Lemming Nagel,4800.0,8600.0,1976.0,"õli, lõuend",1970.0,20294.0,Oil on canvas,Oil paint
+2012.0,Mari Roosvalt,1300.0,1300.0,1980.0,"õli, lõuend",1980.0,11270.0,Oil on canvas,Oil paint
+2012.0,Jüri Palm,2500.0,2750.0,1995.0,"õli, lõuend",1990.0,6030.0,Oil on canvas,Oil paint
+2012.0,Malle Leis,650.0,900.0,1974.0,"akvarell, paber",1970.0,3600.0,Watercolour,Other paint
+2012.0,Malle Leis,600.0,850.0,1984.0,"akvarell, paber",1980.0,3364.0,Watercolour,Other paint
+2011.0,Paul Raud,12500.0,12500.0,1906.0,"õli, lõuend",1900.0,4278.0,Oil on canvas,Oil paint
+2011.0,Vladimir Bogatkin,450.0,450.0,1950.0,"õli, papp",1950.0,270.0,Oil on cardboard,Oil paint
+2011.0,Sigrid Uiga,800.0,800.0,1960.0,"õli, lõuend",1960.0,2349.0,Oil on canvas,Oil paint
+2011.0,Richard  Sagrits,1400.0,3200.0,1962.0,"õli, papp",1960.0,3332.0,Oil on cardboard,Oil paint
+2011.0,Raivo Korstnik,1250.0,1350.0,1965.0,"õli, lõuend",1960.0,11424.0,Oil on canvas,Oil paint
+2011.0,Johannes Võerahansu,800.0,950.0,1967.0,söejoonistus,1960.0,3048.0,Drawing,Drawing
+2011.0,Ludmilla Siim,2500.0,2500.0,1976.0,"õli, lõuend",1970.0,11600.0,Oil on canvas,Oil paint
+2011.0,Märt Bormeister,1000.0,1000.0,1989.0,"õli, lõuend",1980.0,1750.0,Oil on canvas,Oil paint
+2011.0,Jüri Palm,2500.0,2500.0,1999.0,"õli, lõuend",1990.0,3000.0,Oil on canvas,Oil paint
+2011.0,Heldur Viires,100.0,100.0,1949.0,"õli, papp",1940.0,459.0,Oil on cardboard,Oil paint
+2011.0,Märt Laarman,60.0,60.0,1956.0,puulõige,1950.0,591.25,Wood cut,Other
+2011.0,Valdur Ohakas,290.0,290.0,1994.0,"akvarell, paber",1990.0,1058.75,Watercolour,Other paint
+2011.0,Ado Vabbe,4470.0,4870.0,1930.0,"õli, papp",1930.0,2310.0,Oil on cardboard,Oil paint
+2011.0,Eduard Mässo,800.0,800.0,1939.0,"õli, vineer",1930.0,2430.0,Oil on wood,Oil paint
+2011.0,Eduard Kutsar,1150.0,1650.0,1943.0,"õli, vineer",1940.0,1107.0,Oil on wood,Oil paint
+2011.0,Nigul Espe,2240.0,2240.0,1944.0,"õli, vineer",1940.0,4159.5,Oil on wood,Oil paint
+2011.0,Raimo Saare,800.0,850.0,1950.0,"õli, lõuend",1950.0,1569.75,Oil on canvas,Oil paint
+2011.0,Raimo Saare,960.0,2060.0,1950.0,"õli, lõuend",1950.0,2464.0,Oil on canvas,Oil paint
+2011.0,Richard Uutmaa,4800.0,5900.0,1958.0,"õli, lõuend",1950.0,4860.0,Oil on canvas,Oil paint
+2011.0,Valdur Ohakas,625.0,925.0,1967.0,"õli, papp",1960.0,1569.75,Oil on cardboard,Oil paint
+2011.0,Tiit Pääsuke,5100.0,5800.0,1973.0,"õli, lõuend",1970.0,6862.5,Oil on canvas,Oil paint
+2011.0,Valdur Ohakas,625.0,625.0,1974.0,"õli, papp",1970.0,1584.0,Oil on cardboard,Oil paint
+2011.0,Jüri Palm,2900.0,2900.0,1980.0,"õli, lõuend",1980.0,5625.0,Oil on canvas,Oil paint
+2011.0,Rein Tammik,2100.0,3600.0,1947.0,"õli, lõuend",1940.0,13110.25,Oil on canvas,Oil paint
+2011.0,Ando Keskküla,2500.0,2500.0,1984.0,"segatehnika, lõuend",1980.0,3510.0,Mixed tech,Other
+2011.0,Lembit Saarts,900.0,1100.0,1989.0,"õli, papp",1980.0,3500.0,Oil on cardboard,Oil paint
+2010.0,Ludvig Oskar,766.94,766.94,1920.0,"õli, vineer",1920.0,555.75,Oil on wood,Oil paint
+2010.0,Ott Kangilaski,479.34,479.34,1940.0,puugravüür,1940.0,320.0,Wood cut,Other
+2010.0,Nigul  Espe,639.12,1054.54,1942.0,"õli, papp",1940.0,1809.5,Oil on cardboard,Oil paint
+2010.0,Nigul Espe,1150.41,1150.41,1942.0,"õli, vineer",1940.0,1809.5,Oil on wood,Oil paint
+2010.0,Ilmar Kruusamäe,639.12,639.12,1985.0,"õli, lõuend",1980.0,1496.25,Oil on canvas,Oil paint
+2010.0,Malle Leis,351.51,351.51,1991.0,"akvarell, paber",1990.0,3727.5,Watercolour,Other paint
+2010.0,Jaan Grünberg,447.38,447.38,1940.0,"õli, papp",1940.0,619.5,Oil on cardboard,Oil paint
+2010.0,Kristjan Teder,1150.41,1150.41,1952.0,"õli, lõuend",1950.0,7300.0,Oil on canvas,Oil paint
+2010.0,Andres Tolts,958.67,1629.75,1969.0,"guašš, paber",1960.0,2004.75,Gouache,Other paint
+2010.0,Raivo Korstnik,383.47,383.47,1960.0,"õli, lõuend, papp",1960.0,560.5,Oil on cardboard,Oil paint
+2010.0,Toomas Vint,2428.64,2428.64,1978.0,"õli, lõuend",1970.0,10580.0,Oil on canvas,Oil paint
+2010.0,Marko Mäetamm,766.94,1214.32,1991.0,"guašš, paber",1990.0,1472.0,Gouache,Other paint
+2010.0,Richard Sagrits,2236.91,4122.3,1948.0,"õli, lõuend",1940.0,5915.0,Oil on canvas,Oil paint
+2010.0,Richard Sagrits,2045.17,2045.17,1948.0,"õli, lõuend",1940.0,5265.0,Oil on canvas,Oil paint
+2010.0,Valerian Loik,2013.22,2013.22,1950.0,"õli, lõuend",1950.0,3850.0,Oil on canvas,Oil paint
+2010.0,Toivo Kulles,319.56,319.56,1961.0,akvatinta,1960.0,1194.75,Aquatint,Graphics
+2010.0,Juhan Nõmmik,1150.41,1150.41,1967.0,"õli, lõuend",1960.0,1495.0,Oil on canvas,Oil paint
+2010.0,Toomas Vint,2428.64,3834.7,1973.0,"õli, lõuend",1970.0,7072.5,Oil on canvas,Oil paint
+2010.0,Tiina Tammetalu,958.67,958.67,1983.0,"õli, lõuend",1980.0,5670.0,Oil on canvas,Oil paint
+2010.0,Alfred Kongo,766.94,766.94,1987.0,"tempera, vineer",1980.0,4940.0,Tempera,Other paint
+2010.0,Rein Kelpman,2045.17,3099.71,1987.0,"õli, lõuend",1980.0,15600.0,Oil on canvas,Oil paint
+2010.0,Evald Okas,1150.41,1150.41,1996.0,"õli, lõuend",1990.0,367.5,Oil on canvas,Oil paint
+2010.0,Maarit Murka,1406.06,1661.7,2004.0,"õli, vineer",2000.0,17600.0,Oil on wood,Oil paint
+2010.0,Eduard Mässo,2045.17,2045.17,1930.0,"õli, lõuend",1930.0,5772.75,Oil on canvas,Oil paint
+2010.0,Ilmar Kimm,1022.59,1054.54,1973.0,"õli, lõuend",1970.0,4248.0,Oil on canvas,Oil paint
+2010.0,Johannes Uiga,798.9,798.9,1989.0,"õli, papp",1980.0,4647.5,Oil on cardboard,Oil paint
+2009.0,Veronika Keerdoja,639.12,639.12,1942.0,"õli, vineer",1940.0,2961.0,Oil on wood,Oil paint
+2009.0,Evald Okas,7541.57,7541.57,1962.0,"õli, lõuend",1960.0,12825.0,Oil on canvas,Oil paint
+2009.0,Endel Kõks,1597.79,2620.38,1963.0,"õli, lõuend",1960.0,1247.0,Oil on canvas,Oil paint
+2009.0,Mari Roosvalt,766.94,766.94,1970.0,"õli, lõuend",1970.0,5265.0,Oil on canvas,Oil paint
+2009.0,Harri Pudersell,830.85,958.67,1970.0,"õli, lõuend",1970.0,3339.0,Oil on canvas,Oil paint
+2009.0,Rein Siim,1789.53,1789.53,1976.0,"õli, lõuend",1970.0,10925.0,Oil on canvas,Oil paint
+2009.0,Ida Anton-Agu,958.67,958.67,1977.0,"õli, lõuend",1970.0,3381.0,Oil on canvas,Oil paint
+2009.0,Urmas Pedanik,3323.41,6391.16,1985.0,"õli, lõuend",1980.0,10800.0,Oil on canvas,Oil paint
+2009.0,Valdur Ohakas,639.12,639.12,1994.0,"õli, papp",1990.0,1955.25,Oil on cardboard,Oil paint
+2009.0,Ardo Sivadi,1022.59,1022.59,1930.0,"õli, vineer",1930.0,3050.0,Oil on wood,Oil paint
+2009.0,Olga Terri,2492.55,2492.55,1937.0,"õli, lõuend papil",1930.0,999.0,Oil on cardboard,Oil paint
+2009.0,Raoul Lind,1022.59,1150.41,1942.0,"õli, lõuend",1940.0,4628.75,Oil on canvas,Oil paint
+2009.0,Eerik Haamer,2428.64,2748.2,1942.0,"õli, vineer",1940.0,4050.0,Oil on wood,Oil paint
+2009.0,Juhan Muks,1597.79,1661.7,1949.0,"õli, lõuend",1940.0,8100.0,Oil on canvas,Oil paint
+2009.0,Valdur Ohakas,383.47,383.47,1960.0,"õli, papp",1960.0,1125.0,Oil on cardboard,Oil paint
+2009.0,Richard Kaljo,223.69,223.69,1963.0,puulõige,1960.0,159.5,Wood cut,Other
+2009.0,Felix Randel,958.67,958.67,1970.0,"õli, vineer",1970.0,2583.0,Oil on wood,Oil paint
+2009.0,Miljard Kilk,4473.82,4473.82,1980.0,"õli, lõuend",1980.0,7711.5,Oil on canvas,Oil paint
+2009.0,Evald Okas,1917.35,2556.47,1997.0,"õli, kartong",1990.0,3500.0,Oil on cardboard,Oil paint
+2009.0,Felix Randel,3323.41,3323.41,1943.0,"õli, lõuend",1940.0,8453.0,Oil on canvas,Oil paint
+2009.0,Nikolai Kormašov,2876.02,2876.02,1967.0,"õli, kartong",1960.0,3692.0,Oil on cardboard,Oil paint
+2009.0,Esther Roode,830.85,830.85,1983.0,"õli, lõuend",1980.0,10000.0,Oil on canvas,Oil paint
+2009.0,Leonhard Lapin,383.47,383.47,1990.0,siiditrükk,1990.0,3750.0,Silk print,Other
+2009.0,Leonhard Lapin,319.56,319.56,1991.0,siiditrükk,1990.0,1625.0,Silk print,Other
+2009.0,Ilmar Kruusamäe,223.69,223.69,1990.0,"monotüüpia, linoollõige",1990.0,1000.0,Linoleum,Graphics
+2008.0,Johann Köler,172561.45,172561.45,,"õli, lõuend",,13138.500000000002,Oil on canvas,Oil paint
+2008.0,Konrad Mägi,41542.57,41542.57,1913.0,"õli, papp",1910.0,1865.3400000000001,Oil on cardboard,Oil paint
+2008.0,Johannes Võerahansu,7030.28,19173.49,1937.0,"õli, lõuend",1930.0,8000.0,Oil on canvas,Oil paint
+2008.0,Voldemar Kangro-Pool,447.38,447.38,1920.0,puulõige,1920.0,270.0,Wood cut,Other
+2008.0,Paul Burman,1533.88,1533.88,1931.0,"akvarell, paber",1930.0,1530.0,Watercolour,Other paint
+2008.0,Hermann Talvik,1469.97,2109.08,1937.0,"õli, lõuend",1930.0,2580.75,Oil on canvas,Oil paint
+2008.0,Richard Kaljo,575.2,575.2,1940.0,puugravüür,1940.0,448.5,Wood cut,Other
+2008.0,Otto Paas,703.03,703.03,1953.0,"õli, vineer",1950.0,4200.0,Oil on wood,Oil paint
+2008.0,Karl Burman jun.,798.9,926.72,1956.0,"akvarell, paber",1950.0,2470.5,Watercolour,Other paint
+2008.0,Ado Vabbe,4793.37,4793.37,1950.0,"akvarell, paber",1950.0,2695.0,Watercolour,Other paint
+2008.0,Ülo Sooster,2236.91,3579.05,1957.0,"õli, papp",1950.0,1750.0,Oil on cardboard,Oil paint
+2008.0,Endel Kõks,766.94,3163.63,1959.0,"õli, lõuend",1950.0,1729.0,Oil on canvas,Oil paint
+2008.0,Evald Okas,479.34,479.34,1961.0,"ofort, akvatinta",1960.0,486.0,Aquatint,Graphics
+2008.0,Richard Sagrits,2109.08,3323.41,1963.0,"õli, papp",1960.0,3405.5,Oil on cardboard,Oil paint
+2008.0,Märt Laarman,798.9,798.9,1963.0,puulõige,1960.0,914.5,Wood cut,Other
+2008.0,Lembit Sarapuu,1789.53,1789.53,1964.0,"õli, papp",1960.0,3475.0,Oil on cardboard,Oil paint
+2008.0,Richard Uutmaa,1214.32,1949.31,1964.0,"akvarell, paber",1960.0,3182.5,Watercolour,Other paint
+2008.0,Karl Burman jun.,734.98,734.98,1965.0,"akvarell, paber",1960.0,580.0,Watercolour,Other paint
+2008.0,Richard Kaljo,479.34,479.34,1967.0,puugravüür,1960.0,432.0,Wood cut,Other
+2008.0,Rein Tammik,4985.11,4985.11,1973.0,"õli, lõuend",1970.0,56138.5,Oil on canvas,Oil paint
+2008.0,Mari Roosvalt,1597.79,2364.73,1975.0,"õli, lõuend",1970.0,5265.0,Oil on canvas,Oil paint
+2008.0,Valdemar Väli,1438.01,1438.01,1975.0,"õli, lõuend",1970.0,3456.0,Oil on canvas,Oil paint
+2008.0,Richard Uutmaa,1533.88,1661.7,1975.0,"akvarell, paber",1970.0,2849.5,Watercolour,Other paint
+2008.0,Uno Roosvalt,1406.06,1406.06,1979.0,"tempera, papp",1970.0,5160.0,Tempera,Other paint
+2008.0,. Miljard Kilk,4793.37,13101.89,1979.0,"õli, lõuend",1970.0,11607.75,Oil on canvas,Oil paint
+2008.0,Valeri Vinogradov,1789.53,2109.08,1981.0,"õli, lõuend",1980.0,6750.0,Oil on canvas,Oil paint
+2008.0,Lembit Saarts,958.67,1597.79,1983.0,"õli, papp",1980.0,3500.0,Oil on cardboard,Oil paint
+2008.0,Efraim Allsalu,1597.79,1597.79,1980.0,"õli, vineer",1980.0,4661.0,Oil on wood,Oil paint
+2008.0,Alo Hoidre,1789.53,1949.31,1990.0,"segatehnika, paber",1990.0,3584.0,Mixed tech,Other
+2008.0,Toomas Vint,3003.85,3003.85,1991.0,"õli, lõuend",1990.0,7406.0,Oil on canvas,Oil paint
+2008.0,Agu Pilt,447.38,447.38,1992.0,"akvarell, paber",1990.0,1408.0,Watercolour,Other paint
+2008.0,. Peeter Allik,2876.02,2876.02,2000.0,"õli, lõuend",2000.0,28500.0,Oil on canvas,Oil paint
+2008.0,Rudolf Sepp,1118.45,1342.14,1920.0,"õli, lõuend",1920.0,2475.2,Oil on canvas,Oil paint
+2008.0,Jaan Vahtra,2939.94,3642.96,1942.0,"õli, vineer",1940.0,2464.0,Oil on wood,Oil paint
+2008.0,Felix Randel,2492.55,2907.98,1940.0,"õli, lõuend",1940.0,7296.0,Oil on canvas,Oil paint
+2008.0,Heldur Viires,766.94,958.67,1949.0,"guašš, paber",1940.0,1656.0,Gouache,Other paint
+2008.0,Jaan Grünberg,255.65,447.38,1952.0,"õli, papp",1950.0,372.0,Oil on cardboard,Oil paint
+2008.0,Juhan Püttsepp,766.94,1022.59,1954.0,"õli,papp",1950.0,1679.0,Oil on cardboard,Oil paint
+2008.0,Valdur Ohakas,479.34,639.12,1956.0,"õli, papp",1950.0,553.5,Oil on cardboard,Oil paint
+2008.0,Elmar Kits,3642.96,4409.9,1956.0,"õli, lõuend",1950.0,6500.0,Oil on canvas,Oil paint
+2008.0,Kaja Kärner,958.67,1022.59,1961.0,"tempera, paber",1960.0,1300.0,Tempera,Other paint
+2008.0,Lembit Saarts,447.38,639.12,1961.0,"akvarell, pastapliiats, paber",1960.0,920.0,Watercolour,Other paint
+2008.0,Helju Sarnet Zauram,287.6,351.51,1962.0,"õli, papp",1960.0,1395.0,Oil on cardboard,Oil paint
+2008.0,Richard Uutmaa,894.76,1310.19,1964.0,"akvarell, paber",1960.0,1800.0,Watercolour,Other paint
+2008.0,Olev Mikiver,287.6,575.2,1966.0,"guašš, akvarell, papp",1960.0,1064.0,Watercolour,Other paint
+2008.0,Lüüdia Vallimäe-Mark,1278.23,1278.23,1969.0,"õli, papp",1960.0,1782.0,Oil on cardboard,Oil paint
+2008.0,Varmo Pirk,2173.0,2652.33,1969.0,"õli, lõuend",1960.0,6337.5,Oil on canvas,Oil paint
+2008.0,Eduard Rüga,1789.53,1853.44,1971.0,"õli, segatehnika, paber",1970.0,3111.5,Mixed tech,Other
+2008.0,Valerian Loik,2173.0,2173.0,1970.0,"õli, lõuend",1970.0,9180.0,Oil on canvas,Oil paint
+2008.0,Heldur Viires,1150.41,1150.41,1986.0,"akrüül, lõuend",1980.0,4599.0,Acrylic,Other paint
+2008.0,Karitas Uus,319.56,447.38,2002.0,"õli, lõuend",2000.0,2000.0,Oil on canvas,Oil paint
+2008.0,Margus Meinart,447.38,511.29,2008.0,"õli, lõuend",2000.0,4800.0,Oil on canvas,Oil paint
+2008.0,Maris Tuuling,511.29,894.76,2008.0,"akrüül, vineer",2000.0,4636.0,Acrylic,Other paint
+2008.0,Paul Raud,18853.94,19493.05,1911.0,"õli, lõuend",1910.0,2542.0,Oil on canvas,Oil paint
+2008.0,Erich Pehap,319.56,319.56,1933.0,tušijoonistus,1930.0,660.0,Drawing,Drawing
+2008.0,Aino Bach,1406.06,1406.06,1937.0,akvatinta,1930.0,1140.0,Aquatint,Graphics
+2008.0,Johannes Greenberg,2556.47,3898.61,1939.0,"õli, vineer",1930.0,1424.0,Oil on wood,Oil paint
+2008.0,Ardo Sivadi,1118.45,1629.75,1940.0,"õli, vineer",1940.0,2050.0,Oil on wood,Oil paint
+2008.0,Herman Talvik,1469.97,1469.97,1942.0,"õli, paber papil",1940.0,3055.5,Oil on cardboard,Oil paint
+2008.0,Nigul Espe,798.9,798.9,1944.0,"õli, vineer",1940.0,1134.0,Oil on wood,Oil paint
+2008.0,Richard Kaljo,894.76,1310.19,1944.0,puugravüür,1940.0,296.51,Wood cut,Other
+2008.0,Valerian Loik,1597.79,2396.69,1950.0,"õli, lõuend",1950.0,4761.0,Oil on canvas,Oil paint
+2008.0,Jaan Grünberg,703.03,1054.54,1950.0,"õli, papp",1950.0,456.0,Oil on cardboard,Oil paint
+2008.0,Olev Mikiver,1086.5,1086.5,1951.0,"õli, vineer",1950.0,2684.5,Oil on wood,Oil paint
+2008.0,Erik Schmidt,1597.79,1597.79,1952.0,"õli, lõuend",1950.0,1014.0,Oil on canvas,Oil paint
+2008.0,Erik Haamer,3706.88,14060.56,1952.0,"õli, lõuend",1950.0,4399.0,Oil on canvas,Oil paint
+2008.0,Erik Haamer,3387.32,4857.29,1953.0,"õli, lõuend",1950.0,5500.0,Oil on canvas,Oil paint
+2008.0,Ülo Sooster,2428.64,5112.93,1956.0,"õli, papp",1950.0,1725.0,Oil on cardboard,Oil paint
+2008.0,Richard Kaljo,894.76,1597.79,1957.0,linoollõige,1950.0,1441.5,Linoleum,Graphics
+2008.0,Ülo Sooster,4345.99,13741.0,1959.0,"õli, papp",1950.0,2400.0,Oil on cardboard,Oil paint
+2008.0,Hermann Talvik,1086.5,1086.5,1960.0,"õli, lõuend",1960.0,3838.0,Oil on canvas,Oil paint
+2008.0,Valdur Ohakas,2045.17,2045.17,1966.0,"õli, paber papil",1960.0,4661.0,Oil on cardboard,Oil paint
+2008.0,Agu Pihelga,1533.88,2236.91,1969.0,"õli, lõuend",1960.0,5841.0,Oil on canvas,Oil paint
+2008.0,Edgar Valter,1917.35,3003.85,1968.0,"õli, papp",1960.0,7832.0,Oil on cardboard,Oil paint
+2008.0,Linda Kits-Mägi,2812.11,2812.11,,"õli, lõuend",,8217.0,Oil on canvas,Oil paint
+2008.0,Karl jun. Burman,958.67,1310.19,1973.0,akvarell,1970.0,3603.75,Watercolour,Other paint
+2008.0,Ilmar Kruusamäe,4473.82,4473.82,1977.0,"õli, papp",1970.0,6506.5,Oil on cardboard,Oil paint
+2008.0,Uno Roosvalt,1086.5,3195.58,1978.0,"õli, papp",1970.0,2994.75,Oil on cardboard,Oil paint
+2008.0,Miljard Kilk,4473.82,9586.75,1982.0,"õli, lõuend",1980.0,5005.0,Oil on canvas,Oil paint
+2008.0,Paul Allik,1533.88,5176.84,1991.0,"õli, lõuend",1990.0,14500.0,Oil on canvas,Oil paint
+2008.0,Laurentsius,2045.17,2716.25,1991.0,"õli, papp",1990.0,5194.0,Oil on cardboard,Oil paint
+2008.0,Jüri Palm,2876.02,2876.02,1993.0,"õli, lõuend",1990.0,5760.0,Oil on canvas,Oil paint
+2007.0,Paul Raud,3067.76,3706.88,1901.0,"õli, lõuend",1900.0,1530.0,Oil on canvas,Oil paint
+2007.0,Arnold Peeter Vihvelin,4345.99,4345.99,1928.0,"õli, lõuend",1920.0,8772.0,Oil on canvas,Oil paint
+2007.0,Paul Burman,3834.7,15338.8,1920.0,"õli, papp",1920.0,8383.0,Oil on cardboard,Oil paint
+2007.0,Eduard Mässo,1757.57,2748.2,1932.0,"õli, lõuend",1930.0,6111.0,Oil on canvas,Oil paint
+2007.0,Erich Pehap,511.29,926.72,1935.0,"kuivnõel, etsing",1930.0,1085.0,Etching,Graphics
+2007.0,Aino Bach,1150.41,1374.1,1936.0,akvatinta,1930.0,775.0,Aquatint,Graphics
+2007.0,Aino Bach,1086.5,1917.35,1938.0,akvatinta,1930.0,1312.0,Aquatint,Graphics
+2007.0,Jaan Grünberg,3579.05,4985.11,1938.0,"õli, lõuend",1930.0,5934.0,Oil on canvas,Oil paint
+2007.0,Aleksander Normak,1342.14,1757.57,1939.0,"õli, vineer",1930.0,1710.0,Oil on wood,Oil paint
+2007.0,Jaan Vahtra,4026.43,6710.72,1941.0,"õli, lõuend",1940.0,6006.0,Oil on canvas,Oil paint
+2007.0,Johannes Greenberg,10225.86,13421.45,1942.0,"õli, papp",1940.0,4089.0,Oil on cardboard,Oil paint
+2007.0,Karin Luts,2812.11,2812.11,1943.0,"õli, vineer",1940.0,1312.0,Oil on wood,Oil paint
+2007.0,Richard Uutmaa,3515.14,3642.96,1947.0,"õli, papp",1940.0,3500.0,Oil on cardboard,Oil paint
+2007.0,Olev Mikiver,958.67,958.67,1943.0,"õli, lõuend",1940.0,2280.0,Oil on canvas,Oil paint
+2007.0,Eduard Rüga,958.67,1182.37,1949.0,värviline puulõige,1940.0,700.0,Wood cut,Other
+2007.0,Eugen Kask,575.2,1533.88,1950.0,"õli, paber, segatehnika)",1950.0,1890.0,Mixed tech,Other
+2007.0,Erik Haamer,1278.23,2045.17,1950.0,akvarell,1950.0,3120.0,Watercolour,Other paint
+2007.0,Aino Bach,1214.32,1821.48,1958.0,akvatinta,1950.0,575.0,Aquatint,Graphics
+2007.0,Louis Pavel,2045.17,2173.0,1958.0,"õli, vineer",1950.0,3250.0,Oil on wood,Oil paint
+2007.0,Ülo Sooster,2428.64,3642.96,1958.0,"õli, papp",1950.0,1732.5,Oil on cardboard,Oil paint
+2007.0,Varmo Pirk,958.67,958.67,1959.0,"tempera, papp",1950.0,1632.0,Tempera,Other paint
+2007.0,Ülo Sooster,2812.11,4857.29,1960.0,"õli, papp",1960.0,1715.0,Oil on cardboard,Oil paint
+2007.0,Richard Uutmaa,1086.5,1469.97,1962.0,akvarell,1960.0,1728.0,Watercolour,Other paint
+2007.0,Enno Hallek,2236.91,2236.91,1963.0,"õli, lõuend",1960.0,8484.0,Oil on canvas,Oil paint
+2007.0,Raivo Korstnik,1150.41,1597.79,1963.0,"õli, papp",1960.0,3440.25,Oil on cardboard,Oil paint
+2007.0,Richard Sagrits,2109.08,2109.08,1963.0,"õli, papp",1960.0,1551.0,Oil on cardboard,Oil paint
+2007.0,Richard Sagrits,2620.38,5815.96,1963.0,"õli, papp",1960.0,3465.0,Oil on cardboard,Oil paint
+2007.0,Juhan Nõmmik,1597.79,3451.23,1964.0,"õli, lõuend",1960.0,3500.0,Oil on canvas,Oil paint
+2007.0,Richard Uutmaa,1150.41,2013.22,1964.0,akvarell,1960.0,3024.0,Watercolour,Other paint
+2007.0,Erik Haamer,3962.52,3962.52,1965.0,"õli, lõuend",1960.0,8300.0,Oil on canvas,Oil paint
+2007.0,Gustav Raud,1853.44,1853.44,1965.0,"õli, lõuend",1960.0,3000.0,Oil on canvas,Oil paint
+2007.0,Edgar Valter,1917.35,3003.85,1966.0,"õli, lõuend",1960.0,5642.0,Oil on canvas,Oil paint
+2007.0,Richard Uutmaa,4345.99,6710.72,1967.0,"õli, lõuend",1960.0,3312.0,Oil on canvas,Oil paint
+2007.0,Uno Roosvalt,1342.14,1342.14,1968.0,"õli, lõuend",1960.0,3942.0,Oil on canvas,Oil paint
+2007.0,Peeter Mudist,3515.14,3962.52,1970.0,"õli, papp",1970.0,3500.0,Oil on cardboard,Oil paint
+2007.0,Mari Roosvalt,1406.06,2332.78,1976.0,"õli, lõuend",1970.0,6716.0,Oil on canvas,Oil paint
+2007.0,Richard Uutmaa,2045.17,7030.28,1976.0,"õli, papp",1970.0,3550.0,Oil on cardboard,Oil paint
+2007.0,Ludmilla Siim,3387.32,4090.35,1978.0,"õli, lõuend",1970.0,17400.0,Oil on canvas,Oil paint
+2007.0,Aleksander Suuman,1278.23,1278.23,1980.0,"õli, papp",1980.0,4000.0,Oil on cardboard,Oil paint
+2007.0,Aleksander Suuman,1278.23,1278.23,1980.0,"õli, papp",1980.0,3500.0,Oil on cardboard,Oil paint
+2007.0,Ilmar Kruusamäe,4601.64,4601.64,1982.0,"õli, lõuend",1980.0,8000.0,Oil on canvas,Oil paint
+2007.0,Lembit Sarapuu,2236.91,3515.14,1982.0,"õli, lõuend",1980.0,4891.0,Oil on canvas,Oil paint
+2007.0,Ilmar Malin,2812.11,2812.11,1987.0,"õli, lõuend",1980.0,6256.0,Oil on canvas,Oil paint
+2007.0,Tiit Pääsuke,4345.99,7349.84,1993.0,"akrüül, õli, lõuend",1990.0,20648.0,Acrylic,Other paint
+2007.0,Aino Bach,1150.41,1310.19,1937.0,akvatinta,1930.0,1111.5,Aquatint,Graphics
+2007.0,Aino Bach,1086.5,1310.19,1937.0,akvatinta,1930.0,874.5,Aquatint,Graphics
+2007.0,Eduard Wiiralt,2236.91,2652.33,1939.0,puulõige,1930.0,1341.0,Wood cut,Other
+2007.0,Johannes Greenberg,7669.4,17575.7,1944.0,"õli, vineer",1940.0,5907.0,Oil on wood,Oil paint
+2007.0,Jaan Grünberg,766.94,1086.5,1940.0,"õli, papp",1940.0,884.0,Oil on cardboard,Oil paint
+2007.0,Richard Sagrits,2236.91,2971.89,1950.0,"õli, papp",1950.0,1587.0,Oil on cardboard,Oil paint
+2007.0,Endel Kõks,1661.7,2460.6,1962.0,"õli, lõuend",1960.0,1348.5,Oil on canvas,Oil paint
+2007.0,Richard Kaljo,703.03,703.03,1963.0,linoollõige,1960.0,1488.0,Linoleum,Graphics
+2007.0,Endel Kõks,830.85,830.85,1963.0,segatehnika,1960.0,2580.75,Mixed tech,Other
+2007.0,Karl jun. Burman,766.94,766.94,1966.0,akvarell,1960.0,1408.0,Watercolour,Other paint
+2007.0,Elmar Kits,1118.45,1182.37,1967.0,"tempera, paber",1960.0,1720.0,Tempera,Other paint
+2007.0,Artur Lokk,3195.58,4154.26,1967.0,"õli, lõuend",1960.0,8100.0,Oil on canvas,Oil paint
+2007.0,Enn Volmere,479.34,479.34,1970.0,"õli, papp",1970.0,3500.0,Oil on cardboard,Oil paint
+2007.0,Richard Uutmaa,894.76,990.63,1971.0,akvarell,1970.0,1627.5,Watercolour,Other paint
+2007.0,Ilmar Malin,2620.38,3003.85,,"õli, lõuend",,5200.0,Oil on canvas,Oil paint
+2007.0,Valdemar Väli,830.85,1342.14,,"õli, vineer",,1232.0,Oil on wood,Oil paint
+2007.0,Viktor Leškin,3770.79,4729.46,1944.0,"õli, lõuend",1940.0,11970.0,Oil on canvas,Oil paint
+2007.0,Margarete Fuks,830.85,894.76,1950.0,akvarell,1950.0,1786.0,Watercolour,Other paint
+2007.0,Karin Luts,894.76,1342.14,1950.0,"õli, lõuend",1950.0,1106.25,Oil on canvas,Oil paint
+2007.0,Eduard Rüga,1022.59,1629.75,1952.0,värviline linool,1950.0,528.0,Linoleum,Graphics
+2007.0,Ülo Sooster,2428.64,6199.43,1958.0,"õli, lõuend",1950.0,3648.0,Oil on canvas,Oil paint
+2007.0,Richard Sagrits,830.85,926.72,1959.0,akvarell,1950.0,1275.0,Watercolour,Other paint
+2007.0,Valerian Loik,1342.14,1917.35,1960.0,"õli, papp",1960.0,3381.0,Oil on cardboard,Oil paint
+2007.0,Valdur Ohakas,830.85,1182.37,1960.0,"õli, papp",1960.0,1551.0,Oil on cardboard,Oil paint
+2007.0,Ado Vabbe,1853.44,1853.44,1960.0,"segatehnika, paber",1960.0,1026.0,Mixed tech,Other
+2007.0,Eduard Wiiralt,1789.53,2300.82,1929.0,akvatinta,1920.0,686.25,Aquatint,Graphics
+2007.0,Eduard Wiiralt,1342.14,1469.97,1933.0,puugravüür,1930.0,336.54,Wood cut,Other
+2007.0,Eduard Wiiralt,1278.23,2045.17,1933.0,puugravüür,1930.0,526.62,Wood cut,Other
+2007.0,Eduard Wiiralt,3003.85,4409.9,1937.0,akvatinta,1930.0,1992.0,Aquatint,Graphics
+2007.0,Eduard Wiiralt,1629.75,3067.76,1949.0,akvatinta,1940.0,1051.05,Aquatint,Graphics
+2007.0,Erik Haamer,1629.75,1629.75,1947.0,"õli, lõuend",1940.0,962.5,Oil on canvas,Oil paint
+2007.0,Erik Haamer,4537.73,8500.25,1951.0,"õli, lõuend",1950.0,6179.0,Oil on canvas,Oil paint
+2007.0,Erik Haamer,543.25,1150.41,1953.0,akvarell,1950.0,1087.5,Watercolour,Other paint
+2007.0,Endel Kõks,1150.41,1214.32,1954.0,vitrograafia,1950.0,1767.0,Vitrography,Other
+2007.0,Endel Kõks,383.47,383.47,1955.0,vitrograafia,1950.0,463.75,Vitrography,Other
+2007.0,Endel Kõks,1278.23,1438.01,1979.0,"õli, lõuend",1970.0,792.0,Oil on canvas,Oil paint
+2007.0,Endel Kõks,1022.59,1469.97,1980.0,"õli, lõuend",1980.0,792.0,Oil on canvas,Oil paint
+2007.0,Evald Okas,1022.59,1022.59,1960.0,akvatinta,1960.0,1519.0,Aquatint,Graphics
+2007.0,Karin Luts,2684.29,3962.52,,"õli, lõuend",,6716.0,Oil on canvas,Oil paint
+2007.0,EnnoHallek,3579.05,3770.79,1965.0,"õli, lõuend",1960.0,9950.0,Oil on canvas,Oil paint
+2007.0,Elmar Kits,1853.44,1853.44,1966.0,"tempera, paber",1960.0,2100.0,Tempera,Other paint
+2007.0,Roosvalt,1597.79,2780.16,1967.0,"õli, lõuend",1960.0,8100.0,Oil on canvas,Oil paint
+2007.0,Uno Roosvalt,1086.5,1981.26,1968.0,"õli, lõuend",1960.0,7300.0,Oil on canvas,Oil paint
+2007.0,Ludmilla Siim,2236.91,2236.91,1969.0,"õli, lõuend",1960.0,6300.0,Oil on canvas,Oil paint
+2007.0,Olga Terri,1917.35,6455.08,1970.0,"õli, lõuend",1970.0,3030.0,Oil on canvas,Oil paint
+2007.0,Lemming Nagel,3515.14,3515.14,1971.0,"õli, papp, segatehnika",1970.0,12560.0,Mixed tech,Other
+2007.0,Enno Hallek,1214.32,2013.22,1973.0,"õli, puit",1970.0,1319.5,Oil on wood,Oil paint
+2007.0,Olev Mikiver,1342.14,2268.86,1973.0,"õli, lõuend",1970.0,7100.0,Oil on canvas,Oil paint
+2007.0,Miljard Kilk,4473.82,32275.38,1980.0,"õli, lõuend",1980.0,20758.0,Oil on canvas,Oil paint
+2007.0,Ilmar Kruusamäe,4473.82,5560.31,1983.0,"õli, lõuend",1980.0,20656.5,Oil on canvas,Oil paint
+2007.0,Mari Roosvalt,1406.06,2268.86,1985.0,"õli, lõuend",1980.0,9720.0,Oil on canvas,Oil paint
+2007.0,Jaan Toomik,1661.7,3579.05,1986.0,"õli, lõuend",1980.0,3692.0,Oil on canvas,Oil paint
+2007.0,Lembit Sarapuu,1917.35,2684.29,1998.0,"õli, lõuend",1990.0,9320.0,Oil on canvas,Oil paint
+2006.0,Adamson-Eric,1278.23,1629.75,1945.0,"õli, lõuend",1940.0,1271.0,Oil on canvas,Oil paint
+2006.0,Richard Kaljo,543.25,543.25,1945.0,puugravüür,1940.0,567.0,Wood cut,Other
+2006.0,Jaan Grünberg,447.38,990.63,1940.0,"õli, papp",1940.0,630.0,Oil on cardboard,Oil paint
+2006.0,Erik Haamer,3259.49,4090.35,1949.0,"õli, lõuend",1940.0,4075.0,Oil on canvas,Oil paint
+2006.0,Karin Luts,1278.23,1278.23,1950.0,akvarell,1950.0,1435.5,Watercolour,Other paint
+2006.0,Johannes Võerahansu,2045.17,3067.76,1950.0,"õli, lõuend",1950.0,3510.0,Oil on canvas,Oil paint
+2006.0,Richard Kaljo,511.29,1310.19,1957.0,linoollõige,1950.0,1680.0,Linoleum,Graphics
+2006.0,Nigul Espe,1054.54,1693.66,1959.0,"õli, papp",1950.0,1567.5,Oil on cardboard,Oil paint
+2006.0,Hermann Talvik,1086.5,1086.5,1950.0,"õli, lõuend",1950.0,3542.5,Oil on canvas,Oil paint
+2006.0,Endel Kõks,830.85,1438.01,1960.0,"segatehnika, paber",1960.0,4392.0,Mixed tech,Other
+2006.0,Erik Haamer,3131.67,6774.63,1960.0,"õli, lõuend",1960.0,14241.0,Oil on canvas,Oil paint
+2006.0,Leida Rives,958.67,958.67,1960.0,"õli, lõuend",1960.0,4550.0,Oil on canvas,Oil paint
+2006.0,Eduard Maaser,1150.41,1150.41,1960.0,"õli, lõuend",1960.0,4070.0,Oil on canvas,Oil paint
+2006.0,Valdur Ohakas,1150.41,1949.31,1960.0,"õli, papp",1960.0,2552.0,Oil on cardboard,Oil paint
+2006.0,Richard Kaljo,159.78,575.2,1966.0,linoollõige,1960.0,217.0,Linoleum,Graphics
+2006.0,Elmar Kits,1853.44,1853.44,1967.0,"tempera, paber",1960.0,1896.0,Tempera,Other paint
+2006.0,Juhan Pütsepp,1533.88,2013.22,1967.0,"õli, papp",1960.0,3144.0,Oil on cardboard,Oil paint
+2006.0,Uno Roosvalt,958.67,3515.14,1968.0,"õli, lõuend",1960.0,6561.0,Oil on canvas,Oil paint
+2006.0,Kalju Nagel,1533.88,1533.88,1970.0,"õli, lõuend",1970.0,5980.0,Oil on canvas,Oil paint
+2006.0,Eduard Wiiralt,2173.0,4729.46,1933.0,puulõige,1930.0,414.0,Wood cut,Other
+2006.0,Erich Pehap,511.29,511.29,1933.0,joonistus,1930.0,1734.0,Drawing,Drawing
+2006.0,Silvia Leitu,639.12,639.12,1940.0,"tušš, akvarell",1940.0,930.75,Watercolour,Other paint
+2006.0,Elmar Kits,1725.61,2620.38,1941.0,"õli, lõuend",1940.0,2881.5,Oil on canvas,Oil paint
+2006.0,Eduard Ole,2173.0,3259.49,1949.0,"õli, vineer",1940.0,1417.5,Oil on wood,Oil paint
+2006.0,Eerik Haamer,4154.26,9778.48,1940.0,"õli, lõuend",1940.0,4284.0,Oil on canvas,Oil paint
+2006.0,Karin Luts,830.85,1725.61,1940.0,akvarell,1940.0,1413.75,Watercolour,Other paint
+2006.0,Herman Talvik,1086.5,1725.61,1950.0,"õli, papp",1950.0,2940.0,Oil on cardboard,Oil paint
+2006.0,Eerik Haamer,3770.79,4857.29,1950.0,"õli, lõuend",1950.0,4360.5,Oil on canvas,Oil paint
+2006.0,Eduard Rüga,639.12,1693.66,1951.0,värviline puugravüür,1950.0,1047.25,Wood cut,Other
+2006.0,Arno Vihalemm,383.47,383.47,1955.0,"segatehnika, värviline litograafia",1950.0,1911.0,Mixed tech,Other
+2006.0,Sigrid Uiga,958.67,2268.86,1956.0,"õli, lõuend",1950.0,2565.0,Oil on canvas,Oil paint
+2006.0,Leida Rives,958.67,1342.14,1956.0,"õli, lõuend",1950.0,4796.0,Oil on canvas,Oil paint
+2006.0,Richard Kaljo,415.43,894.76,1957.0,linoollõige,1950.0,3536.0,Linoleum,Graphics
+2006.0,Olga Terri,2556.47,2556.47,1958.0,"õli, lõuend",1950.0,4343.5,Oil on canvas,Oil paint
+2006.0,Richard Uutmaa,8628.07,15977.91,1958.0,"õli, lõuend",1950.0,3500.0,Oil on canvas,Oil paint
+2006.0,Hilda Mikkelsaar,415.43,415.43,1950.0,akvarell,1950.0,1206.0,Watercolour,Other paint
+2006.0,Kaja Kärner,1150.41,1150.41,1961.0,"õli, lõuend",1960.0,1934.75,Oil on canvas,Oil paint
+2006.0,Märt Laarman,511.29,543.25,1962.0,puulõige,1960.0,1456.0,Wood cut,Other
+2006.0,Märt Laarman,511.29,511.29,1962.0,puulõige,1960.0,697.0,Wood cut,Other
+2006.0,Richard Uutmaa,894.76,1342.14,1962.0,akvarell,1960.0,1579.75,Watercolour,Other paint
+2006.0,Lembit Saarts,2428.64,2652.33,1963.0,"õli, lõuend",1960.0,17400.0,Oil on canvas,Oil paint
+2006.0,Uno Roosvalt,1150.41,2013.22,1970.0,"õli, lõuend",1970.0,8200.0,Oil on canvas,Oil paint
+2006.0,Ludmilla Siim,2428.64,3195.58,1971.0,"õli, lõuend",1970.0,18354.0,Oil on canvas,Oil paint
+2006.0,Mari Roosvalt,1214.32,1310.19,1977.0,"õli, lõuend",1970.0,6716.0,Oil on canvas,Oil paint
+2006.0,Ilmar Kruusamäe,3515.14,4218.17,1977.0,"õli, papp",1970.0,6919.0,Oil on cardboard,Oil paint
+2006.0,Eduard Wiiralt,830.85,830.85,1920.0,linoollõige,1920.0,504.0,Linoleum,Graphics
+2006.0,Eduard Wiiralt,830.85,894.76,1920.0,linoollõige,1920.0,525.0,Linoleum,Graphics
+2006.0,Eduard Wiiralt,1629.75,2396.69,1933.0,puugravüür,1930.0,344.0,Wood cut,Other
+2006.0,Eduard Wiiralt,2173.0,5304.67,1937.0,linoolsügavtrükk,1930.0,675.75,Linoleum,Graphics
+2006.0,Eduard Wiiralt,3259.49,14763.59,1937.0,akvatinta,1930.0,2178.75,Aquatint,Graphics
+2006.0,ErikHaamer,3323.41,5432.49,1988.0,"õli, lõuend",1980.0,10904.5,Oil on canvas,Oil paint
+2006.0,AndreiJegorov,1917.35,1917.35,1930.0,"tempera, paber",1930.0,644.0,Tempera,Other paint
+2006.0,AvoKeerend,383.47,383.47,1966.0,värviline puulõige,1960.0,1680.0,Wood cut,Other
+2006.0,AlfredKongo,1150.41,1150.41,1980.0,"õli, papp",1980.0,3450.0,Oil on cardboard,Oil paint
+2006.0,IlmarKruusamäe,3387.32,4026.43,1982.0,"õli, lõuend",1980.0,8000.0,Oil on canvas,Oil paint
+2006.0,NikolaiKull,3579.05,5240.76,1935.0,"õli, lõuend",1930.0,5880.0,Oil on canvas,Oil paint
+2006.0,EndelKõks,319.56,319.56,1957.0,vitrograafia,1950.0,630.0,Vitrography,Other
+2006.0,EndelKõks,3706.88,3706.88,1961.0,"õli, lõuend",1960.0,10395.0,Oil on canvas,Oil paint
+2006.0,KajaKärner,958.67,958.67,1961.0,"tempera, lõuend",1960.0,1980.0,Tempera,Other paint
+2006.0,OlavMaran,447.38,447.38,1966.0,"õli, papp",1960.0,1750.0,Oil on cardboard,Oil paint
+2006.0,ValdurOhakas,703.03,703.03,1997.0,"õli, papp",1990.0,1200.0,Oil on cardboard,Oil paint
+2006.0,ValdurOhakas,1469.97,1949.31,1965.0,"õli, papp",1960.0,3468.0,Oil on cardboard,Oil paint
+2006.0,ValdurOhakas,798.9,798.9,1950.0,"tempera, paber",1950.0,1353.0,Tempera,Other paint
+2006.0,AugustPulst,2492.55,2492.55,1975.0,"õli, lõuend",1970.0,8938.0,Oil on canvas,Oil paint
+2006.0,TiitPääsuke,2556.47,4154.26,1993.0,"akrüül, õli, lõuend",1990.0,15720.0,Acrylic,Other paint
+2006.0,HennRoode,1278.23,1278.23,1959.0,"õli, lõuend",1950.0,1584.0,Oil on canvas,Oil paint
+2006.0,LembitSaarts,1469.97,1661.7,1964.0,"õli, lõuend",1960.0,7189.0,Oil on canvas,Oil paint
+2006.0,ÜloSooster,2173.0,2173.0,1945.0,"õli, papp",1940.0,4838.0,Oil on cardboard,Oil paint
+2006.0,ReinTammik,2939.94,2939.94,1973.0,"õli, lõuend",1970.0,21600.0,Oil on canvas,Oil paint
+2006.0,RichardUutmaa,4218.17,15658.35,1957.0,"õli, lõuend",1950.0,4830.0,Oil on canvas,Oil paint
+2006.0,EduardWiiralt,2236.91,2844.07,1933.0,puulõige,1930.0,352.0,Wood cut,Other
+2006.0,EduardWiiralt,1406.06,2556.47,1933.0,puulõige,1930.0,520.0,Wood cut,Other
+2006.0,ValveJanov,766.94,766.94,1959.0,"õli, lõuend",1950.0,1472.0,Oil on canvas,Oil paint
+2006.0,ViktorKarrus,798.9,798.9,1979.0,"õli, lõuend",1970.0,4248.0,Oil on canvas,Oil paint
+2006.0,AvoKeerend,447.38,447.38,1954.0,"õli, papp",1950.0,875.0,Oil on cardboard,Oil paint
+2006.0,AvoKeerend,383.47,607.16,1966.0,värviline puulõige,1960.0,1680.0,Wood cut,Other
+2006.0,ValerianLoik,798.9,990.63,1960.0,"õli, lõuend",1960.0,6525.0,Oil on canvas,Oil paint
+2006.0,AntsMurakin,2684.29,2780.16,1930.0,"õli, papp",1930.0,1386.0,Oil on cardboard,Oil paint
+2006.0,ArdoSivadi,766.94,894.76,1964.0,"õli, lõuend",1960.0,5200.0,Oil on canvas,Oil paint
+2006.0,OlgaTerri,3195.58,3579.05,1958.0,"õli, lõuend",1950.0,5980.0,Oil on canvas,Oil paint
+2006.0,JaanToomik,703.03,926.72,2004.0,"õli, lõuend",2000.0,3850.0,Oil on canvas,Oil paint
+2006.0,EduardWiiralt,1533.88,2268.86,1933.0,puugravüür,1930.0,344.0,Wood cut,Other
+2006.0,JohannesVõerahansu,1597.79,2428.64,1940.0,"õli, vineer",1940.0,2280.0,Oil on wood,Oil paint
+2005.0,Ann,2236.91,4985.11,1950.0,"õli, vineer",1950.0,2691.75,Oil on wood,Oil paint
+2005.0,Jaan,2236.91,2907.98,1980.0,"õli, lõuend",1980.0,7448.0,Oil on canvas,Oil paint
+2005.0,Andrei,2364.73,2652.33,1934.0,"tempera, paber",1930.0,1650.0,Tempera,Other paint
+2005.0,Andrei,1597.79,1789.53,1930.0,"tempera, paber",1930.0,644.0,Tempera,Other paint
+2005.0,Silvia,447.38,1022.59,1961.0,"akvarell, tuśś, paber",1960.0,526.75,Watercolour,Other paint
+2005.0,Richard,766.94,926.72,1940.0,puugravüür,1940.0,884.0,Wood cut,Other
+2005.0,Richard,511.29,990.63,1957.0,linoollõige,1950.0,1680.0,Linoleum,Graphics
+2005.0,Alfred,1150.41,1150.41,1970.0,"tempera, papp",1970.0,1386.0,Tempera,Other paint
+2005.0,Alfred,1150.41,1469.97,1970.0,"tempera, papp",1970.0,1551.0,Tempera,Other paint
+2005.0,Endel,1406.06,2939.94,1950.0,"õli, lõuend",1950.0,3602.5,Oil on canvas,Oil paint
+2005.0,Kaja,703.03,703.03,1957.0,"õli, papp",1950.0,1683.0,Oil on cardboard,Oil paint
+2005.0,Varmo,639.12,639.12,1957.0,"õli, vineer",1950.0,1485.0,Oil on wood,Oil paint
+2005.0,Gustav,3067.76,4282.08,1938.0,"õli, lõuend",1930.0,11000.0,Oil on canvas,Oil paint
+2005.0,Lembit,830.85,1278.23,1978.0,"õli, papp",1970.0,3500.0,Oil on cardboard,Oil paint
+2005.0,Ülo,2045.17,2045.17,1946.0,"õli, paber, papil",1940.0,1788.5,Oil on cardboard,Oil paint
+2005.0,Konstantin,2236.91,2556.47,1931.0,"õli, lõuend",1930.0,1800.0,Oil on canvas,Oil paint
+2005.0,Olga,2045.17,2236.91,1947.0,"õli, lõuend",1940.0,3759.5,Oil on canvas,Oil paint
+2005.0,Richard,1214.32,3834.7,1971.0,"õli, papp",1970.0,3332.0,Oil on cardboard,Oil paint
+2005.0,Ado,2684.29,2684.29,1959.0,"akvarell, paber",1950.0,1715.0,Watercolour,Other paint
+2005.0,Eduard,2045.17,2045.17,1942.0,värviline akvatinta,1940.0,1320.0,Aquatint,Graphics
+2005.0,Johannes,4345.99,6710.72,1944.0,"õli, lõuend",1940.0,11258.5,Oil on canvas,Oil paint
+2005.0,Valve,703.03,1342.14,1960.0,"õli, papp",1960.0,3500.0,Oil on cardboard,Oil paint
+2005.0,Andrei,2109.08,3866.65,1920.0,"tempera, papp",1920.0,1200.0,Tempera,Other paint
+2005.0,Andrei,1853.44,2077.13,1920.0,"tempera, papp",1920.0,697.5,Tempera,Other paint
+2005.0,Viktor,926.72,1789.53,1954.0,"õli, papp",1950.0,2706.0,Oil on cardboard,Oil paint
+2005.0,Elmar,2045.17,2939.94,1959.0,"õli, lõuend",1950.0,4805.0,Oil on canvas,Oil paint
+2005.0,Elmar,1725.61,2684.29,1942.0,"õli, vineer",1940.0,2100.0,Oil on wood,Oil paint
+2005.0,Alfred,766.94,766.94,1950.0,"tempera, paber",1950.0,2494.0,Tempera,Other paint
+2005.0,Endel,1725.61,2236.91,1940.0,"õli, vineer",1940.0,1633.0,Oil on wood,Oil paint
+2005.0,Endel,1214.32,1469.97,1942.0,"õli, vineer",1940.0,598.0,Oil on wood,Oil paint
+2005.0,Ilmar,1597.79,2428.64,1976.0,"õli, vineer",1970.0,7968.0,Oil on wood,Oil paint
+2005.0,Lepo,1022.59,2588.42,1968.0,"õli, lõuend",1960.0,2358.5,Oil on canvas,Oil paint
+2005.0,Ants,1022.59,2748.2,1950.0,"õli, vineer",1950.0,3733.5,Oil on wood,Oil paint
+2005.0,Konrad,18214.82,30869.33,1922.0,"õli, lõuend",1920.0,1188.0,Oil on canvas,Oil paint
+2005.0,Juhan,511.29,511.29,1963.0,"akvarell, paber",1960.0,1060.0,Watercolour,Other paint
+2005.0,Valdur,766.94,1310.19,1960.0,"õli, papp",1960.0,1085.0,Oil on cardboard,Oil paint
+2005.0,Valdur,639.12,1118.45,1960.0,"õli, papp",1960.0,1052.25,Oil on cardboard,Oil paint
+2005.0,Otto,639.12,1310.19,1972.0,"õli, vineer",1970.0,2515.5,Oil on wood,Oil paint
+2005.0,Uno,1150.41,3067.76,1967.0,"õli, lõuend",1960.0,9200.0,Oil on canvas,Oil paint
+2005.0,Lembit,1150.41,2204.95,1962.0,"õli, lõuend papil",1960.0,4630.5,Oil on cardboard,Oil paint
+2005.0,Richard,958.67,1150.41,1955.0,"õli, papp",1950.0,1750.0,Oil on cardboard,Oil paint
+2005.0,Erik,1214.32,2268.86,1960.0,"õli, lõuend",1960.0,1027.0,Oil on canvas,Oil paint
+2005.0,Olev,958.67,6582.9,1975.0,"õli, tempera, lõuend",1970.0,3850.0,Tempera,Other paint
+2005.0,Jaan,1533.88,2748.2,1987.0,"õli, lõuend",1980.0,20400.0,Oil on canvas,Oil paint
+2005.0,Richard,1214.32,2588.42,1971.0,"õli, papp",1970.0,3430.0,Oil on cardboard,Oil paint
+2005.0,Lüüdia,639.12,1214.32,1966.0,"õli, lõuend",1960.0,4860.0,Oil on canvas,Oil paint
+2005.0,Johannes,2684.29,4218.17,1930.0,"õli, vineer",1930.0,2992.0,Oil on wood,Oil paint
+2004.0,Ellinor,1917.35,1917.35,1960.0,"õli, papp",1960.0,838.75,Oil on cardboard,Oil paint
+2004.0,Alfred,5432.49,6423.12,,"õli, lõuend",,2835.0,Oil on canvas,Oil paint
+2004.0,Oskar,2109.08,5240.76,,"õli, vineer",,252.0,Oil on wood,Oil paint
+2004.0,Linda,543.25,543.25,1950.0,"õli, lõuend",1950.0,4025.0,Oil on canvas,Oil paint
+2004.0,Maria,575.2,703.03,,"akvarell, paber",,1224.25,Watercolour,Other paint
+2004.0,Maria,575.2,703.03,1948.0,"akvarell, paber",1940.0,1224.25,Watercolour,Other paint
+2004.0,Maria,575.2,703.03,,"akvarell, paber",,1224.25,Watercolour,Other paint
+2004.0,Ilmar,1725.61,1821.48,1968.0,"akrüül, papp",1960.0,5712.0,Acrylic,Other paint
+2004.0,Kalju,766.94,1118.45,1991.0,"õli, lõuend",1990.0,3479.0,Oil on canvas,Oil paint
+2004.0,Valdur,766.94,766.94,1960.0,"õli, papp",1960.0,1317.5,Oil on cardboard,Oil paint
+2004.0,Valdur,1917.35,3067.76,1960.0,"õli, papp",1960.0,6716.0,Oil on cardboard,Oil paint
+2004.0,Eduard,958.67,1597.79,1944.0,"tempera, pastell, paber",1940.0,1457.0,Tempera,Other paint
+2004.0,Varmo,383.47,543.25,1966.0,"akvarell, paber",1960.0,1239.0,Watercolour,Other paint
+2004.0,August,575.2,766.94,1913.0,"õli, puit",1910.0,784.0,Oil on wood,Oil paint
+2004.0,Gustav,1342.14,1342.14,1966.0,"õli, lõuend",1960.0,6461.0,Oil on canvas,Oil paint
+2004.0,Lembit,1406.06,2077.13,1992.0,"õli, lõuend",1990.0,8100.0,Oil on canvas,Oil paint
+2004.0,Ülo,1597.79,3195.58,1946.0,"õli, vineer",1940.0,1380.0,Oil on wood,Oil paint
+2004.0,Ülo,1597.79,3227.54,1946.0,"õli, vineer",1940.0,1380.0,Oil on wood,Oil paint
+2004.0,Ülo,1214.32,1438.01,1947.0,"õli, kartong",1940.0,2576.0,Oil on cardboard,Oil paint
+2004.0,Ado,1981.26,1981.26,1912.0,"akvarell, papp",1910.0,247.0,Watercolour,Other paint
+2004.0,Johannes,1086.5,1086.5,1926.0,"akvarell, paber",1920.0,2521.75,Watercolour,Other paint
+2004.0,Valdemar,1597.79,1725.61,1961.0,"õli, papp",1960.0,3078.0,Oil on cardboard,Oil paint
+2004.0,Valdemar,2556.47,3579.05,1953.0,"õli, papp",1950.0,1575.0,Oil on cardboard,Oil paint
+2004.0,Jaan,383.47,383.47,1946.0,"õli, papp",1940.0,308.0,Oil on cardboard,Oil paint
+2004.0,Jaan,383.47,383.47,1950.0,"õli, papp",1950.0,771.75,Oil on cardboard,Oil paint
+2004.0,Eerik,5112.93,5304.67,1945.0,"õli, vineer",1940.0,2781.25,Oil on wood,Oil paint
+2004.0,Endel,2876.02,4473.82,1970.0,"õli, lõuend",1970.0,8100.0,Oil on canvas,Oil paint
+2004.0,Endel,639.12,1533.88,1979.0,"akvarell, tušš, paber",1970.0,1428.0,Watercolour,Other paint
+2004.0,Karin,300.38,300.38,1970.0,"joonsöövitus, akvatinta",1970.0,1376.0,Aquatint,Graphics
+2004.0,Karin,383.47,383.47,1970.0,akvatinta,1970.0,1421.0,Aquatint,Graphics
+2004.0,Hilda,127.82,127.82,1964.0,"akvarell, paber",1960.0,1435.0,Watercolour,Other paint
+2004.0,Otto,766.94,766.94,1948.0,"õli, vineer",1940.0,4544.5,Oil on wood,Oil paint
+2004.0,Leida,351.51,351.51,1970.0,siiditrükk,1970.0,5200.0,Silk print,Other
+2004.0,Herman,1150.41,1917.35,1956.0,"akrüül, lõuend",1950.0,3339.0,Acrylic,Other paint
+2004.0,Herman,319.56,798.9,1969.0,"akvarell, paber",1960.0,1620.0,Watercolour,Other paint
+2004.0,Herman,1278.23,1629.75,1960.0,"akrüül, lõuend",1960.0,3392.0,Acrylic,Other paint
+2004.0,Woldemar,447.38,447.38,1958.0,"õli, lõuend",1950.0,1536.0,Oil on canvas,Oil paint
+2004.0,Ville,383.47,383.47,1966.0,"akrüül, lõuend",1960.0,1665.0,Acrylic,Other paint
+2004.0,Ellinor,1533.88,1661.7,1960.0,"õli, vineer",1960.0,2106.0,Oil on wood,Oil paint
+2004.0,Märt,607.16,830.85,1973.0,"õli, papp",1970.0,4000.0,Oil on cardboard,Oil paint
+2004.0,Oskar,2109.08,2109.08,,"õli, lõuend",,254.20000000000002,Oil on canvas,Oil paint
+2004.0,Alo,798.9,1150.41,1985.0,"õli, papp",1980.0,1757.75,Oil on cardboard,Oil paint
+2004.0,Andrei,2364.73,4985.11,1932.0,"õli, lõuend papil",1930.0,672.0,Oil on cardboard,Oil paint
+2004.0,Raivo,1150.41,1150.41,1962.0,"õli, kartong",1960.0,3264.0,Oil on cardboard,Oil paint
+2004.0,Aleksander,1533.88,5080.98,1920.0,"õli, lõuend",1920.0,2428.2000000000003,Oil on canvas,Oil paint
+2004.0,Natalie,1150.41,1821.48,1938.0,"akvarell, paber",1930.0,875.0,Watercolour,Other paint
+2004.0,Natalie,1150.41,1821.48,1938.0,"akvarell, paber",1930.0,875.0,Watercolour,Other paint
+2004.0,Natalie,1150.41,1821.48,1938.0,"akvarell, paber",1930.0,875.0,Watercolour,Other paint
+2004.0,Lepo,2045.17,2652.33,1969.0,"õli, lõuend",1960.0,8125.0,Oil on canvas,Oil paint
+2004.0,Hando,351.51,958.67,1937.0,"puugravüür, paber",1930.0,221.0,Wood cut,Other
+2004.0,Ants,2492.55,2492.55,1950.0,"õli, lõuend",1950.0,9900.0,Oil on canvas,Oil paint
+2004.0,Juhan,1597.79,1661.7,1967.0,"õli, lõuend",1960.0,1495.0,Oil on canvas,Oil paint
+2004.0,Varmo,766.94,766.94,1964.0,"õli, papp",1960.0,3500.0,Oil on cardboard,Oil paint
+2004.0,Gustav,1022.59,1118.45,1935.0,"õli, lõuend",1930.0,5265.0,Oil on canvas,Oil paint
+2004.0,Lembit,798.9,1086.5,1958.0,"õli, lõuend",1950.0,3636.0,Oil on canvas,Oil paint
+2004.0,Richard,926.72,926.72,1950.0,"õli, vineer",1950.0,2106.0,Oil on wood,Oil paint
+2004.0,Ülo,894.76,1629.75,1948.0,"õli, papp",1940.0,2000.0,Oil on cardboard,Oil paint
+2004.0,Viljar,3003.85,3003.85,1982.0,"õli, lõuend",1980.0,11931.0,Oil on canvas,Oil paint
+2004.0,Arnold Peeter,894.76,1406.06,1930.0,"akvarell, guašš",1930.0,1120.0,Watercolour,Other paint
+2004.0,Johannes,2684.29,3163.63,1920.0,"õli, lõuend",1920.0,3773.2999999999997,Oil on canvas,Oil paint
+2003.0,Priidu,1533.88,1533.88,1973.0,"õli, lõuend",1970.0,12789.0,Oil on canvas,Oil paint
+2003.0,Märt,543.25,830.85,1960.0,"õli, vineer",1960.0,1178.0,Oil on wood,Oil paint
+2003.0,Osvald,607.16,1565.84,1920.0,"õli, lõuend",1920.0,3727.5,Oil on canvas,Oil paint
+2003.0,Andrei,3515.14,5304.67,1935.0,"õli, lõuend",1930.0,3727.5,Oil on canvas,Oil paint
+2003.0,Elmar,2300.82,2300.82,1967.0,"õli, lõuend",1960.0,8000.0,Oil on canvas,Oil paint
+2003.0,Nikolai,1725.61,3003.85,1920.0,"õli, lõuend",1920.0,4819.0,Oil on canvas,Oil paint
+2003.0,Endel,3387.32,4633.59,1940.0,"õli, lõuend",1940.0,3213.0,Oil on canvas,Oil paint
+2003.0,Endel,1661.7,1661.7,1971.0,"guašš, monotüüpia",1970.0,2820.0,Gouache,Other paint
+2003.0,Valerian,1150.41,1150.41,1960.0,"õli, lõuend",1960.0,10692.0,Oil on canvas,Oil paint
+2003.0,Natalie,383.47,926.72,1938.0,"akvarell, paber",1930.0,875.0,Watercolour,Other paint
+2003.0,Natalie,383.47,926.72,1938.0,"akvarell, paber",1930.0,875.0,Watercolour,Other paint
+2003.0,Natalie,383.47,926.72,1938.0,"akvarell, paber",1930.0,875.0,Watercolour,Other paint
+2003.0,Juhan,1182.37,1501.92,1963.0,"õli, papp",1960.0,1632.0,Oil on cardboard,Oil paint
+2003.0,Kalju,1597.79,1949.31,1977.0,"õli, lõuend",1970.0,12610.0,Oil on canvas,Oil paint
+2003.0,Valdur,926.72,990.63,1960.0,"õli, papp",1960.0,1732.5,Oil on cardboard,Oil paint
+2003.0,Villem,12079.3,13357.53,1929.0,"õli, lõuend",1920.0,3994.5600000000004,Oil on canvas,Oil paint
+2003.0,Lembit,447.38,447.38,1970.0,"õli, lõuend",1970.0,1690.5,Oil on canvas,Oil paint
+2003.0,Richard,1469.97,2173.0,1960.0,"õli, papp",1960.0,1464.75,Oil on cardboard,Oil paint
+2003.0,Richard,1597.79,2173.0,1962.0,"õli, lõuend",1960.0,3128.0,Oil on canvas,Oil paint
+2003.0,Ardo,607.16,990.63,1940.0,"õli, lõuend",1940.0,5160.0,Oil on canvas,Oil paint
+2003.0,Priidu,958.67,1246.28,1963.0,"õli, kartong",1960.0,3718.0,Oil on cardboard,Oil paint
+2003.0,Paul,1661.7,1789.53,1920.0,"õli, kartong",1920.0,616.0,Oil on cardboard,Oil paint
+2003.0,Nigul,607.16,830.85,1960.0,"õli, lõuend",1960.0,1617.0,Oil on canvas,Oil paint
+2003.0,Elmar,2876.02,3227.54,1959.0,"õli, lõuend",1950.0,4116.0,Oil on canvas,Oil paint
+2003.0,Elmar,1406.06,1406.06,1967.0,"tempera, kartong",1960.0,1890.0,Tempera,Other paint
+2003.0,Roman,1853.44,3898.61,1920.0,"õli, vineer",1920.0,1891.5,Oil on wood,Oil paint
+2003.0,Valdur,575.2,862.81,1962.0,"õli, kartong",1960.0,1218.75,Oil on cardboard,Oil paint
+2003.0,Valdur,607.16,958.67,1961.0,"õli, kartong",1960.0,1360.0,Oil on cardboard,Oil paint
+2003.0,Varmo,766.94,1086.5,1959.0,"õli, kartong",1950.0,1232.5,Oil on cardboard,Oil paint
+2003.0,Varmo,766.94,1086.5,1967.0,"õli, kartong",1960.0,3230.0,Oil on cardboard,Oil paint
+2003.0,Kristjan,7988.96,8340.47,1928.0,"akvarell, guašš, paber",1920.0,1703.76,Watercolour,Other paint
+2003.0,Richard,958.67,990.63,1955.0,"õli, kartong",1950.0,875.0,Oil on cardboard,Oil paint
+2003.0,Ardo,958.67,1246.28,1963.0,"õli, lõuend",1960.0,5200.0,Oil on canvas,Oil paint
+2003.0,Johannes,511.29,511.29,1970.0,"akvarell, paber",1970.0,2594.75,Watercolour,Other paint
+2003.0,Ado,1853.44,4505.77,1944.0,"õli, vineer",1940.0,2572.4,Oil on wood,Oil paint
+2003.0,Arnold Peeter,926.72,926.72,1932.0,"õli, kartong",1930.0,3588.0,Oil on cardboard,Oil paint
+2002.0,Ellinor Aiki,1182.37,1278.23,1960.0,"õli, papp",1960.0,949.0,Oil on cardboard,Oil paint
+2002.0,Ida,690.25,881.98,1959.0,"õli, lõuend",1950.0,3405.5,Oil on canvas,Oil paint
+2002.0,Ann Audova,1725.61,2204.95,1930.0,"õli, vineer",1930.0,1872.0,Oil on wood,Oil paint
+2002.0,Märt Bormeister,766.94,1693.66,1958.0,"õli, lõuend papil",1950.0,1697.5,Oil on cardboard,Oil paint
+2002.0,Karl Burman vanem,383.47,734.98,1947.0,"akvarell, paber",1940.0,994.05,Watercolour,Other paint
+2002.0,Nigul Espe,1533.88,1757.57,1942.0,"õli, lõuend",1940.0,3610.0,Oil on canvas,Oil paint
+2002.0,Jaan Grünberg,703.03,1214.32,1960.0,"õli, kartong",1960.0,875.0,Oil on cardboard,Oil paint
+2002.0,August Jansen,2460.6,2748.2,1930.0,"tempera, papp",1930.0,4028.25,Tempera,Other paint
+2002.0,Andrei Jegorov,766.94,1406.06,1928.0,"guašš, paber",1920.0,775.5,Gouache,Other paint
+2002.0,Andrus Johani,1022.59,1821.48,1937.0,"akvarell, guašš, paber",1930.0,500.0,Watercolour,Other paint
+2002.0,Märt Laarman,223.69,287.6,1942.0,"puugravüür, käsitrükk",1940.0,536.25,Wood cut,Other
+2002.0,Ekso Lepp,255.65,383.47,1947.0,"puugravüür, paber",1940.0,399.5,Wood cut,Other
+2002.0,Valerian Loik,511.29,511.29,1960.0,"õli, lõuend",1960.0,9059.75,Oil on canvas,Oil paint
+2002.0,Ants Murakin,1406.06,3195.58,1930.0,"õli, lõuend",1930.0,3450.5799999999995,Oil on canvas,Oil paint
+2002.0,Valdur Ohakas,639.12,830.85,1963.0,"õli, kartong",1960.0,1642.56,Oil on cardboard,Oil paint
+2002.0,Valdur Ohakas,639.12,639.12,1963.0,"õli, kartong",1960.0,1541.6,Oil on cardboard,Oil paint
+2002.0,Valdur Ohakas,639.12,639.12,1963.0,"õli, papp",1960.0,1585.5,Oil on cardboard,Oil paint
+2002.0,Ardo Sivadi,1022.59,3099.71,1932.0,"õli, lõuend",1930.0,5200.0,Oil on canvas,Oil paint
+2002.0,Ülo Sooster,511.29,1182.37,1957.0,"tušš, guašš, paber",1950.0,282.8,Gouache,Other paint
+2002.0,Balder Tomasberg,894.76,1310.19,1917.0,"akvarell, paber",1910.0,2081.3399999999997,Watercolour,Other paint
+2002.0,Karl Alexander von Winkler,1022.59,2141.04,1908.0,"akvarell, paber",1900.0,1989.0,Watercolour,Other paint
+2002.0,Priidu,575.2,575.2,1959.0,"õli, lõuend",1950.0,3816.0,Oil on canvas,Oil paint
+2002.0,Ida,575.2,575.2,1945.0,"õli, lõuend",1940.0,4331.0,Oil on canvas,Oil paint
+2002.0,Ann,1469.97,1533.88,1960.0,"õli, vineer",1960.0,1925.0,Oil on wood,Oil paint
+2002.0,Elmar,2109.08,2109.08,1931.0,"õli, lõuend",1930.0,3417.0,Oil on canvas,Oil paint
+2002.0,Elmar,1150.41,1885.39,1967.0,"tempera, papp",1960.0,1804.0,Tempera,Other paint
+2002.0,Elmar,1086.5,1086.5,1970.0,"tempera, papp",1970.0,1493.85,Tempera,Other paint
+2002.0,Elmar,1214.32,1214.32,1940.0,"õli, lõuend",1940.0,5088.0,Oil on canvas,Oil paint
+2002.0,Raoul,1597.79,1597.79,2002.0,"õli, papp, vineer",2000.0,15200.0,Oil on wood,Oil paint
+2002.0,Pjotr,2556.47,3706.88,1912.0,"õli, lõuend",1910.0,2436.0,Oil on canvas,Oil paint
+2002.0,Lepo,1214.32,2556.47,1957.0,"õli, lõuend",1950.0,5980.0,Oil on canvas,Oil paint
+2002.0,Juhan,766.94,1086.5,1930.0,"õli, lõuend",1930.0,2622.0,Oil on canvas,Oil paint
+2002.0,Evald,830.85,2109.08,1954.0,"õli, lõuend",1950.0,1710.0,Oil on canvas,Oil paint
+2002.0,Varmo,351.51,926.72,1961.0,"õli, kartong",1960.0,1323.0,Oil on cardboard,Oil paint
+2002.0,Richard,1150.41,1757.57,1930.0,"õli, lõuend",1930.0,3294.0,Oil on canvas,Oil paint
+2002.0,Richard,3515.14,3515.14,1940.0,"õli, lõuend",1940.0,16263.0,Oil on canvas,Oil paint
+2002.0,Aleksander,894.76,1949.31,1959.0,"õli, lõuend",1950.0,3100.0,Oil on canvas,Oil paint
+2001.0,Ann Audova,1022.59,1150.41,1943.0,"õli, papp",1940.0,1845.0,Oil on cardboard,Oil paint
+2001.0,Bergman,5432.49,9395.01,1939.0,"õli, lõuend",1930.0,19250.0,Oil on canvas,Oil paint
+2001.0,Bergman,2300.82,2300.82,1941.0,"õli, lõuend",1940.0,4800.0,Oil on canvas,Oil paint
+2001.0,Jaan Grünberg,894.76,894.76,1940.0,"õli, papp",1940.0,1271.0,Oil on cardboard,Oil paint
+2001.0,Richard Kaljo,766.94,766.94,1943.0,puulõige,1940.0,1200.0,Wood cut,Other
+2001.0,Elmar Kits,958.67,1150.41,1968.0,"tempera, paber",1960.0,2009.0,Tempera,Other paint
+2001.0,Elmar Kits,1022.59,2556.47,1969.0,"õli, lõuend",1960.0,2100.0,Oil on canvas,Oil paint
+2001.0,Alfred Kongo,894.76,1150.41,1976.0,"õli, lõuend",1970.0,3564.0,Oil on canvas,Oil paint
+2001.0,Eduard Kutsar,830.85,1597.79,1930.0,"õli, papp",1930.0,1862.0,Oil on cardboard,Oil paint
+2001.0,Eduard Kutsar,1086.5,1214.32,1930.0,"õli, lõuend",1930.0,3087.0,Oil on canvas,Oil paint
+2001.0,Märt Laarman,894.76,1725.61,1923.0,"õli, lõuend",1920.0,1666.0,Oil on canvas,Oil paint
+2001.0,Peeter Mudist,2109.08,2300.82,1970.0,"õli, lõuend",1970.0,13494.0,Oil on canvas,Oil paint
+2001.0,Juhan Muks,830.85,830.85,1970.0,"õli, papp",1970.0,3149.0,Oil on cardboard,Oil paint
+2001.0,Eduard Ole,607.16,607.16,1959.0,akvarell,1950.0,1665.0,Watercolour,Other paint
+2001.0,Erich Pehap,383.47,383.47,1930.0,linoollõige,1930.0,588.0,Linoleum,Graphics
+2001.0,Henn Roode,2300.82,2556.47,1962.0,"õli, lõuend",1960.0,3350.0,Oil on canvas,Oil paint
+2001.0,Richard Sagrits,894.76,1118.45,1946.0,"õli, lõuend",1940.0,5232.5,Oil on canvas,Oil paint
+2001.0,Konstantin Süvalo,766.94,2748.2,1920.0,"õli, lõuend",1920.0,2120.0,Oil on canvas,Oil paint
+2001.0,Nikolai Triik,3067.76,3163.63,1900.0,"õli, lõuend vineeril",1900.0,900.0,Oil on wood,Oil paint
+2001.0,Ado Vabbe,3770.79,4345.99,1934.0,"õli, lõuend",1930.0,1242.0,Oil on canvas,Oil paint
+2001.0,Johannes Võerahansu,3451.23,7413.75,1944.0,"õli, lõuend",1940.0,7950.0,Oil on canvas,Oil paint
+2001.0,Ann Audova,1150.41,1565.84,1930.0,"õli, vineer",1930.0,2895.75,Oil on wood,Oil paint
+2001.0,Jaan Grünberg,1086.5,2077.13,1940.0,"õli, kartong",1940.0,2380.75,Oil on cardboard,Oil paint
+2001.0,Erik Haamer,2173.0,3195.58,1939.0,"õli, vineer",1930.0,1083.0,Oil on wood,Oil paint
+2001.0,Elmar Kits,1469.97,1693.66,1948.0,"õli, lõuend",1940.0,2120.0,Oil on canvas,Oil paint
+2001.0,Elmar Kits,830.85,830.85,1960.0,"õli, lõuend",1960.0,2120.0,Oil on canvas,Oil paint
+2001.0,Endel Kõks,1853.44,3834.7,1943.0,"õli, lõuend",1940.0,3215.5,Oil on canvas,Oil paint
+2001.0,Eduard Kutsar,1406.06,1821.48,1933.0,"õli, lõuend",1930.0,4361.0,Oil on canvas,Oil paint
+2001.0,Hugo Lepik,1278.23,1278.23,1943.0,"õli, vineer",1940.0,8216.0,Oil on wood,Oil paint
+2001.0,Konrad Mägi,5368.58,8819.81,1918.0,"õli, lõuend",1910.0,1750.0,Oil on canvas,Oil paint
+2001.0,Gustav Raud,1214.32,1214.32,1940.0,"õli, vineer",1940.0,4620.0,Oil on wood,Oil paint
+2001.0,Eduard Rüga,894.76,1022.59,1955.0,"värviline linool, paber",1950.0,1440.0,Linoleum,Graphics
+2001.0,Lembit Saarts,1022.59,1438.01,1948.0,"õli, papp",1940.0,935.0,Oil on cardboard,Oil paint
+2001.0,Richard Sagrits,1469.97,1469.97,1968.0,"õli, vineer",1960.0,3496.0,Oil on wood,Oil paint
+2001.0,Herman Talvik,894.76,926.72,1940.0,"segatehnika, paber",1940.0,1610.0,Mixed tech,Other
+2001.0,Kristjan Teder,1150.41,1150.41,1944.0,"õli, lõuend",1940.0,5980.0,Oil on canvas,Oil paint
+2001.0,Vardi,5432.49,11568.01,1937.0,"õli, lõuend",1930.0,18975.0,Oil on canvas,Oil paint
