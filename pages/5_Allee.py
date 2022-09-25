@@ -5,7 +5,7 @@ import numpy as np
 
 st.title('Kanvas.AI Art Index')
 
-st.header('Allee Gallery Auctions - Map of Art Market')
+st.header('Allee Galerii Auctions - Map of Art Market')
 
 st.subheader('Total sales by artist and overbidding amount')
 
@@ -32,4 +32,4 @@ fig = px.scatter(df, x="art_work_age", y="overbid_%", color="category",
 st.plotly_chart(fig, use_container_width=True)
 
 st.text('Markus Sulg, Julian Kaljuvee')
-st.text('Source: Allee Gallery Auctions')
+st.text('Source: Allee Galerii Auctions')
