@@ -15,12 +15,12 @@ df['art_work_age'] = df['date'] - df['year']
 df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'overbid_%':['mean']})
 df2.columns = ['total_sales', 'overbid_%']
 df2 = df2.reset_index()
-df2['overbid_%'] = df2['overbid_%'] * 100
 
 fig = px.treemap(df2, path=['category', 'technique', 'author'], values='total_sales',
                   color='overbid_%', hover_data=['author'],
                   color_continuous_scale='RdBu',
-                  color_continuous_midpoint=np.average(df2['overbid_%'], weights=df2['total_sales']))
+                  color_continuous_midpoint=np.average(df2['overbid_%'], weights=df2['total_sales']),
+                  range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std()))
 
 st.plotly_chart(fig, use_container_width=True)
 
