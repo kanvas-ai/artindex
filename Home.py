@@ -9,19 +9,23 @@ st.title('Kanvas.AI Art Index')
 st.header('Estonian Auctions - Map of Art Market')
 
 df = pd.read_csv('data/auctions_clean.csv')
+df = df[df["date"] >= 2001]
 df_hist = pd.read_csv('data/historical_avg_price.csv')
+df_hist = df_hist[df_hist["date"] >= 2001]
+df_hist = df_hist.groupby("date").sum()
 st.subheader('Is art getting more expensive? The relationship between the average price of an art work and year')
-fig = px.area(df_hist, x="date", y="avg_price", color="src")
+
+fig = px.area(df_hist, x=df_hist.index, y="avg_price")
 st.plotly_chart(fig, use_container_width=True)
 
 # price inception by category
 st.subheader('What is the average return of investment for art categories? Average total and annual return per category')
-end_year = 2021
 category_returns = []
 for cat in df["category"].unique():
     df_cat = df[df["category"]==cat]
     
     start_year = df_cat["date"].min()
+    end_year = df_cat["date"].max()
     start_sum = df_cat.loc[df_cat["date"] == start_year, "end_price"].mean()
     end_sum = df_cat.loc[df_cat["date"] == end_year, "end_price"].mean()
     
@@ -38,21 +42,21 @@ fig = go.Figure(data=[go.Table(
                align='left'))
 ])
 # remove space between texts
-fig.update_layout(height=200, margin=dict(r=5, l=5, t=5, b=5))
+fig.update_layout(height=150, margin=dict(r=5, l=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 
 st.subheader('Is the art market growing in volume? The relationship between the volume of sold art works sold and year')
-fig = px.area(df_hist, x="date", y="volume", color="src")
+fig = px.area(df_hist, x=df_hist.index, y="volume")
 st.plotly_chart(fig, use_container_width=True)
 
 # price inception by category
 st.subheader('What is the total volume change for art categories? Volume total and annual change per category')
-end_year = 2021
 category_returns = []
 for cat in df["category"].unique():
     df_cat = df[df["category"]==cat]
     
-    start_year = df_cat["date"].min()
+    start_year = df_cat["date"].min()  
+    end_year = df_cat["date"].max()
     start_sum = df_cat.loc[df_cat["date"] == start_year, "end_price"].sum()
     end_sum = df_cat.loc[df_cat["date"] == end_year, "end_price"].sum()
     
@@ -69,11 +73,12 @@ fig = go.Figure(data=[go.Table(
                align='left'))
 ])
 # remove space between texts
-fig.update_layout(height=200, margin=dict(r=5, l=5, t=5, b=5))
+fig.update_layout(height=150, margin=dict(r=5, l=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 
 st.subheader('Who are the best selling artists? Total art auction sales by overbidding percentage')
 
+df['start_price'] = df['start_price'].fillna(df['end_price'])
 df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
 df['art_work_age'] = df['date'] - df['year']
 df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'overbid_%':['mean']})
@@ -114,7 +119,7 @@ fig = go.Figure(data=[go.Table(
                align='left'))
 ])
 # remove space between texts
-fig.update_layout(height=200, margin=dict(r=5, l=5, t=5, b=5))
+fig.update_layout(height=250, margin=dict(r=5, l=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 
 # price inception by author
@@ -143,7 +148,7 @@ fig = go.Figure(data=[go.Table(
                align='left'))
 ])
 # remove space between texts
-fig.update_layout(height=200, margin=dict(r=5, l=5, t=5, b=5))
+fig.update_layout(height=250, margin=dict(r=5, l=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 
 st.subheader('Is older art more expensive? The relationship between the age of the art work and price')
