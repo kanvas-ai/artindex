@@ -5,7 +5,7 @@ import numpy as np
 import plotly.graph_objects as go
 
 st.image("https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1609072752424x654841387818197400%2Fhorisontal%2520%25E2%2580%2593%2520koopia.jpg?w=256&h=45&auto=compress&fit=crop&dpr=1.25")
-st.title('Art Index')
+st.title('Art Index (2001 - 2021)')
 
 st.header('Estonian Auctions - Map of Art Market')
 
@@ -14,7 +14,7 @@ df = df[df["date"] >= 2001]
 df_hist = pd.read_csv('data/historical_avg_price.csv')
 df_hist = df_hist[df_hist["date"] >= 2001]
 df_hist = df_hist.groupby("date").sum()
-st.subheader('Historical Price Performance (2001 - 2021)')
+st.subheader('Figure - Historical Price Performance')
 
 fig = px.area(df_hist, x=df_hist.index, y="avg_price",
               labels={
@@ -24,7 +24,7 @@ fig = px.area(df_hist, x=df_hist.index, y="avg_price",
 st.plotly_chart(fig, use_container_width=True)
 
 # price inception by category
-st.subheader('Table - Historical Price Performance (2001 - 2021)')
+st.subheader('Table - Historical Price Performance')
 category_returns = []
 for cat in df["category"].unique():
     df_cat = df[df["category"]==cat]
@@ -48,7 +48,7 @@ fig = go.Figure(data=[go.Table(
 fig.update_layout(height=150, margin=dict(r=5, l=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 
-st.subheader('Historical Volume Growth (2001 - 2021)')
+st.subheader('Figure - Historical Volume Growth')
 fig = px.area(df_hist, x=df_hist.index, y="volume", 
              labels={
                  "volume": "Volume (€)",
@@ -57,7 +57,7 @@ fig = px.area(df_hist, x=df_hist.index, y="volume",
 st.plotly_chart(fig, use_container_width=True)
 
 # price inception by category
-st.subheader('Table - Historical Volume Growth (2001 - 2021)')
+st.subheader('Table - Historical Volume Growth')
 category_returns = []
 for cat in df["category"].unique():
     df_cat = df[df["category"]==cat]
@@ -81,7 +81,7 @@ fig = go.Figure(data=[go.Table(
 fig.update_layout(height=150, margin=dict(r=5, l=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 
-st.subheader('Figure - Art Sales by Category and Artist (2001 - 2021)')
+st.subheader('Figure - Art Sales by Category and Artist')
 
 df['start_price'] = df['start_price'].fillna(df['end_price'])
 df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
@@ -104,7 +104,7 @@ fig.update_traces(hovertemplate='<b>%{label} </b> <br> Total Sales: %{value}<br>
 st.plotly_chart(fig, use_container_width=True)
 
 # price inception by author
-st.subheader('Table - Top Ten Best Performing Artists (2001 - 2021)')
+st.subheader('Table - Top Ten Best Performing Artists')
 author_returns = []
 author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
 top_authors = author_sum.sort_values(ascending=False)[:10]
@@ -131,7 +131,7 @@ fig.update_layout(height=250, margin=dict(r=5, l=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 
 # price inception by author
-st.subheader('Table - Volume Growth for Top Ten Artists (2001 - 2021)')
+st.subheader('Table - Volume Growth for Top Ten Artists')
 author_returns = []
 author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
 top_authors = author_sum.sort_values(ascending=False)[:10]
@@ -157,7 +157,7 @@ fig = go.Figure(data=[go.Table(
 fig.update_layout(height=250, margin=dict(r=5, l=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 
-st.subheader('Figure - Age of Art Work vs Price (2001 - 2021)')
+st.subheader('Figure - Age of Art Work vs Price')
 
 df = df.dropna(subset=["decade"])
 fig = px.scatter(df, x="art_work_age", y="end_price", color="category",
@@ -172,7 +172,7 @@ fig = px.scatter(df, x="art_work_age", y="end_price", color="category",
 
 st.plotly_chart(fig, use_container_width=True)
 
-st.subheader('Figure - Size of Art Work vs Price (2001 - 2021)')
+st.subheader('Figure - Size of Art Work vs Price')
 
 df = df.dropna(subset=["dimension"])
 fig = px.scatter(df, x="dimension", y="end_price", color="category",
