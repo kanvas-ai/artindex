@@ -4,11 +4,11 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 
-@st.cache
+@st.cache(ttl=60*60*24*7, max_entries=300)
 def read_df(path:str):
     return pd.read_csv(path)
 
-@st.cache
+@st.cache(ttl=60*60*24*7, max_entries=300)
 def create_table(df, category_column:str, category_list:list, use_price_sum:bool, table_height:int):
     category_returns = []
     for cat in category_list:
