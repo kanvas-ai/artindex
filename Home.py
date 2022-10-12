@@ -3,6 +3,8 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
+import os
+import base64
 
 @st.cache(ttl=60*60*24*7, max_entries=300)
 def read_df(path:str):
@@ -30,7 +32,8 @@ def create_table(df, category_column:str, category_list:list, use_price_sum:bool
         annual_return = round(total_return / (end_year - start_year), 2)
         category_returns.append([cat, total_return, annual_return])
         
-    df_cat_returns = pd.DataFrame(category_returns, columns=[category_column.capitalize(), "Total Return (%)", "Annual Return (%)"]) 
+    df_cat_returns = pd.DataFrame(category_returns, columns=[category_column.capitalize(), "Total Growth since Inception (%)", "Annual Growth Rate (%)"]) 
+    df_cat_returns = df_cat_returns.sort_values(by="Total Growth since Inception (%)", ascending=False)
     fig = go.Figure(data=[go.Table(
         header=dict(values=list(df_cat_returns.columns),
                     align='left'),
@@ -48,28 +51,59 @@ df_hist = df_hist[df_hist["date"] >= 2001]
 df_hist = df_hist.groupby("date").sum()
 
 # LOGO
-st.image("https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2Fs3.amazonaws.com%2Fappforest_uf%2Ff1609072752424x654841387818197400%2Fhorisontal%2520%25E2%2580%2593%2520koopia.jpg?w=256&h=45&auto=compress&fit=crop&dpr=1.25")
+# https://discuss.streamlit.io/t/href-on-image/9693/4
+@st.cache(allow_output_mutation=True)
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+@st.cache(allow_output_mutation=True)
+def get_img_with_href(local_img_path, target_url):
+    img_format = os.path.splitext(local_img_path)[-1].replace('.', '')
+    bin_str = get_base64_of_bin_file(local_img_path)
+    html_code = f'''
+        <a href="{target_url}">
+            <img src="data:image/{img_format};base64,{bin_str}" width=400px />
+        </a>'''
+    return html_code
+
+kanvas_logo = get_img_with_href('data/horisontal-BLACK.png', 'https://kanvas.ai')
+st.markdown(kanvas_logo, unsafe_allow_html=True)
+
 
 # TITLE
-st.title('Art Index (2001 - 2021)')
-st.header('Estonian Auctions - Map of Art Market')
+st.title('Estonian Art Index')
+st.header('Overview')
+st.write('''
+Kanvas.ai Art Index is a tool for art investors.
+
+Kanvas.ai's art index is a database created based on Estonian art auction sales history of the last 20 years (2001-2021), with an aim of making art and investing in art easier to understand for anyone interested.
+
+The data has been collected based on the results of the public auctions of the main galleries in Estonia, which provides an overview of how the art market behaves over time and which art mediums and authors have the best investment performance.
+
+Based on the data, it is clear how the popularity of art has taken a big leap in recent years, both in terms of prices and volume. For example, for many types of art work, the price increase or performance has been over 10% a year.  Hence, a well-chosen piece of art is a good choice to protect your money against inflation.
+
+Kanvas.ai's Art Index currently does not include non-auction art information, but we have a plan to start collecting data on NFT art media sold on the NFTKanvas.ai page as well.
+''')
+
 
 # FIGURE - date and average price
 st.subheader('Figure - Historical Price Performance')
 fig = px.area(df_hist, x=df_hist.index, y="avg_price",
               labels={
-                 "avg_price": "Average Price (€)",
+                 "avg_price": "Historical Index Performance (€)",
                  "date": "Auction Year",
              })
 st.plotly_chart(fig, use_container_width=True)
 
 # TABLE - categories average price
-st.subheader('Table - Historical Price Performance')
+st.subheader('Table - Historical Price Performance by Category')
 fig = create_table(df, category_column="category", category_list=df["category"].unique(), use_price_sum=False, table_height=150)
 st.plotly_chart(fig, use_container_width=True)
 
 # FIGURE - date and volume
-st.subheader('Figure - Historical Volume Growth')
+st.subheader('Figure - Historical Volume Growth by Category')
 fig = px.area(df_hist, x=df_hist.index, y="volume", 
              labels={
                  "volume": "Volume (€)",
@@ -123,7 +157,7 @@ st.subheader('Figure - Age of Art Work vs Price')
 fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", color="category",
                  size='decade', hover_data=['author'],
                  labels={
-                     "end_price": "End Price (€)",
+                     "end_price": "Auction Final Sales Price (EUR)",
                      "art_work_age": "Art Work Age",
                      "author": "Author",
                      "category": "Category",
@@ -133,11 +167,12 @@ st.plotly_chart(fig, use_container_width=True)
 
 # FIGURE - size and price
 st.subheader('Figure - Size of Art Work vs Price')
+df["dimension"] = df["dimension"] / (1000*1000)
 fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", color="category",
                  size='dimension', hover_data=['author'],
                  labels={
-                     "end_price": "End Price (€)",
-                     "dimension": "Dimension (cm x cm)",
+                     "end_price": "Auction Final Sales Price (EUR)",
+                     "dimension": "Dimension (m²)",
                      "author": "Author",
                      "category": "Category",
                   })
@@ -145,5 +180,5 @@ fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", 
 st.plotly_chart(fig, use_container_width=True)
 
 st.text('Copyright: Kanvas.ai')
-st.text('Authors: Astid Laupmaa, Julian Kaljuvee, Markus Sulg')
-st.text('Source: Estonian auctions (2001 - 2021)')
+st.text('Authors: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg')
+st.text('Source: Estonian public art auction sales (2001-2021)')
