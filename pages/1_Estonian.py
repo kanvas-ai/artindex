@@ -5,7 +5,16 @@ import numpy as np
 import plotly.graph_objects as go
 import os
 import base64
-   
+
+# Table config - inject CSS to hide row indexes
+hide_table_row_index = """
+            <style>
+            thead tr th:first-child {display:none}
+            tbody th {display:none}
+            </style>
+            """
+st.markdown(hide_table_row_index, unsafe_allow_html=True)
+
 @st.cache(ttl=60*60*24*7, max_entries=300)
 def read_df(path:str):
     return pd.read_csv(path)
@@ -28,21 +37,13 @@ def create_table(df, category_column:str, category_list:list, use_price_sum:bool
             start_sum = df_cat.loc[df_cat["date"] == start_year, "end_price"].mean()
             end_sum = df_cat.loc[df_cat["date"] == end_year, "end_price"].mean()        
         
-        total_return = round((end_sum - start_sum) / start_sum * 100, 2)
-        annual_return = round(total_return / (end_year - start_year), 2)
+        total_return = round((end_sum - start_sum) / start_sum * 100, 4)
+        annual_return = round(total_return / (end_year - start_year), 4)
         category_returns.append([cat, total_return, annual_return])
         
     df_cat_returns = pd.DataFrame(category_returns, columns=["Kategooria", "Kogukasv algusest (%)", "Iga-aastane kasv (%)"]) 
     df_cat_returns = df_cat_returns.sort_values(by="Kogukasv algusest (%)", ascending=False)
-    fig = go.Figure(data=[go.Table(
-        header=dict(values=list(df_cat_returns.columns),
-                    align='left'),
-        cells=dict(values=df_cat_returns.transpose().values.tolist(),
-                   align='left'))
-    ])
-    # remove space between texts
-    fig.update_layout(height=table_height, margin=dict(r=5, l=5, t=5, b=5))
-    return fig
+    return df_cat_returns
 
 df = read_df('data/auctions_clean.csv')
 df = df[df["date"] >= 2001]
@@ -66,29 +67,25 @@ def get_base64_of_bin_file(bin_file):
     return base64.b64encode(data).decode()
 
 @st.cache(allow_output_mutation=True)
-def get_img_with_href(local_img_path, target_url, width):
+def get_img_with_href(local_img_path, target_url, max_width):
     img_format = os.path.splitext(local_img_path)[-1].replace('.', '')
     bin_str = get_base64_of_bin_file(local_img_path)
     html_code = f'''
         <a href="{target_url}">
-            <img src="data:image/{img_format};base64,{bin_str}" width={width} />
+            <img src="data:image/{img_format};base64,{bin_str}" style="max-width:{max_width};width:100%" />
         </a>'''
     return html_code
 
 kanvas_logo = get_img_with_href('data/horisontal-BLACK.png', 'https://kanvas.ai', '200px')
-
-#my_logo = add_logo(logo_path="data/horisontal-BLACK.png", width=50, height=60)
 st.sidebar.markdown(kanvas_logo, unsafe_allow_html=True)
 
 kanvas_logo = get_img_with_href('data/horisontal-BLACK.png', 'https://kanvas.ai', '400px')
-#add_logo(kanvas_logo) 
 st.markdown(kanvas_logo, unsafe_allow_html=True)
-
 
 # TITLE
 st.title('Eesti kunsti indeks')
 st.header('Ülevaade')
-st.text('''
+st.markdown('''<span style="word-wrap:break-word;">
 Kanvas.ai kunsti indeks on tööriist kunsti investeerijale.
 
 Kanvas.ai kunsti indeks viimase 20 aasta (2001 kuni 2021) Eesti kunstioksjonite \nmüükide põhjal loodud andmebaas, eesmärgiga muuta kunst ja kunsti investeerimine \nlihtsamini mõistetavaks igale huvilisele.
@@ -98,7 +95,7 @@ Andmed on kogutud Eesti põhiliste galeriide avalike oksjoni tulemuste põhjal, 
 Andmete põhjal on selgelt näha, kuidas kunsti populaarsus on viimastel aastatel \nsuure hüppe teinud nii hindades kui koguses. Näiteks on aastane hinna kasv ehk \ntootlikus mitme kunstivormi puhul üle 10% aastas. Õigesti valitud kunstiteos on \nhea valik, kuhu inflatsiooni eest oma raha paigutada.
 
 Kanvas.ai kunstiindeksist puuduvad oksjoniväline kunsti info kuid meil on plaan \nhakata koguma ka NFTKanvas.ai lehel müüdud NFT kunstimeediumi andmeid.
-''')
+''', unsafe_allow_html=True)
 
 
 # FIGURE - date and average price
@@ -112,8 +109,8 @@ st.plotly_chart(fig, use_container_width=True)
 
 # TABLE - categories average price
 st.subheader('Tabel - Ajalooline hinnanäitaja kategooriate kaupa')
-fig = create_table(df, category_column="category", category_list=df["category"].unique(), use_price_sum=False, table_height=150)
-st.plotly_chart(fig, use_container_width=True)
+table_data = create_table(df, category_column="category", category_list=df["category"].unique(), use_price_sum=False, table_height=150)
+st.table(table_data)
 
 # FIGURE - date and volume
 st.subheader('Joonis - Ajalooline volüümi kasv kategooriate kaupa')
@@ -126,8 +123,8 @@ st.plotly_chart(fig, use_container_width=True)
 
 # TABLE - categories volume
 st.subheader('Tabel - Ajalooline volüümi kasv')
-fig = create_table(df, category_column="category", category_list=df["category"].unique(), use_price_sum=True, table_height=150)
-st.plotly_chart(fig, use_container_width=True)
+table_data = create_table(df, category_column="category", category_list=df["category"].unique(), use_price_sum=True, table_height=150)
+st.table(table_data)
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 st.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
@@ -157,13 +154,13 @@ author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
 top_authors = author_sum.sort_values(ascending=False)[:10]
 
 st.subheader('Tabel - Top 10 parimat kunstnikku')
-fig = create_table(df, category_column="author", category_list=top_authors.index, use_price_sum=False, table_height=250)    
-st.plotly_chart(fig, use_container_width=True)
+table_data = create_table(df, category_column="author", category_list=top_authors.index, use_price_sum=False, table_height=250)    
+st.table(table_data)
 
 # TABLE - best authors volume
 st.subheader('Tabel - Volüümi kasv Top 10 kunstnikul')
-fig = create_table(df, category_column="author", category_list=top_authors.index, use_price_sum=True, table_height=250)    
-st.plotly_chart(fig, use_container_width=True)
+table_data = create_table(df, category_column="author", category_list=top_authors.index, use_price_sum=True, table_height=250)    
+st.table(table_data)
 
 # FIGURE - date and price
 st.subheader('Joonis - Kunstitöö vanus vs hind')
