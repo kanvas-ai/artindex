@@ -5,7 +5,7 @@ import numpy as np
 import plotly.graph_objects as go
 import os
 import base64
-
+   
 @st.cache(ttl=60*60*24*7, max_entries=300)
 def read_df(path:str):
     return pd.read_csv(path)
@@ -32,8 +32,8 @@ def create_table(df, category_column:str, category_list:list, use_price_sum:bool
         annual_return = round(total_return / (end_year - start_year), 2)
         category_returns.append([cat, total_return, annual_return])
         
-    df_cat_returns = pd.DataFrame(category_returns, columns=[category_column.capitalize(), "Total Growth since Inception (%)", "Annual Growth Rate (%)"]) 
-    df_cat_returns = df_cat_returns.sort_values(by="Total Growth since Inception (%)", ascending=False)
+    df_cat_returns = pd.DataFrame(category_returns, columns=["Kategooria", "Kogukasv algusest (%)", "Iga-aastane kasv (%)"]) 
+    df_cat_returns = df_cat_returns.sort_values(by="Kogukasv algusest (%)", ascending=False)
     fig = go.Figure(data=[go.Table(
         header=dict(values=list(df_cat_returns.columns),
                     align='left'),
@@ -49,6 +49,13 @@ df = df[df["date"] >= 2001]
 df_hist = read_df('data/historical_avg_price.csv')
 df_hist = df_hist[df_hist["date"] >= 2001]
 df_hist = df_hist.groupby("date").sum()
+
+# Eestikeelsed kategooriad
+df.loc[df["category"]=="Oil paintings", "category"] = "Õlimaalid"
+df.loc[df["category"]=="Other (non-oil) paintings", "category"] = "Teised (mitte õli) maalid"
+df.loc[df["category"]=="Mixed medium", "category"] = "Segatehnika"
+df.loc[df["category"]=="Graphics", "category"] = "Graafika"
+df.loc[df["category"]=="Drawing", "category"] = "Joonistus"
 
 # LOGO
 # https://discuss.streamlit.io/t/href-on-image/9693/4
@@ -68,59 +75,62 @@ def get_img_with_href(local_img_path, target_url, width):
         </a>'''
     return html_code
 
-
 kanvas_logo = get_img_with_href('data/horisontal-BLACK.png', 'https://kanvas.ai', '200px')
+
+#my_logo = add_logo(logo_path="data/horisontal-BLACK.png", width=50, height=60)
 st.sidebar.markdown(kanvas_logo, unsafe_allow_html=True)
 
 kanvas_logo = get_img_with_href('data/horisontal-BLACK.png', 'https://kanvas.ai', '400px')
+#add_logo(kanvas_logo) 
 st.markdown(kanvas_logo, unsafe_allow_html=True)
 
+
 # TITLE
-st.title('Estonian Art Index')
-st.header('Overview')
+st.title('Eesti kunsti indeks')
+st.header('Ülevaade')
 st.text('''
-Kanvas.ai Art Index is a tool for art investors.
+Kanvas.ai kunsti indeks on tööriist kunsti investeerijale.
 
-Kanvas.ai's art index is a database created based on Estonian art auction sales \nhistory of the last 20 years (2001-2021), with an aim of making art and investing \nin art easier to understand for anyone interested.
+Kanvas.ai kunsti indeks viimase 20 aasta (2001 kuni 2021) Eesti kunstioksjonite \nmüükide põhjal loodud andmebaas, eesmärgiga muuta kunst ja kunsti investeerimine \nlihtsamini mõistetavaks igale huvilisele.
 
-The data has been collected based on the results of the public auctions of the \nmain galleries in Estonia, which provides an overview of how the art market \nbehaves over time and which art mediums and authors have the best investment \nperformance.
+Andmed on kogutud Eesti põhiliste galeriide avalike oksjoni tulemuste põhjal, mis \nannab ülevaate kuidas käitub kunstiturg ajas ning millised kunstimeediumid ning \nautorid on kõige parema investeerimise tootlikkusega.
 
-Based on the data, it is clear how the popularity of art has taken a big leap in \nrecent years, both in terms of prices and volume. For example, for many types of \nart work, the price increase or performance has been over 10% a year. Hence, a \nwell-chosen piece of art is a good choice to protect your money against inflation.
+Andmete põhjal on selgelt näha, kuidas kunsti populaarsus on viimastel aastatel \nsuure hüppe teinud nii hindades kui koguses. Näiteks on aastane hinna kasv ehk \ntootlikus mitme kunstivormi puhul üle 10% aastas. Õigesti valitud kunstiteos on \nhea valik, kuhu inflatsiooni eest oma raha paigutada.
 
-Kanvas.ai's Art Index currently does not include non-auction art information, but \nwe have a plan to start collecting data on NFT art media sold on the NFTKanvas.ai \npage as well.
+Kanvas.ai kunstiindeksist puuduvad oksjoniväline kunsti info kuid meil on plaan \nhakata koguma ka NFTKanvas.ai lehel müüdud NFT kunstimeediumi andmeid.
 ''')
 
 
 # FIGURE - date and average price
-st.subheader('Figure - Historical Price Performance')
+st.subheader('Joonis - Ajalooline hinnanäitaja')
 fig = px.area(df_hist, x=df_hist.index, y="avg_price",
               labels={
-                 "avg_price": "Historical Index Performance (€)",
-                 "date": "Auction Year",
+                 "avg_price": "Ajalooline indeksinäitaja (€)",
+                 "date": "Oksjoni aasta",
              })
 st.plotly_chart(fig, use_container_width=True)
 
 # TABLE - categories average price
-st.subheader('Table - Historical Price Performance by Category')
+st.subheader('Tabel - Ajalooline hinnanäitaja kategooriate kaupa')
 fig = create_table(df, category_column="category", category_list=df["category"].unique(), use_price_sum=False, table_height=150)
 st.plotly_chart(fig, use_container_width=True)
 
 # FIGURE - date and volume
-st.subheader('Figure - Historical Volume Growth by Category')
+st.subheader('Joonis - Ajalooline volüümi kasv kategooriate kaupa')
 fig = px.area(df_hist, x=df_hist.index, y="volume", 
              labels={
-                 "volume": "Volume (€)",
-                 "date": "Auction Year",
+                 "volume": "Volüüm (€)",
+                 "date": "Oksjoni aasta",
              })
 st.plotly_chart(fig, use_container_width=True)
 
 # TABLE - categories volume
-st.subheader('Table - Historical Volume Growth')
+st.subheader('Tabel - Ajalooline volüümi kasv')
 fig = create_table(df, category_column="category", category_list=df["category"].unique(), use_price_sum=True, table_height=150)
 st.plotly_chart(fig, use_container_width=True)
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
-st.subheader('Figure - Art Sales by Category and Artist')
+st.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
 
 df['start_price'] = df['start_price'].fillna(df['end_price'])
 df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
@@ -135,53 +145,53 @@ fig = px.treemap(df2, path=[px.Constant("Categories"), 'category', 'technique', 
                   color_continuous_midpoint=np.average(df2['overbid_%'], weights=df2['total_sales']),
                   range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std()),
                   labels={
-                     "overbid_%": "Overbid (%)",
-                     "total_sales": "Total Sales",
-                     "author": "Author",
+                     "overbid_%": "Ülepakkumine (%)",
+                     "total_sales": "Kogumüük",
+                     "author": "Autor",
                   })
-fig.update_traces(hovertemplate='<b>%{label} </b> <br> Total Sales: %{value}<br> Overbid (%): %{color:.2f}',)
+fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Ülepakkumine (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
 
 # TABLE - best authors average price
 author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
 top_authors = author_sum.sort_values(ascending=False)[:10]
 
-st.subheader('Table - Top 10 Best Performing Artists')
+st.subheader('Tabel - Top 10 parimat kunstnikku')
 fig = create_table(df, category_column="author", category_list=top_authors.index, use_price_sum=False, table_height=250)    
 st.plotly_chart(fig, use_container_width=True)
 
 # TABLE - best authors volume
-st.subheader('Table - Volume Growth for Top 10 Artists')
+st.subheader('Tabel - Volüümi kasv Top 10 kunstnikul')
 fig = create_table(df, category_column="author", category_list=top_authors.index, use_price_sum=True, table_height=250)    
 st.plotly_chart(fig, use_container_width=True)
 
 # FIGURE - date and price
-st.subheader('Figure - Age of Art Work vs Price')
+st.subheader('Joonis - Kunstitöö vanus vs hind')
 fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", color="category",
                  size='decade', hover_data=['author'],
                  labels={
-                     "end_price": "Auction Final Sales Price (€)",
-                     "art_work_age": "Art Work Age",
-                     "author": "Author",
-                     "category": "Category",
-                     "decade": "Decade"
+                     "end_price": "Haamrihind (€)",
+                     "art_work_age": "Kunstitöö vanus",
+                     "author": "Autor",
+                     "category": "Kategooria",
+                     "decade": "Kümnend"
                   })
 st.plotly_chart(fig, use_container_width=True)
 
 # FIGURE - size and price
-st.subheader('Figure - Size of Art Work vs Price')
+st.subheader('Joonis - Kunstitöö pindala vs hind')
 df["dimension"] = df["dimension"] / (1000*1000)
 fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", color="category",
                  size='dimension', hover_data=['author'],
                  labels={
-                     "end_price": "Auction Final Sales Price (€)",
-                     "dimension": "Dimension (m²)",
-                     "author": "Author",
-                     "category": "Category",
+                     "end_price": "Haamrihind (€)",
+                     "dimension": "Pindala (m²)",
+                     "author": "Autor",
+                     "category": "Kategooria",
                   })
 
 st.plotly_chart(fig, use_container_width=True)
 
 st.text('Copyright: Kanvas.ai')
-st.text('Authors: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg')
-st.text('Source: Estonian public art auction sales (2001-2021)')
+st.text('Autorid: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg')
+st.text('Allikad: Eesti avalikud kunsti oksjonid (2001-2021)')
