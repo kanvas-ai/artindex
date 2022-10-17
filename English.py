@@ -30,25 +30,40 @@ def create_table(df, category_column:str, category_list:list, calculate_volume:b
     for cat in category_list:
         df_cat = df[df[category_column]==cat]
 
+        dates = np.sort(df_cat["date"].unique())
+
+        prices = []
         start_year = df_cat["date"].min()
-        end_year = df_cat["date"].max()
-        
-        start_sum = 0
-        end_sum = 0
-        if calculate_volume:               
-            start_sum = df_cat.loc[df_cat["date"] == start_year, "end_price"].sum()
-            end_sum = df_cat.loc[df_cat["date"] == end_year, "end_price"].sum()
-        else:    
-            start_sum = df_cat.loc[df_cat["date"] == start_year, "end_price"].mean()
-            end_sum = df_cat.loc[df_cat["date"] == end_year, "end_price"].mean()        
-        
-        total_return = round((end_sum - start_sum) / start_sum * 100, 4)
-        annual_return = round(total_return / (end_year - start_year), 4)
+        df_cat_date = df_cat[df_cat["date"]==start_year]
+        if calculate_volume: 
+            prices.append(df_cat_date["end_price"].sum())
+        else:
+            prices.append(df_cat_date["end_price"].mean())
+        price_changes = []
+        last_year = start_year
+        for date in dates[1:]:
+            df_cat_date = df_cat[df_cat["date"]==date]
+
+            start_sum = prices[-1]
+            end_sum = 0
+            if calculate_volume: 
+                end_sum = df_cat_date["end_price"].sum()
+            else:
+                end_sum = df_cat_date["end_price"].mean()
+
+            print(date, last_year)
+
+            price_change = (end_sum - start_sum) / start_sum * 100 / (date-last_year)
+            price_changes.append(price_change) # Kasvu arvutus
+            prices.append(end_sum) # Jätame meelde selle aasta hinna
+            last_year = date
+        annual_return = round(np.mean(price_changes), 4)
+        total_return = round(annual_return * len(dates), 4)
         category_returns.append([cat, total_return, annual_return])
         
     df_cat_returns = pd.DataFrame(category_returns, columns=[category_column.capitalize(), "Total Growth since Inception (%)", "Annual Growth Rate (%)"]) 
-    df_cat_returns = df_cat_returns.sort_values(by="Total Growth since Inception (%)", ascending=False)
-    return df_cat_returns
+    df_cat_returns = df_cat_returns.sort_values(by="Annual Growth Rate (%)", ascending=False)
+    return df_cat_returns.drop("Total Growth since Inception (%)", axis=1)
 
 df = read_df('data/auctions_clean.csv')
 df = df[df["date"] >= 2001]
