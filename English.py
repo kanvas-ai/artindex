@@ -105,7 +105,6 @@ fig = px.area(df_hist, x=df_hist.index, y="avg_price",
                  "avg_price": "Historical Index Performance (€)",
                  "date": "Auction Year",
              })
-fig.update_layout(font=dict("arial"))
 st.plotly_chart(fig, use_container_width=True)
 
 # TABLE - categories average price
