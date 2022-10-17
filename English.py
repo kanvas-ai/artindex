@@ -6,6 +6,10 @@ import plotly.graph_objects as go
 import os
 import base64
 
+st.set_page_config(
+    page_title="Art Index",
+    page_icon="data/Vertical-BLACK2.ico",
+)
 # Table config - inject CSS to hide row indexes
 hide_table_row_index = """
             <style>
@@ -21,7 +25,7 @@ def read_df(path:str):
 
 
 @st.cache(ttl=60*60*24*7, max_entries=300)
-def create_table(df, category_column:str, category_list:list, use_price_sum:bool, table_height:int):
+def create_table(df, category_column:str, category_list:list, calculate_volume:bool, table_height:int):
     category_returns = []
     for cat in category_list:
         df_cat = df[df[category_column]==cat]
@@ -31,7 +35,7 @@ def create_table(df, category_column:str, category_list:list, use_price_sum:bool
         
         start_sum = 0
         end_sum = 0
-        if use_price_sum:               
+        if calculate_volume:               
             start_sum = df_cat.loc[df_cat["date"] == start_year, "end_price"].sum()
             end_sum = df_cat.loc[df_cat["date"] == end_year, "end_price"].sum()
         else:    
@@ -48,6 +52,7 @@ def create_table(df, category_column:str, category_list:list, use_price_sum:bool
 
 df = read_df('data/auctions_clean.csv')
 df = df[df["date"] >= 2001]
+df = df[df["date"] <= 2021]
 df_hist = read_df('data/historical_avg_price.csv')
 df_hist = df_hist[df_hist["date"] >= 2001]
 df_hist = df_hist.groupby("date").sum()
@@ -100,15 +105,16 @@ fig = px.area(df_hist, x=df_hist.index, y="avg_price",
                  "avg_price": "Historical Index Performance (€)",
                  "date": "Auction Year",
              })
+fig.update_layout(font=dict("arial"))
 st.plotly_chart(fig, use_container_width=True)
 
 # TABLE - categories average price
 st.subheader('Table - Historical Price Performance by Category')
-table_data = create_table(df, category_column="category", category_list=df["category"].unique(), use_price_sum=False, table_height=150)
+table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=False, table_height=150)
 st.table(table_data)
 
 # FIGURE - date and volume
-st.subheader('Figure - Historical Volume Growth by Category')
+st.subheader('Figure - Historical Volume Growth')
 fig = px.area(df_hist, x=df_hist.index, y="volume", 
              labels={
                  "volume": "Volume (€)",
@@ -117,8 +123,8 @@ fig = px.area(df_hist, x=df_hist.index, y="volume",
 st.plotly_chart(fig, use_container_width=True)
 
 # TABLE - categories volume
-st.subheader('Table - Historical Volume Growth')
-table_data = create_table(df, category_column="category", category_list=df["category"].unique(), use_price_sum=True, table_height=150)
+st.subheader('Table - Historical Volume Growth by Category')
+table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=True, table_height=150)
 st.table(table_data)
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
@@ -149,12 +155,12 @@ author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
 top_authors = author_sum.sort_values(ascending=False)[:10]
 
 st.subheader('Table - Top 10 Best Performing Artists')
-table_data = create_table(df, category_column="author", category_list=top_authors.index, use_price_sum=False, table_height=250)    
+table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=False, table_height=250)    
 st.table(table_data)
 
 # TABLE - best authors volume
 st.subheader('Table - Volume Growth for Top 10 Artists')
-table_data = create_table(df, category_column="author", category_list=top_authors.index, use_price_sum=True, table_height=250)    
+table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=True, table_height=250)    
 st.table(table_data)
 
 # FIGURE - date and price
