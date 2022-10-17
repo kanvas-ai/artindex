@@ -65,6 +65,9 @@ def create_table(df, category_column:str, category_list:list, calculate_volume:b
     df_cat_returns = df_cat_returns.sort_values(by="Annual Growth Rate (%)", ascending=False)
     return df_cat_returns.drop("Total Growth since Inception (%)", axis=1)
 
+def create_paragraph(text):
+    st.markdown('<span style="word-wrap:break-word;">' + text + '</span>', unsafe_allow_html=True)
+    
 df = read_df('data/auctions_clean.csv')
 df = df[df["date"] >= 2001]
 df = df[df["date"] <= 2021]
@@ -74,13 +77,13 @@ df_hist = df_hist.groupby("date").sum()
 
 # LOGO
 # https://discuss.streamlit.io/t/href-on-image/9693/4
-@st.cache(allow_output_mutation=True)
+@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
 def get_base64_of_bin_file(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
     return base64.b64encode(data).decode()
 
-@st.cache(allow_output_mutation=True)
+@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
 def get_img_with_href(local_img_path, target_url, max_width):
     img_format = os.path.splitext(local_img_path)[-1].replace('.', '')
     bin_str = get_base64_of_bin_file(local_img_path)
@@ -100,8 +103,7 @@ st.markdown(kanvas_logo, unsafe_allow_html=True)
 # TITLE
 st.title('Estonian Art Index')
 st.header('Overview')
-st.markdown('''<span style="word-wrap:break-word;">
-Kanvas.ai Art Index is a tool for art investors.
+create_paragraph('''Kanvas.ai Art Index is a tool for art investors.
 
 Kanvas.ai's art index is a database created based on Estonian art auction sales \nhistory of the last 20 years (2001-2021), with an aim of making art and investing \nin art easier to understand for anyone interested.
 
@@ -109,8 +111,7 @@ The data has been collected based on the results of the public auctions of the \
 
 Based on the data, it is clear how the popularity of art has taken a big leap in \nrecent years, both in terms of prices and volume. For example, for many types of \nart work, the price increase or performance has been over 10% a year. Hence, a \nwell-chosen piece of art is a good choice to protect your money against inflation.
 
-Kanvas.ai's Art Index currently does not include non-auction art information, but \nwe have a plan to start collecting data on NFT art media sold on the NFTKanvas.ai \npage as well.
-''', unsafe_allow_html=True)
+Kanvas.ai's Art Index currently does not include non-auction art information, but \nwe have a plan to start collecting data on NFT art media sold on the NFTKanvas.ai \npage as well.''')
 
 
 # FIGURE - date and average price

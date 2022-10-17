@@ -61,8 +61,11 @@ def create_table(df, category_column:str, category_list:list, calculate_volume:b
         category_returns.append([cat, total_return, annual_return])
         
     df_cat_returns = pd.DataFrame(category_returns, columns=["Kategooria", "Kogukasv algusest (%)", "Iga-aastane kasv (%)"]) 
-    df_cat_returns = df_cat_returns.sort_values(by="Kogukasv algusest (%)", ascending=False)
+    df_cat_returns = df_cat_returns.sort_values(by="Iga-aastane kasv (%)", ascending=False)
     return df_cat_returns.drop("Kogukasv algusest (%)", axis=1)
+
+def create_paragraph(text):
+    st.markdown('<span style="word-wrap:break-word;">' + text + '</span>', unsafe_allow_html=True)
 
 df = read_df('data/auctions_clean.csv')
 df = df[df["date"] >= 2001]
@@ -80,13 +83,13 @@ df.loc[df["category"]=="Drawing", "category"] = "Joonistus"
 
 # LOGO
 # https://discuss.streamlit.io/t/href-on-image/9693/4
-@st.cache(allow_output_mutation=True)
+@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
 def get_base64_of_bin_file(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
     return base64.b64encode(data).decode()
 
-@st.cache(allow_output_mutation=True)
+@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
 def get_img_with_href(local_img_path, target_url, max_width):
     img_format = os.path.splitext(local_img_path)[-1].replace('.', '')
     bin_str = get_base64_of_bin_file(local_img_path)
@@ -105,8 +108,7 @@ st.markdown(kanvas_logo, unsafe_allow_html=True)
 # TITLE
 st.title('Eesti kunsti indeks')
 st.header('Ülevaade')
-st.markdown('''<span style="word-wrap:break-word;">
-Kanvas.ai kunsti indeks on tööriist kunsti investeerijale.
+create_paragraph('''Kanvas.ai kunsti indeks on tööriist kunsti investeerijale.
 
 Kanvas.ai kunsti indeks viimase 20 aasta (2001 kuni 2021) Eesti kunstioksjonite \nmüükide põhjal loodud andmebaas, eesmärgiga muuta kunst ja kunsti investeerimine \nlihtsamini mõistetavaks igale huvilisele.
 
@@ -114,9 +116,7 @@ Andmed on kogutud Eesti põhiliste galeriide avalike oksjoni tulemuste põhjal, 
 
 Andmete põhjal on selgelt näha, kuidas kunsti populaarsus on viimastel aastatel \nsuure hüppe teinud nii hindades kui koguses. Näiteks on aastane hinna kasv ehk \ntootlikus mitme kunstivormi puhul üle 10% aastas. Õigesti valitud kunstiteos on \nhea valik, kuhu inflatsiooni eest oma raha paigutada.
 
-Kanvas.ai kunstiindeksist puuduvad oksjoniväline kunsti info kuid meil on plaan \nhakata koguma ka NFTKanvas.ai lehel müüdud NFT kunstimeediumi andmeid.
-''', unsafe_allow_html=True)
-
+Kanvas.ai kunstiindeksist puuduvad oksjoniväline kunsti info kuid meil on plaan \nhakata koguma ka NFTKanvas.ai lehel müüdud NFT kunstimeediumi andmeid.''')
 
 # FIGURE - date and average price
 st.subheader('Joonis - Ajalooline hinnanäitaja')
@@ -126,11 +126,13 @@ fig = px.area(df_hist, x=df_hist.index, y="avg_price",
                  "date": "Oksjoni aasta",
              })
 st.plotly_chart(fig, use_container_width=True)
+create_paragraph('Ülalpoolne kunstiindeks annab ülevaate kunsti hinna tõusust ja langusest. Märgatava hüppe on kunsti hind teinud viimaste aastate jooksul. Alates pandeemiast on oksjoni turul kunsti investeerimise vastu huvi hüppeliselt tõusnud.')
 
 # TABLE - categories average price
 st.subheader('Tabel - Ajalooline hinnanäitaja kategooriate kaupa')
 table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=False, table_height=150)
 st.table(table_data)
+create_paragraph('Meediumite ehk tehnika järgi järjestud vastavalt sellele, missugused meediumid domineerivad kõige kallimalt müüdud teoste hulgas.')
 
 # FIGURE - date and volume
 st.subheader('Joonis - Ajalooline volüümi kasv')
@@ -140,11 +142,15 @@ fig = px.area(df_hist, x=df_hist.index, y="volume",
                  "date": "Oksjoni aasta",
              })
 st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''Volüümi kasv annab meile ülevaate, kui palju on ajas tõusnud ja langenud oksjonite käive. 
+Näiteks 2001 aastal oli oksjoni käive 174.000- euro ringis, siis 2021 aastal oli oksjonite käive 4.5miljonit. Kindlasti on väga oluline roll krooni asendumisel euroga ja juurde on tulnud oksjoni galeriisid.  Sellegipoolest on kunsti müük märkimisväärse hüppe teinud alates 2019, mis on 20 aasta lõikes kõige suurem. Viimane suurem muutus toimus 2006-2009 majanduskriisi mõjutustest.
+''')
 
 # TABLE - categories volume
 st.subheader('Tabel - Ajalooline volüümi kasv kategooriate kaupa')
 table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=True, table_height=150)
 st.table(table_data)
+create_paragraph('Sellest tabelist näeme, milline meedium on olnud kõige suurema käibega. Antud andmete põhjal võime näiteks näha, et graafika on kõige populaarsem ning kõige suurema käibe tõusu protsendiga.(Keskmiselt 204% 20 aasta jooksul ja õlimaalil samal ajal 34%)')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 st.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
@@ -168,6 +174,11 @@ fig = px.treemap(df2, path=[px.Constant("Categories"), 'category', 'technique', 
                   })
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Ülepakkumine (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''Kategooriad ja kunstnikud, kus värviskaala annab meile protsentuaalse ülevaate, kui palju antud teos on oksjonil oma alghinnast ülepakutud ning kategooria ja eraldi kunstniku teoste käivet. 
+
+Näiteks sinise tooniga on kunstnikud ja meediumid, mille puhul on oksjonil alghinnast ülepakkumine olnud kõige suurem. Kunstniku nime juurest võib lisaks ülepakkumis protsendile leida ka tema teoste käibe. Näiteks, kui kõige kallimalt müüdud teos kuulub Konrad Mäele, siis selle tabeli pealt võime välja lugeda, et kõige suurem ülepakkumine on tehtud hoopis Olev Subbi teostele, meediumiks tempera (711, 69 % tõus alghinnast haamrihinnani, Konrad Mäel samal ajal vastav number õli papil meedium 59,06 % ja õli lõuendil 86,58%). Konrad Mäe kogu käive jääb siiski Subbi omast kõrgemaks.
+''')
+
 
 # TABLE - best authors average price
 author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
@@ -194,6 +205,10 @@ fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", 
                      "decade": "Kümnend"
                   })
 st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''Antud graafikult on võimalik kunstiteose vanuse ja tehnika järgi määrata teose hinda.
+Tehnika on eraldatud värvide järgi. 
+Kõige vanem teos pärineb aastast 1900, kuid ei ole kõige kallimalt müüdud. Üldiselt on näha, et vanemad teosed on kallimad, v.a Olev Subbi. Võib näha, et kõrgemalt on müüdud teise maailmasõja eelseid teoseid 1910-1940.
+''')
 
 # FIGURE - size and price
 st.subheader('Joonis - Kunstitöö pindala vs hind')
@@ -208,7 +223,11 @@ fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", 
                   })
 
 st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''Ülevaade teose mõõtmete, tehnika ja hinna seosest. Paljud väiksema formaadilised teosed on tihti kallimad, kui suured. Teose suurus ei tähenda, et kindlasti kallim on. Pigem on olulisem autor ning siis teose mõõt. Näiteks Konrad Mägi Õlimaal on mõõtgraafikul keskmiste hulgas, kuid hinna skaalal teistest tunduvalt kõrgemal (127 823 eurot haamrihind), samal ajal kõige suurema teose (Toomas Vint) haamrihind on 7094€.
+''')
 
 st.text('Copyright: Kanvas.ai')
 st.text('Autorid: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg')
 st.text('Allikad: Eesti avalikud kunsti oksjonid (2001-2021)')
+st.text('Muu: Inspireeritud Riivo Antoni loodud kunstiindeksist')
+
