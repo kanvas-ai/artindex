@@ -50,8 +50,6 @@ def create_table(df, category_column:str, category_list:list, calculate_volume:b
             else:
                 end_sum = df_cat_date["end_price"].mean()
 
-            print(date, last_year)
-
             price_change = (end_sum - start_sum) / start_sum * 100 / (date-last_year)
             price_changes.append(price_change) # Kasvu arvutus
             prices.append(end_sum) # Jätame meelde selle aasta hinna
