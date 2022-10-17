@@ -69,8 +69,10 @@ def create_paragraph(text):
     st.markdown('<span style="word-wrap:break-word;">' + text + '</span>', unsafe_allow_html=True)
     
 df = read_df('data/auctions_clean.csv')
+# Fix data
 df = df[df["date"] >= 2001]
 df = df[df["date"] <= 2021]
+df.loc[df["technique"]=="Mixed tech", "technique"] = "Mixed technique"
 df_hist = read_df('data/historical_avg_price.csv')
 df_hist = df_hist[df_hist["date"] >= 2001]
 df_hist = df_hist.groupby("date").sum()
@@ -122,11 +124,13 @@ fig = px.area(df_hist, x=df_hist.index, y="avg_price",
                  "date": "Auction Year",
              })
 st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''The Art Index gives an overview of the rise and fall in the price of art. The price of art has made a noticeable jump in recent years. Interest in investing in art on the art auction market has skyrocketed since the pandemic.''')
 
 # TABLE - categories average price
 st.subheader('Table - Historical Price Performance by Category')
 table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=False, table_height=150)
 st.table(table_data)
+create_paragraph('''Ranked by medium, or technique, according to which medium dominates the highest-selling works.''')
 
 # FIGURE - date and volume
 st.subheader('Figure - Historical Volume Growth')
@@ -136,11 +140,16 @@ fig = px.area(df_hist, x=df_hist.index, y="volume",
                  "date": "Auction Year",
              })
 st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''The increase in volume gives us an overview of how much the turnover of auctions has risen and fallen over time.
+
+For example, in 2001 the auction turnover was around 174,000 euros, then in 2021 the auction turnover was 4.5 million. Certainly, the replacement of the kroon with the euro plays a very important role, and more auction galleries have been added. Still, art sales have seen a significant jump since 2019, the biggest in 20 years. The last major change occurred due to the effects of the 2006-2009 economic crisis.
+''')
 
 # TABLE - categories volume
 st.subheader('Table - Historical Volume Growth by Category')
 table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=True, table_height=150)
 st.table(table_data)
+create_paragraph('''From this table, we can see which medium has had the highest turnover. Based on the given data, we can see, for example, that graphics are the most popular and with the highest annual turnover increase percentage (204% annually over 20 years and 34% for oil painting at the same time).''')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 st.subheader('Figure - Art Sales by Category and Artist')
@@ -164,6 +173,10 @@ fig = px.treemap(df2, path=[px.Constant("Categories"), 'category', 'technique', 
                   })
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Total Sales: %{value}<br> Overbid (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''From the given graph, it is possible to determine the price of the work according to the age and technique of the work of art. Techniques are separated by color.
+
+The oldest work dates back to 1900, but is not the most expensive. In general, it can be seen that older works are more expensive, with the exception of Olev Subbi. It can be seen that pre-World War II works from 1910-1940 have been sold higher.
+''')
 
 # TABLE - best authors average price
 author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
@@ -190,6 +203,10 @@ fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", 
                      "decade": "Decade"
                   })
 st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''From the given graph, it is possible to determine the price of the work according to the age and technique of the work of art. Techniques are separated by color.
+
+The oldest work dates back to 1900, but is not the most expensive. In general, it can be seen that older works are more expensive, with the exception of Olev Subbi. It can be seen that pre-World War II works from 1910-1940 have been sold higher.
+''')
 
 # FIGURE - size and price
 st.subheader('Figure - Size of Art Work vs Price')
@@ -204,7 +221,11 @@ fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", 
                   })
 
 st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''An overview of the relationship between the dimensions, technique and price of the work. Many smaller format works are often more expensive than large ones. The size of the piece does not necessarily mean that it is more expensive. Rather, the author is more important, and then the size of the work. For example, Konrad Mägi's Õlimaa is among the averages on the measurement chart, but considerably higher than the others on the price scale (127,823 euros hammer price), while the hammer price of the largest work (Toomas Vint) is €7,094.
+''')
 
 st.text('Copyright: Kanvas.ai')
 st.text('Authors: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg')
 st.text('Source: Estonian public art auction sales (2001-2021)')
+st.text('Other credits: Inspired by the original Estonian Art Index created by Riivo Anton')
+

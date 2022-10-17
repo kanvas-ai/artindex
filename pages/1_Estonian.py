@@ -74,12 +74,32 @@ df_hist = read_df('data/historical_avg_price.csv')
 df_hist = df_hist[df_hist["date"] >= 2001]
 df_hist = df_hist.groupby("date").sum()
 
-# Eestikeelsed kategooriad
-df.loc[df["category"]=="Oil paintings", "category"] = "Õlimaalid"
-df.loc[df["category"]=="Other (non-oil) paintings", "category"] = "Teised (mitte õli) maalid"
-df.loc[df["category"]=="Mixed medium", "category"] = "Segatehnika"
-df.loc[df["category"]=="Graphics", "category"] = "Graafika"
-df.loc[df["category"]=="Drawing", "category"] = "Joonistus"
+def change_value(change_from, change_to, column):
+    df.loc[df[column]==change_from, column] = change_to
+# Estonian categories and techniques
+change_value("Oil paintings", "Õlimaalid", "category")
+change_value("Other (non-oil) paintings", "Teised (mitte õli) maalid", "category")
+change_value("Mixed medium", "Segatehnika", "category")
+change_value("Graphics", "Graafika", "category")
+change_value("Drawing", "Joonistus", "category")
+
+change_value("Oil on canvas", "Õli lõuendil", "technique")
+change_value("Oil on cardboard", "Õli papil", "technique")
+change_value("Oil on wood", "Õli vineeril", "technique")
+change_value("Aquatint", "Akvatinta", "technique")
+change_value("Linoleum", "Linool", "technique")
+change_value("Drawing", "Joonistus", "technique")
+change_value("Gouache", "Guašš", "technique")
+change_value("Watercolour", "Akvarell", "technique")
+change_value("Tempera", "Tempera", "technique")
+change_value("Acrylic", "Akrüül", "technique")
+change_value("Etching", "Etsing", "technique")
+change_value("Graphics", "Graafika", "technique")
+change_value("Mixed tech", "Segatehnika", "technique")
+change_value("Mixed technique", "Segatehnika", "technique")
+change_value("Silk print", "Siiditrükk", "technique")
+change_value("Vitrography", "Vitrograafia", "technique")
+change_value("Wood cut", "Puugravüür", "technique")
 
 # LOGO
 # https://discuss.streamlit.io/t/href-on-image/9693/4
@@ -207,6 +227,7 @@ fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", 
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''Antud graafikult on võimalik kunstiteose vanuse ja tehnika järgi määrata teose hinda.
 Tehnika on eraldatud värvide järgi. 
+
 Kõige vanem teos pärineb aastast 1900, kuid ei ole kõige kallimalt müüdud. Üldiselt on näha, et vanemad teosed on kallimad, v.a Olev Subbi. Võib näha, et kõrgemalt on müüdud teise maailmasõja eelseid teoseid 1910-1940.
 ''')
 
