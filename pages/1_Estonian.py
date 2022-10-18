@@ -18,6 +18,20 @@ hide_table_row_index = """
             </style>
             """
 st.markdown(hide_table_row_index, unsafe_allow_html=True)
+# Fullscreen button style
+style_fullscreen_button_css = """
+    button[title="View fullscreen"] {
+        background-color: #004170cc;
+        right: 0;
+        color: white;
+    }
+
+    button[title="View fullscreen"]:hover {
+        background-color:  #004170;
+        color: white;
+        }
+    """
+st.markdown("<style>" + style_fullscreen_button_css + "</style>", unsafe_allow_html=True)
 
 @st.cache(ttl=60*60*24*7, max_entries=300)
 def read_df(path:str):
