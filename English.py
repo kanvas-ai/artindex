@@ -251,5 +251,5 @@ def create_credits(text):
 create_credits('''Copyright: Kanvas.ai''')
 create_credits('''Authors: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg''')
 create_credits('''Source: Estonian public art auction sales (2001-2021)''')
-create_credits('''Other credits: Inspired by the original Estonian Art Index created by Riivo Anton''')
+create_credits('''Other credits: Inspired by the original Estonian Art Index created by Riivo Anton; <br>Generous support from <a href="https://tezos.foundation/">Tezos Foundation</a>''')
 
