@@ -143,6 +143,7 @@ fig = px.area(df_hist, x=df_hist.index, y="avg_price",
                  "avg_price": "Ajalooline indeksinäitaja (€)",
                  "date": "Oksjoni aasta",
              })
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('Ülalpoolne kunstiindeks annab ülevaate kunsti hinna tõusust ja langusest. Märgatava hüppe on kunsti hind teinud viimaste aastate jooksul. Alates pandeemiast on oksjoni turul kunsti investeerimise vastu huvi hüppeliselt tõusnud.')
 
@@ -159,6 +160,7 @@ fig = px.area(df_hist, x=df_hist.index, y="volume",
                  "volume": "Volüüm (€)",
                  "date": "Oksjoni aasta",
              })
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''Volüümi kasv annab meile ülevaate, kui palju on ajas tõusnud ja langenud oksjonite käive. 
 Näiteks 2001 aastal oli oksjoni käive 174 000- euro ringis, siis 2021 aastal oli oksjonite käive 4.5miljonit. Kindlasti on väga oluline roll krooni asendumisel euroga ja juurde on tulnud oksjoni galeriisid. Sellegipoolest on kunsti müük märkimisväärse hüppe teinud alates 2019, mis on 20 aasta lõikes kõige suurem. Viimane suurem muutus toimus 2006-2009 majanduskriisi mõjutustest.
@@ -190,6 +192,7 @@ fig = px.treemap(df2, path=[px.Constant("Categories"), 'category', 'technique', 
                      "total_sales": "Kogumüük",
                      "author": "Autor",
                   })
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Ülepakkumine (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''Kategooriad ja kunstnikud, kus värviskaala annab meile protsentuaalse ülevaate, kui palju antud teos on oksjonil oma alghinnast ülepakutud ning kategooria ja eraldi kunstniku teoste käivet. 
@@ -228,6 +231,7 @@ fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", 
                      "category": "Kategooria",
                      "decade": "Kümnend"
                   })
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''Antud graafikult on võimalik kunstiteose vanuse ja tehnika järgi määrata teose hinda.
 Tehnika on eraldatud värvide järgi. 
@@ -246,7 +250,7 @@ fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", 
                      "author": "Autor",
                      "category": "Kategooria",
                   })
-
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''Ülevaade teose mõõtmete, tehnika ja hinna seosest. Paljud väiksema formaadilised teosed on tihti kallimad, kui suured. Teose suurus ei tähenda, et kindlasti kallim on. Pigem on olulisem autor ning siis teose mõõt. Näiteks Konrad Mägi Õlimaal on mõõtgraafikul keskmiste hulgas, kuid hinna skaalal teistest tunduvalt kõrgemal (127 823 eurot haamrihind), samal ajal kõige suurema teose (Toomas Vint) haamrihind on 7094€.
 ''')

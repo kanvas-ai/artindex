@@ -121,6 +121,7 @@ fig = px.area(df_hist, x=df_hist.index, y="avg_price",
                  "avg_price": "Historical Index Performance (€)",
                  "date": "Auction Year",
              })
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''The Art Index gives an overview of the rise and fall in the price of art. The price of art has made a noticeable jump in recent years. Interest in investing in art on the art auction market has skyrocketed since the pandemic.''')
 
@@ -137,6 +138,7 @@ fig = px.area(df_hist, x=df_hist.index, y="volume",
                  "volume": "Volume (€)",
                  "date": "Auction Year",
              })
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''The increase in volume gives us an overview of how much the turnover of auctions has risen and fallen over time.
 
@@ -169,6 +171,7 @@ fig = px.treemap(df2, path=[px.Constant("Categories"), 'category', 'technique', 
                      "total_sales": "Total Sales",
                      "author": "Author",
                   })
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Total Sales: %{value}<br> Overbid (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''Categories and artists, where the color scale gives us an overview, how much art has been overbidi during auctions ,and volume ranked by category and artist.
@@ -206,6 +209,7 @@ fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", 
                      "category": "Category",
                      "decade": "Decade"
                   })
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''From the given graph, it is possible to determine the price of the work according to the age and technique of the work of art. Techniques are separated by color.
 
@@ -223,7 +227,7 @@ fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", 
                      "author": "Author",
                      "category": "Category",
                   })
-
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''An overview of the relationship between the dimensions, technique and price of the work. Many smaller format works are often more expensive than large ones. The size of the piece does not necessarily mean that it is more expensive. Rather, the author is more important, and then the size of the work. For example, Konrad Mägi's Õlimaa is among the averages on the measurement chart, but considerably higher than the others on the price scale (127,823 euros hammer price), while the hammer price of the largest work (Toomas Vint) is €7,094.
 ''')
