@@ -269,8 +269,10 @@ st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''Ülevaade teose mõõtmete, tehnika ja hinna seosest. Paljud väiksema formaadilised teosed on tihti kallimad, kui suured. Teose suurus ei tähenda, et kindlasti kallim on. Pigem on olulisem autor ning siis teose mõõt. Näiteks Konrad Mägi Õlimaal on mõõtgraafikul keskmiste hulgas, kuid hinna skaalal teistest tunduvalt kõrgemal (127 823 eurot haamrihind), samal ajal kõige suurema teose (Toomas Vint) haamrihind on 7094€.
 ''')
 
-st.text('Copyright: Kanvas.ai')
-st.text('Autorid: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg')
-st.text('Allikad: Eesti avalikud kunsti oksjonid (2001-2021)')
-st.text('Muu: Inspireeritud Riivo Antoni loodud kunstiindeksist')
+def create_credits(text):
+    st.markdown('<span style="word-wrap:break-word;font-family:Source Code Pro; color:Black; font-size: 14px;">' + text + '</span>', unsafe_allow_html=True)
+create_credits('''Copyright: Kanvas.ai''')
+create_credits('''Autorid: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg''')
+create_credits('''Allikad: Eesti avalikud kunsti oksjonid (2001-2021)''')
+create_credits('''Muu: Inspireeritud Riivo Antoni loodud kunstiindeksist''')
 

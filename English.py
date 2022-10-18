@@ -246,8 +246,10 @@ st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''An overview of the relationship between the dimensions, technique and price of the work. Many smaller format works are often more expensive than large ones. The size of the piece does not necessarily mean that it is more expensive. Rather, the author is more important, and then the size of the work. For example, Konrad Mägi's Õlimaa is among the averages on the measurement chart, but considerably higher than the others on the price scale (127,823 euros hammer price), while the hammer price of the largest work (Toomas Vint) is €7,094.
 ''')
 
-st.text('Copyright: Kanvas.ai')
-st.text('Authors: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg')
-st.text('Source: Estonian public art auction sales (2001-2021)')
-st.text('Other credits: Inspired by the original Estonian Art Index created by Riivo Anton')
+def create_credits(text):
+    st.markdown('<span style="word-wrap:break-word;font-family:Source Code Pro; color:Black; font-size: 14px;">' + text + '</span>', unsafe_allow_html=True)
+create_credits('''Copyright: Kanvas.ai''')
+create_credits('''Authors: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg''')
+create_credits('''Source: Estonian public art auction sales (2001-2021)''')
+create_credits('''Other credits: Inspired by the original Estonian Art Index created by Riivo Anton''')
 
