@@ -161,7 +161,7 @@ fig = px.area(df_hist, x=df_hist.index, y="volume",
              })
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''Volüümi kasv annab meile ülevaate, kui palju on ajas tõusnud ja langenud oksjonite käive. 
-Näiteks 2001 aastal oli oksjoni käive 174.000- euro ringis, siis 2021 aastal oli oksjonite käive 4.5miljonit. Kindlasti on väga oluline roll krooni asendumisel euroga ja juurde on tulnud oksjoni galeriisid.  Sellegipoolest on kunsti müük märkimisväärse hüppe teinud alates 2019, mis on 20 aasta lõikes kõige suurem. Viimane suurem muutus toimus 2006-2009 majanduskriisi mõjutustest.
+Näiteks 2001 aastal oli oksjoni käive 174 000- euro ringis, siis 2021 aastal oli oksjonite käive 4.5miljonit. Kindlasti on väga oluline roll krooni asendumisel euroga ja juurde on tulnud oksjoni galeriisid. Sellegipoolest on kunsti müük märkimisväärse hüppe teinud alates 2019, mis on 20 aasta lõikes kõige suurem. Viimane suurem muutus toimus 2006-2009 majanduskriisi mõjutustest.
 ''')
 
 # TABLE - categories volume
@@ -194,7 +194,7 @@ fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> 
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''Kategooriad ja kunstnikud, kus värviskaala annab meile protsentuaalse ülevaate, kui palju antud teos on oksjonil oma alghinnast ülepakutud ning kategooria ja eraldi kunstniku teoste käivet. 
 
-Näiteks sinise tooniga on kunstnikud ja meediumid, mille puhul on oksjonil alghinnast ülepakkumine olnud kõige suurem. Kunstniku nime juurest võib lisaks ülepakkumis protsendile leida ka tema teoste käibe. Näiteks, kui kõige kallimalt müüdud teos kuulub Konrad Mäele, siis selle tabeli pealt võime välja lugeda, et kõige suurem ülepakkumine on tehtud hoopis Olev Subbi teostele, meediumiks tempera (711, 69 % tõus alghinnast haamrihinnani, Konrad Mäel samal ajal vastav number õli papil meedium 59,06 % ja õli lõuendil 86,58%). Konrad Mäe kogu käive jääb siiski Subbi omast kõrgemaks.
+Näiteks sinise tooniga on kunstnikud ja meediumid, mille puhul on oksjonil alghinnast ülepakkumine olnud kõige suurem. Kunstniku nime juurest võib lisaks ülepakkumis protsendile leida ka tema teoste käibe. Näiteks, kui kõige kallimalt müüdud teos kuulub Konrad Mäele, siis selle tabeli pealt võime välja lugeda, et kõige suurem ülepakkumine on tehtud hoopis Olev Subbi teostele, meediumiks tempera (711,69 % tõus alghinnast haamrihinnani, Konrad Mäel samal ajal vastav number õli papil meedium 59,06 % ja õli lõuendil 85,44%). Konrad Mäe kogu käive jääb siiski Subbi omast kõrgemaks.
 ''')
 
 
@@ -205,11 +205,17 @@ top_authors = author_sum.sort_values(ascending=False)[:10]
 st.subheader('Tabel - Top 10 parimat kunstnikku')
 table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=False, table_height=250)    
 st.table(table_data)
+create_paragraph('''Selles tabelis on näha, millised kunstnikud on kõige populaarsemad ning nende kasvuprotsent. Protsent on arvutatud aastate vältel keskmise haamri hinna põhjal.
+
+Selles tabelis on esikohal Konrad Mägi, kelle teoste väärtuse kasvuprotsent on keskmiselt 198,95%. Konrad Mäe kõrget kasvu protsenti on mõjutanud, kindlasti tema unikaalsus. Oksjonil esineb Konrad Mäe töid pigem harva. Teiselt kohalt leiame Eduard Wiiralti, kelle töid vastupidiselt Konrad Mäele liigub oksjonitel palju. Wiiralti alghinnad on madalamad ning ta on väga populaarne kogujate hulgas.
+''')
 
 # TABLE - best authors volume
 st.subheader('Tabel - Volüümi kasv Top 10 kunstnikul')
 table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=True, table_height=250)    
 st.table(table_data)
+create_paragraph('''Siin on näha kunstnike teoste käive ning selle keskmine tõus aastas. Antud tabelis on Wiiralt kaheksandal kohal ja esimesel Konrad Mägi. Kuna tabelis esitatud protsent on kogu perioodi (2001-2021) käibe peale, siis need kunstnikud, kelle töid on müüdud rohkem on sattunud ka tabeli etteotsa.
+''')
 
 # FIGURE - date and price
 st.subheader('Joonis - Kunstitöö vanus vs hind')

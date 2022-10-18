@@ -171,9 +171,9 @@ fig = px.treemap(df2, path=[px.Constant("Categories"), 'category', 'technique', 
                   })
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Total Sales: %{value}<br> Overbid (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
-create_paragraph('''From the given graph, it is possible to determine the price of the work according to the age and technique of the work of art. Techniques are separated by color.
+create_paragraph('''Categories and artists, where the color scale gives us an overview, how much art has been overbidi during auctions ,and volume ranked by category and artist.
 
-The oldest work dates back to 1900, but is not the most expensive. In general, it can be seen that older works are more expensive, with the exception of Olev Subbi. It can be seen that pre-World War II works from 1910-1940 have been sold higher.
+For example, the blue color shows artists and mediums, which had the highest overbidding percentage. Volume is also shown next to the artist’s name. For example, Konrad Mägi has the highest art piece sold, but this table shows that the highest overbidding goes to the works of Olev Subbi, in regards to the tempera medium. (711.69 % price increase from the starting price, while the numbers for Konrad Mägi are 59.06 % for oil on cardboard and 85.44% for oil on canvas medium). Although Konrad Mägi still has the edge over Subbi in terms of volume.
 ''')
 
 # TABLE - best authors average price
@@ -183,11 +183,17 @@ top_authors = author_sum.sort_values(ascending=False)[:10]
 st.subheader('Table - Top 10 Best Performing Artists')
 table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=False, table_height=250)    
 st.table(table_data)
+create_paragraph('''This table shows the most popular artists and their growth percentage. The percentage is calculated based on annual average end price differences.
+
+Leading this table is Konrad Mägi, whose growth percentage is on average 198.95%. This growth percentage is definitely affected by the uniqueness of his works. Konrad Mägi has a limited number of works displayed at auctions. In second place we find Eduard Wiiralt, who in contrast to Konrad Mägi has a lot of his works displayed at auctions. The starting prices of Wiiralt’s works are low and he is very popular amongst collectors.
+''')
 
 # TABLE - best authors volume
 st.subheader('Table - Volume Growth for Top 10 Artists')
 table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=True, table_height=250)    
 st.table(table_data)
+create_paragraph('''This table shows the turnover and average annual growth of art works. Here Wiiralt is positioned at 8th place and Konrad Mägi at 1st. Because the growth percentage is during the whole period (2001-2021) turnover, then the artists, who have the most works bought, are situated at the top of the table.
+''')
 
 # FIGURE - date and price
 st.subheader('Figure - Age of Art Work vs Price')
