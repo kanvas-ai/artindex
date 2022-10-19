@@ -125,7 +125,10 @@ The data has been collected based on the results of the public auctions of the \
 
 Based on the data, it is clear how the popularity of art has taken a big leap in \nrecent years, both in terms of prices and volume. For example, for many types of \nart work, the price increase or performance has been over 10% a year. Hence, a \nwell-chosen piece of art is a good choice to protect your money against inflation.
 
-Kanvas.ai's Art Index currently does not include non-auction art information, but \nwe have a plan to start collecting data on NFT art media sold on the NFTKanvas.ai \npage as well.''')
+Kanvas.ai's Art Index currently does not include non-auction art information, but \nwe have a plan to start collecting data on NFT art media sold on the NFTKanvas.ai \npage as well.
+
+The Art Index methodology is currently under development. Please email us info@kanvas.ai with any suggestions and comments.
+''')
 
 
 # FIGURE - date and average price
