@@ -1,5 +1,4 @@
-# artindex
-Art Index
+# Art Index
 
 ## Install Streamlit
 
@@ -17,3 +16,24 @@ $ pip install -r requiments.txt
 $ streamlit run Home.py
 
 This should launch a browser on localhost:8501.
+
+
+## Update Content
+
+### Update Code
+$ cd artindex
+$ git pull https://github.com/kanvas-ai/artindex.git
+
+### Reload Ngnix / Streamlit
+$ sudo systemctl daemon-reload
+$ sudo systemctl stop artindex
+$ sudo systemctl disable artindex
+$ sudo systemctl start artindex
+$ sudo systemctl enable artindex
+$ sudo systemctl status artindex
+
+### New Files
+
+* Navigate to /etc/systemd/system directory
+* Open corresponding service file. In our case artindex.service
+* Under [Service] change the field ExecStart .py extension file name. For example: ExecStart=sudo python3.10 -m streamlit run English.py
