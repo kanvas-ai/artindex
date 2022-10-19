@@ -25,12 +25,14 @@ $ cd artindex
 $ git pull https://github.com/kanvas-ai/artindex.git
 
 ### Reload Ngnix / Streamlit
+```
 $ sudo systemctl daemon-reload
 $ sudo systemctl stop artindex
 $ sudo systemctl disable artindex
 $ sudo systemctl start artindex
 $ sudo systemctl enable artindex
 $ sudo systemctl status artindex
+```
 
 ### New Files
 
