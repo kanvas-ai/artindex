@@ -187,7 +187,7 @@ Näiteks 2001 aastal oli oksjoni käive 174 000- euro ringis, siis 2021 aastal o
 st.subheader('Tabel - Ajalooline volüümi kasv kategooriate kaupa')
 table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=True, table_height=150)
 st.table(table_data)
-create_paragraph('Sellest tabelist näeme, milline meedium on olnud kõige suurema käibega. Antud andmete põhjal võime näiteks näha, et graafika on kõige populaarsem ning kõige suurema käibe tõusu protsendiga.(Keskmiselt 204% 20 aasta jooksul ja õlimaalil samal ajal 34%)')
+create_paragraph('Sellest tabelist näeme, milline meedium on olnud kõige suurema käibega. Antud andmete põhjal võime näiteks näha, et graafika on kõige populaarsem ning kõige suurema käibe tõusu protsendiga.(Keskmiselt 204% 20 aasta jooksul ja õlimaalil samal ajal 35%)')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 st.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')

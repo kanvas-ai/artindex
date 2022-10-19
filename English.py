@@ -166,7 +166,7 @@ For example, in 2001 the auction turnover was around 174,000 euros, then in 2021
 st.subheader('Table - Historical Volume Growth by Category')
 table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=True, table_height=150)
 st.table(table_data)
-create_paragraph('''From this table, we can see which medium has had the highest turnover. Based on the given data, we can see, for example, that graphics are the most popular and with the highest annual turnover increase percentage (204% annually over 20 years and 34% for oil painting at the same time).''')
+create_paragraph('''From this table, we can see which medium has had the highest turnover. Based on the given data, we can see, for example, that graphics are the most popular and with the highest annual turnover increase percentage (204% annually over 20 years and 35% for oil painting at the same time).''')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 st.subheader('Figure - Art Sales by Category and Artist')
