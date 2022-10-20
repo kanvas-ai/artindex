@@ -273,7 +273,7 @@ create_paragraph('''Ülevaade teose mõõtmete, tehnika ja hinna seosest. Paljud
 ''')
 
 def create_credits(text):
-    st.markdown('<span style="word-wrap:break-word;font-family:Source Code Pro; color:Black; font-size: 14px;">' + text + '</span>', unsafe_allow_html=True)
+    st.markdown('<span style="word-wrap:break-word;font-family:Source Code Pro;font-size: 14px;">' + text + '</span>', unsafe_allow_html=True)
 create_credits('''Copyright: Kanvas.ai''')
 create_credits('''Autorid: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg''')
 create_credits('''Allikad: Eesti avalikud kunsti oksjonid (2001-2021)''')

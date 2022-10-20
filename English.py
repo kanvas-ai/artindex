@@ -250,7 +250,7 @@ create_paragraph('''An overview of the relationship between the dimensions, tech
 ''')
 
 def create_credits(text):
-    st.markdown('<span style="word-wrap:break-word;font-family:Source Code Pro; color:Black; font-size: 14px;">' + text + '</span>', unsafe_allow_html=True)
+    st.markdown('<span style="word-wrap:break-word;font-family:Source Code Pro;font-size: 14px;">' + text + '</span>', unsafe_allow_html=True)
 create_credits('''Copyright: Kanvas.ai''')
 create_credits('''Authors: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg''')
 create_credits('''Source: Estonian public art auction sales (2001-2021)''')
