@@ -87,15 +87,15 @@ df_hist = read_df('data/historical_avg_price.csv')
 df_hist = df_hist[df_hist["date"] >= 2001]
 df_hist = df_hist.groupby("date").sum()
 
+# Sidebar Table of Contents
+toc = Toc()
+toc.placeholder(sidebar=True)
+
 kanvas_logo = get_img_with_href('data/horisontal-BLACK.png', 'https://kanvas.ai', '200px')
 st.sidebar.markdown(kanvas_logo, unsafe_allow_html=True)
 
 kanvas_logo = get_img_with_href('data/horisontal-BLACK.png', 'https://kanvas.ai', '400px')
 st.markdown(kanvas_logo, unsafe_allow_html=True)
-
-# Sidebar Table of Contents
-toc = Toc()
-toc.placeholder(sidebar=True)
 
 # TITLE
 st.title('Estonian Art Index')

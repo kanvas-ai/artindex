@@ -3,35 +3,33 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
-import os
-import base64
+from StreamlitHelper import Toc, get_img_with_href
 
 st.set_page_config(
     page_title="Art Index",
     page_icon="data/Vertical-BLACK2.ico",
 )
-# Table config - inject CSS to hide row indexes
-hide_table_row_index = """
+# inject CSS to hide row indexes and style fullscreen button
+inject_style_css = """
             <style>
+            /*style hide table row index*/
             thead tr th:first-child {display:none}
             tbody th {display:none}
+            
+            /*style fullscreen button*/
+            button[title="View fullscreen"] {
+                background-color: #004170cc;
+                right: 0;
+                color: white;
+            }
+
+            button[title="View fullscreen"]:hover {
+                background-color:  #004170;
+                color: white;
+                }
             </style>
             """
-st.markdown(hide_table_row_index, unsafe_allow_html=True)
-# Fullscreen button style
-style_fullscreen_button_css = """
-    button[title="View fullscreen"] {
-        background-color: #004170cc;
-        right: 0;
-        color: white;
-    }
-
-    button[title="View fullscreen"]:hover {
-        background-color:  #004170;
-        color: white;
-        }
-    """
-st.markdown("<style>" + style_fullscreen_button_css + "</style>", unsafe_allow_html=True)
+st.markdown(inject_style_css, unsafe_allow_html=True)
 
 @st.cache(ttl=60*60*24*7, max_entries=300)
 def read_df(path:str):
@@ -78,6 +76,10 @@ def create_table(df, category_column:str, category_list:list, calculate_volume:b
 
 def create_paragraph(text):
     st.markdown('<span style="word-wrap:break-word;">' + text + '</span>', unsafe_allow_html=True)
+    
+# Sidebar Table of Contents
+toc = Toc()
+toc.placeholder(sidebar=True)
 
 df = read_df('data/auctions_clean.csv')
 df = df[df["date"] >= 2001]
@@ -113,24 +115,6 @@ change_value("Silk print", "Siiditrükk", "technique")
 change_value("Vitrography", "Vitrograafia", "technique")
 change_value("Wood cut", "Puugravüür", "technique")
 
-# LOGO
-# https://discuss.streamlit.io/t/href-on-image/9693/4
-@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
-def get_img_with_href(local_img_path, target_url, max_width):
-    img_format = os.path.splitext(local_img_path)[-1].replace('.', '')
-    bin_str = get_base64_of_bin_file(local_img_path)
-    html_code = f'''
-        <a href="{target_url}">
-            <img src="data:image/{img_format};base64,{bin_str}" style="max-width:{max_width};width:100%" />
-        </a>'''
-    return html_code
-
 kanvas_logo = get_img_with_href('data/horisontal-BLACK.png', 'https://kanvas.ai', '200px')
 st.sidebar.markdown(kanvas_logo, unsafe_allow_html=True)
 
@@ -139,7 +123,7 @@ st.markdown(kanvas_logo, unsafe_allow_html=True)
 
 # TITLE
 st.title('Eesti kunsti indeks')
-st.header('Ülevaade')
+toc.header('Ülevaade')
 create_paragraph('''Kanvas.ai kunsti indeks on tööriist kunsti investeerijale.
 
 Kanvas.ai kunsti indeks viimase 20 aasta (2001 kuni 2021) Eesti kunstioksjonite \nmüükide põhjal loodud andmebaas, eesmärgiga muuta kunst ja kunsti investeerimine \nlihtsamini mõistetavaks igale huvilisele.
@@ -154,7 +138,7 @@ Kunstiindeksi metoodika on praegu väljatöötamisel. Soovituste ja kommentaarid
 ''')
 
 # FIGURE - date and average price
-st.subheader('Joonis - Ajalooline hinnanäitaja')
+toc.subheader('Joonis - Ajalooline hinnanäitaja')
 fig = px.area(df_hist, x=df_hist.index, y="avg_price",
               labels={
                  "avg_price": "Ajalooline indeksinäitaja (€)",
@@ -165,13 +149,13 @@ st.plotly_chart(fig, use_container_width=True)
 create_paragraph('Ülalpoolne kunstiindeks annab ülevaate kunsti hinna tõusust ja langusest. Märgatava hüppe on kunsti hind teinud viimaste aastate jooksul. Alates pandeemiast on oksjoni turul kunsti investeerimise vastu huvi hüppeliselt tõusnud.')
 
 # TABLE - categories average price
-st.subheader('Tabel - Ajalooline hinnanäitaja kategooriate kaupa')
+toc.subheader('Tabel - Ajalooline hinnanäitaja kategooriate kaupa')
 table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=False, table_height=150)
 st.table(table_data)
 create_paragraph('Meediumite ehk tehnika järgi järjestud vastavalt sellele, missugused meediumid domineerivad kõige kallimalt müüdud teoste hulgas.')
 
 # FIGURE - date and volume
-st.subheader('Joonis - Ajalooline volüümi kasv')
+toc.subheader('Joonis - Ajalooline volüümi kasv')
 fig = px.area(df_hist, x=df_hist.index, y="volume", 
              labels={
                  "volume": "Volüüm (€)",
@@ -184,13 +168,13 @@ Näiteks 2001 aastal oli oksjoni käive 174 000- euro ringis, siis 2021 aastal o
 ''')
 
 # TABLE - categories volume
-st.subheader('Tabel - Ajalooline volüümi kasv kategooriate kaupa')
+toc.subheader('Tabel - Ajalooline volüümi kasv kategooriate kaupa')
 table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=True, table_height=150)
 st.table(table_data)
 create_paragraph('Sellest tabelist näeme, milline meedium on olnud kõige suurema käibega. Antud andmete põhjal võime näiteks näha, et graafika on kõige populaarsem ning kõige suurema käibe tõusu protsendiga.(Keskmiselt 204% 20 aasta jooksul ja õlimaalil samal ajal 35%)')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
-st.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
+toc.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
 
 df['start_price'] = df['start_price'].fillna(df['end_price'])
 df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
@@ -222,7 +206,7 @@ Näiteks sinise tooniga on kunstnikud ja meediumid, mille puhul on oksjonil algh
 author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
 top_authors = author_sum.sort_values(ascending=False)[:10]
 
-st.subheader('Tabel - Top 10 parimat kunstnikku')
+toc.subheader('Tabel - Top 10 parimat kunstnikku')
 table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=False, table_height=250)    
 st.table(table_data)
 create_paragraph('''Selles tabelis on näha, millised kunstnikud on kõige populaarsemad ning nende kasvuprotsent. Protsent on arvutatud aastate vältel keskmise haamri hinna põhjal.
@@ -231,14 +215,14 @@ Selles tabelis on esikohal Konrad Mägi, kelle teoste väärtuse kasvuprotsent o
 ''')
 
 # TABLE - best authors volume
-st.subheader('Tabel - Volüümi kasv Top 10 kunstnikul')
+toc.subheader('Tabel - Volüümi kasv Top 10 kunstnikul')
 table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=True, table_height=250)    
 st.table(table_data)
 create_paragraph('''Siin on näha kunstnike teoste käive ning selle keskmine tõus aastas. Antud tabelis on Wiiralt kaheksandal kohal ja esimesel Konrad Mägi. Kuna tabelis esitatud protsent on kogu perioodi (2001-2021) käibe peale, siis need kunstnikud, kelle töid on müüdud rohkem on sattunud ka tabeli etteotsa.
 ''')
 
 # FIGURE - date and price
-st.subheader('Joonis - Kunstitöö vanus vs hind')
+toc.subheader('Joonis - Kunstitöö vanus vs hind')
 fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", color="category",
                  size='decade', hover_data=['author'],
                  labels={
@@ -257,7 +241,7 @@ Kõige vanem teos pärineb aastast 1900, kuid ei ole kõige kallimalt müüdud. 
 ''')
 
 # FIGURE - size and price
-st.subheader('Joonis - Kunstitöö pindala vs hind')
+toc.subheader('Joonis - Kunstitöö pindala vs hind')
 df["dimension"] = df["dimension"] / (1000*1000)
 fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", color="category",
                  size='dimension', hover_data=['author'],
@@ -278,4 +262,5 @@ create_credits('''Copyright: Kanvas.ai''')
 create_credits('''Autorid: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg''')
 create_credits('''Allikad: Eesti avalikud kunsti oksjonid (2001-2021)''')
 create_credits('''Muu: Inspireeritud Riivo Antoni loodud kunstiindeksist; <br>Heldet toetust pakkus <a href="https://tezos.foundation/">Tezos Foundation</a>''')
+toc.generate()
 
