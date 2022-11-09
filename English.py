@@ -1,9 +1,7 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
-import numpy as np
-import plotly.graph_objects as go
-from StreamlitHelper import Toc, get_img_with_href
+from StreamlitHelper import Toc, get_img_with_href, read_df, create_table
 
 st.set_page_config(
     page_title="Art Index",
@@ -30,50 +28,6 @@ inject_style_css = """
             </style>
             """
 st.markdown(inject_style_css, unsafe_allow_html=True)
-        
-@st.cache(ttl=60*60*24*7, max_entries=300)
-def read_df(path:str):
-    return pd.read_csv(path)
-
-
-@st.cache(ttl=60*60*24*7, max_entries=300)
-def create_table(df, category_column:str, category_list:list, calculate_volume:bool, table_height:int):
-    category_returns = []
-    for cat in category_list:
-        df_cat = df[df[category_column]==cat]
-
-        dates = np.sort(df_cat["date"].unique())
-
-        prices = []
-        start_year = df_cat["date"].min()
-        df_cat_date = df_cat[df_cat["date"]==start_year]
-        if calculate_volume: 
-            prices.append(df_cat_date["end_price"].sum())
-        else:
-            prices.append(df_cat_date["end_price"].mean())
-        price_changes = []
-        last_year = start_year
-        for date in dates[1:]:
-            df_cat_date = df_cat[df_cat["date"]==date]
-
-            start_sum = prices[-1]
-            end_sum = 0
-            if calculate_volume: 
-                end_sum = df_cat_date["end_price"].sum()
-            else:
-                end_sum = df_cat_date["end_price"].mean()
-
-            price_change = (end_sum - start_sum) / start_sum * 100 / (date-last_year)
-            price_changes.append(price_change) # Kasvu arvutus
-            prices.append(end_sum) # Jätame meelde selle aasta hinna
-            last_year = date
-        annual_return = round(np.mean(price_changes), 4)
-        total_return = round(annual_return * len(dates), 4)
-        category_returns.append([cat, total_return, annual_return])
-        
-    df_cat_returns = pd.DataFrame(category_returns, columns=[category_column.capitalize(), "Total Growth since Inception (%)", "Annual Growth Rate (%)"]) 
-    df_cat_returns = df_cat_returns.sort_values(by="Annual Growth Rate (%)", ascending=False)
-    return df_cat_returns.drop("Total Growth since Inception (%)", axis=1)
 
 def create_paragraph(text):
     st.markdown('<span style="word-wrap:break-word;">' + text + '</span>', unsafe_allow_html=True)
@@ -164,7 +118,6 @@ df2 = df2.reset_index()
 fig = px.treemap(df2, path=[px.Constant("Categories"), 'category', 'technique', 'author'], values='total_sales',
                   color='overbid_%',
                   color_continuous_scale='RdBu',
-                  color_continuous_midpoint=np.average(df2['overbid_%'], weights=df2['total_sales']),
                   range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std()),
                   labels={
                      "overbid_%": "Overbid (%)",
