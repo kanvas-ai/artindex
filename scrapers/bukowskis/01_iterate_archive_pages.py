@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """This script was created for downloading lots from Bukowskis.com
 and saving them to the database.
 

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """This script was created for scraping dowloaded html files and saving them to the csv file.
 """
 
