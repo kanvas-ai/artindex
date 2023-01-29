@@ -10,15 +10,18 @@ $ source venv/bin/activate
 
 $ pip install streamlit
 
-## Install Requirements
+## Install Requirements - Streamlit Standalone
+
+$ git pull https://github.com/kanvas-ai/artindex.git
 
 $ pip install -r requiments.txt
+
 $ streamlit run Home.py
 
 This should launch a browser on localhost:8501.
 
 
-## Update Content
+## Update Content - Streamlit + Ngnix
 
 ### Update Code
 $ cd artindex
