@@ -83,12 +83,17 @@ def create_table(df, category_column:str, category_list:list, calculate_volume:b
             else:
                 end_sum = df_cat_date["end_price"].mean()
 
+            if start_sum == 0 or end_sum == 0:
+                continue
             price_change = (end_sum - start_sum) / start_sum * 100 / (date-last_year)
             price_changes.append(price_change) # Kasvu arvutus
             prices.append(end_sum) # Jätame meelde selle aasta hinna
             last_year = date
         annual_return = round(np.mean(price_changes), 4)
         total_return = round(annual_return * len(dates), 4)
+        if len(dates) == 1:
+            annual_return = 0
+            total_return = 0
         category_returns.append([cat, total_return, annual_return])
         
     df_cat_returns = pd.DataFrame(category_returns, columns=["Kategooria", "Kogukasv algusest (%)", "Iga-aastane kasv (%)"]) 
