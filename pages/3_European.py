@@ -174,8 +174,9 @@ create_paragraph('''Tekst
 toc.subheader('Figure - Size of Art Work vs Price')
 df["dimension"] = df["dimension"] / (1000*1000)
 df3 = df[df["technique"].isin(top_10_categories)]
-df3 = df3.sort_values("dimension", ascending=False)
-df3 = df3[:10000]
+#df3 = df3.sort_values("dimension", ascending=False)
+df3 = df3[df3["dimension"] > 1]
+#df3 = df3[:10000]
 fig = px.scatter(df3.dropna(subset=["dimension"]), x="dimension", y="end_price", color="category",
                  size='dimension', hover_data=['author'],
                  labels={
