@@ -25,14 +25,17 @@ class Toc:
 
     def generate(self):
         if self._placeholder:
-            self._placeholder.markdown("\n".join(self._items), unsafe_allow_html=True)
+            contents = "\n".join(self._items)
+            contents_wrapped = "<div style='margin-bottom:8px;'>" + contents +  "</div>"
+            self._placeholder.markdown(contents_wrapped, unsafe_allow_html=True)
     
     def _markdown(self, text, level, space=""):
         import re
         key = re.sub('[^0-9a-zA-Z]+', '-', text).lower()
 
         st.markdown(f"<{level} id='{key}'>{text}</{level}>", unsafe_allow_html=True)
-        self._items.append(f"{space}* <a href='#{key}'>{text}</a>")
+        text_removed = re.sub('.*- ', "", text)
+        self._items.append(f"<div style='border-bottom:solid;padding:4px 0px;'> {space}{space} <a href='#{key}' style='text-decoration:none;color:black'>{text_removed}</a></div>")
 
 # LOGO
 # https://discuss.streamlit.io/t/href-on-image/9693/4
