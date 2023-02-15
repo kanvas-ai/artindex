@@ -41,6 +41,8 @@ df = df.drop("Unnamed: 0", axis=1)
 df = df[df["dimension"]>0]
 df = df.dropna(subset=["currency"])
 df['date'] = df["auction_year"]
+top_10_categories = list(df['technique'].value_counts().nlargest(11).index)
+top_10_categories.remove("Unknown")
 
 kanvas_logo = get_img_with_href('data/horisontal-BLACK.png', 'https://kanvas.ai', '200px')
 st.sidebar.markdown(kanvas_logo, unsafe_allow_html=True)
@@ -86,7 +88,7 @@ create_paragraph('Tekst')
 # TABLE - categories average price
 toc.subheader('Tabel - Ajalooline hinnanäitaja kategooriate kaupa')
 df["category"] = df["technique"]
-table_data = create_table(df, category_column="category", category_list=["Oil", "Lithograph", "Etching", "Watercolor", "Painting"], calculate_volume=False, table_height=150)
+table_data = create_table(df, category_column="category", category_list=top_10_categories, calculate_volume=False, table_height=150)
 st.table(table_data)
 create_paragraph('Meediumite ehk tehnika järgi järjestud vastavalt sellele, missugused meediumid domineerivad kõige kallimalt müüdud teoste hulgas.')
 
@@ -104,9 +106,47 @@ create_paragraph('''Tekst
 
 # TABLE - categories volume
 toc.subheader('Tabel - Ajalooline volüümi kasv kategooriate kaupa')
-table_data = create_table(df, category_column="category", category_list=["Oil", "Lithograph", "Etching", "Watercolor", "Painting"], calculate_volume=True, table_height=150)
+table_data = create_table(df, category_column="category", category_list=top_10_categories, calculate_volume=True, table_height=150)
 st.table(table_data)
 create_paragraph('Sellest tabelist näeme, milline meedium on olnud kõige suurema käibega. Antud andmete põhjal võime näiteks näha, et graafika on kõige populaarsem ning kõige suurema käibe tõusu protsendiga.(Keskmiselt 204% 20 aasta jooksul ja õlimaalil samal ajal 35%)')
+
+# FIGURE - treemap covering categories, techniques and authors by volume and overbid
+toc.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
+
+df['start_price'] = df['start_price'].fillna(df['end_price'])
+df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
+#df['art_work_age'] = df['date'] - df['year']
+df2 = df[df["technique"].isin(top_10_categories)]
+df2 = df2.groupby(['author', 'technique']).agg({'end_price':['sum'], 'overbid_%':['mean']})
+df2.columns = ['total_sales', 'overbid_%']
+df2 = df2.dropna(subset="overbid_%")
+df2 = df2[df2["total_sales"] > 0]
+#df2 = df2.sort_values("total_sales", ascending=False)
+df2 = df2.reset_index()
+
+top_10_cat_indexes = []
+for cat in top_10_categories:
+    indexes = df2.loc[df2["technique"]==cat, "total_sales"].nlargest(10).index
+    top_10_cat_indexes.extend(list(indexes))
+df2 = df2[df2.index.isin(top_10_cat_indexes)]
+
+@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
+def create_treemap():
+    return px.treemap(df2, path=[px.Constant("Techniques"), 'technique', 'author'], values='total_sales',
+                      color='overbid_%',
+                      color_continuous_scale='RdBu',
+                      range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std()),
+                      labels={
+                         "overbid_%": "Ülepakkumine (%)",
+                         "total_sales": "Kogumüük",
+                         "author": "Autor",
+                      })
+fig = create_treemap()
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
+fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Ülepakkumine (%): %{color:.2f}',)
+st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''Tekst
+''')
 
 # TABLE - best authors average price
 author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
@@ -133,7 +173,9 @@ create_paragraph('''Tekst
 # FIGURE - size and price
 toc.subheader('Figure - Size of Art Work vs Price')
 df["dimension"] = df["dimension"] / (1000*1000)
-df3 = df[df["technique"].isin(["Oil", "Lithograph", "Etching", "Watercolor", "Painting"])]
+df3 = df[df["technique"].isin(top_10_categories)]
+df3 = df3.sort_values("dimension", ascending=False)
+df3 = df3[:10000]
 fig = px.scatter(df3.dropna(subset=["dimension"]), x="dimension", y="end_price", color="category",
                  size='dimension', hover_data=['author'],
                  labels={
