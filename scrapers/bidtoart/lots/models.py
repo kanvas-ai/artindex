@@ -63,7 +63,11 @@ class Art(models.Model):
     def area(self):
         # 1.4 cm - 93.8 cm (0.55 in - 36.93 in)
         # regex for 1.4 cm - 93.8 cm to get 1.4 and 93.8
-        res = re.findall(r"\d+\.\d+", self.dimensions)
+        dim = self.dimensions
+        # remove inch area if present
+        if dim.find("(") != -1:
+            dim = dim[:dim.find("(")]
+        res = re.findall(r"\d+\.\d+", dim)
         # return multiplication of 1.4 and 93.8
         return math.prod([float(x) for x in res])
 
