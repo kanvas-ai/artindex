@@ -25,6 +25,7 @@ inject_style_css = """
                 background-color:  #004170;
                 color: white;
                 }
+            a { text-decoration:none;}
             </style>
             """
 st.markdown(inject_style_css, unsafe_allow_html=True)

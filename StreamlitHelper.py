@@ -32,10 +32,10 @@ class Toc:
     def _markdown(self, text, level, space=""):
         import re
         key = re.sub('[^0-9a-zA-Z]+', '-', text).lower()
-
-        st.markdown(f"<{level} id='{key}'>{text}</{level}>", unsafe_allow_html=True)
+        st.markdown(f"<div id='{key}'></div>", unsafe_allow_html=True)
+        st.markdown(f"<{level}>{text}</{level}>", unsafe_allow_html=True)
         text_removed = re.sub('.*- ', "", text)
-        self._items.append(f"<div style='border-bottom:solid;padding:4px 0px;'> {space}{space} <a href='#{key}' style='text-decoration:none;color:black'>{text_removed}</a></div>")
+        self._items.append(f"<div style='border-bottom:solid;padding:4px 0px;'> {space}{space} <a href='#{key}' style='color:black;'>{text_removed}</a></div>")
 
 # LOGO
 # https://discuss.streamlit.io/t/href-on-image/9693/4
