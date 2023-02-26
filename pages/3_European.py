@@ -228,3 +228,11 @@ create_credits('''Autorid: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg''')
 create_credits('''Allikad: Eesti avalikud kunsti oksjonid (2001-2021)''')
 create_credits('''Muu: Inspireeritud Riivo Antoni loodud kunstiindeksist; <br>Heldet toetust pakkus <a href="https://tezos.foundation/">Tezos Foundation</a>''')
 toc.generate()
+
+@st.cache
+def convert_df():
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return read_df('data/europe2.csv').to_csv().encode('utf-8')
+
+csv = convert_df()
+st.download_button(label="Laadi alla andmed",data=csv, file_name='europe_art_index.csv', mime='text/csv')

@@ -223,3 +223,11 @@ create_credits('''Source: Estonian public art auction sales (2001-2021)''')
 create_credits('''Other credits: Inspired by the original Estonian Art Index created by Riivo Anton; <br>Generous support from <a href="https://tezos.foundation/">Tezos Foundation</a>''')
 
 toc.generate()
+
+@st.cache
+def convert_df():
+    # IMPORTANT: Cache the conversion to prevent computation on every rerun
+    return read_df('data/auctions_clean.csv').to_csv().encode('utf-8')
+
+csv = convert_df()
+st.download_button(label="Download data",data=csv, file_name='estonian_art_index.csv', mime='text/csv')
