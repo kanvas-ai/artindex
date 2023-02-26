@@ -37,6 +37,8 @@ df = read_df('data/auctions_clean.csv')
 # Fix data
 df = df[df["date"] >= 2001]
 df = df[df["date"] <= 2021]
+df["date"] = df["date"].astype("int")
+df = df.sort_values(by=["date"])
 df.loc[df["technique"]=="Mixed tech", "technique"] = "Mixed technique"
 df_hist = read_df('data/historical_avg_price.csv')
 df_hist = df_hist[df_hist["date"] >= 2001]
@@ -180,7 +182,8 @@ create_paragraph('''This table shows the turnover and average annual growth of a
 # FIGURE - date and price
 toc.subheader('Figure - Age of Art Work vs Price')
 fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", color="category",
-                 size='decade', hover_data=['author'],
+                 animation_frame="date", animation_group="technique", hover_name="technique",
+                 size='date', hover_data=['author'], size_max=15, range_x=[-2,130], range_y=[-1000,100000],
                  labels={
                      "end_price": "Auction Final Sales Price (€)",
                      "art_work_age": "Art Work Age",
@@ -199,7 +202,8 @@ The oldest work dates back to 1900, but is not the most expensive. In general, i
 toc.subheader('Figure - Size of Art Work vs Price')
 df["dimension"] = df["dimension"] / (1000*1000)
 fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", color="category",
-                 size='dimension', hover_data=['author'],
+                 animation_frame="date", animation_group="technique", hover_name="technique",
+                 size='date', hover_data=['author'], size_max=15, range_x=[-0.03,0.35], range_y=[-1000,100000],
                  labels={
                      "end_price": "Auction Final Sales Price (€)",
                      "dimension": "Dimension (m²)",

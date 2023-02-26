@@ -38,10 +38,12 @@ toc = Toc()
 toc.placeholder(sidebar=True)
 
 df = pd.read_csv('data/europe2.csv')
+df = df[df["auction_year"] >= 2002]
 df = df.drop("Unnamed: 0", axis=1)
 df = df[df["dimension"]>0]
 df = df.dropna(subset=["currency"])
 df['date'] = df["auction_year"]
+df = df.sort_values(by=["date"])
 top_10_categories = list(df['technique'].value_counts().nlargest(11).index)
 top_10_categories.remove("Unknown")
 
@@ -200,18 +202,20 @@ create_paragraph('''Tekst
 
 # FIGURE - size and price
 toc.subheader('Figure - Size of Art Work vs Price')
-df["dimension"] = df["dimension"] / (1000*1000)
+df["dimension"] = df["dimension"] / (100*100)
 df3 = df[df["technique"].isin(top_10_categories)]
 #df3 = df3.sort_values("dimension", ascending=False)
-df3 = df3[df3["dimension"] > 1]
+df3 = df3[df3["dimension"]>0.01]
+#df4 = df3.groupby(['date', 'technique']).agg({'end_price':['sum'], 'overbid_%':['mean']})
 #df3 = df3[:10000]
-fig = px.scatter(df3.dropna(subset=["dimension"]), x="dimension", y="end_price", color="category",
-                 size='dimension', hover_data=['author'],
+fig = px.scatter(df3.dropna(subset=["dimension"]), x="dimension", y="end_price", color="technique",
+                 animation_frame="date", animation_group="technique", hover_name="technique",
+                 size='date', hover_data=['author'], range_x=[-0.1,1.5], range_y=[-20000,150000],
                  labels={
                      "end_price": "Auction Final Sales Price (€)",
                      "dimension": "Dimension (m²)",
                      "author": "Author",
-                     "category": "Category",
+                     "technique": "Category",
                   })
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)

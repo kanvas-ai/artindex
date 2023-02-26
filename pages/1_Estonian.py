@@ -40,6 +40,7 @@ toc.placeholder(sidebar=True)
 df = read_df('data/auctions_clean.csv')
 df = df[df["date"] >= 2001]
 df = df[df["date"] <= 2021]
+df = df.sort_values(by=["date"])
 df_hist = read_df('data/historical_avg_price.csv')
 df_hist = df_hist[df_hist["date"] >= 2001]
 df_hist = df_hist.groupby("date").sum()
@@ -203,7 +204,8 @@ create_paragraph('''Siin on näha kunstnike teoste käive ning selle keskmine t�
 # FIGURE - date and price
 toc.subheader('Joonis - Kunstitöö vanus vs hind')
 fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", color="category",
-                 size='decade', hover_data=['author'],
+                 animation_frame="date", animation_group="technique", hover_name="technique",
+                 size='date', hover_data=['author'], size_max=15, range_x=[-2,130], range_y=[-1000,100000],
                  labels={
                      "end_price": "Haamrihind (€)",
                      "art_work_age": "Kunstitöö vanus",
@@ -223,7 +225,8 @@ Kõige vanem teos pärineb aastast 1900, kuid ei ole kõige kallimalt müüdud. 
 toc.subheader('Joonis - Kunstitöö pindala vs hind')
 df["dimension"] = df["dimension"] / (1000*1000)
 fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", color="category",
-                 size='dimension', hover_data=['author'],
+                 animation_frame="date", animation_group="technique", hover_name="technique",
+                 size='date', hover_data=['author'], size_max=15, range_x=[-0.03,0.35], range_y=[-1000,100000],
                  labels={
                      "end_price": "Haamrihind (€)",
                      "dimension": "Pindala (m²)",
