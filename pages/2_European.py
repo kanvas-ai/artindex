@@ -161,6 +161,34 @@ st.table(table_data)
 create_paragraph('''Tekst
 ''')
 
+# FIGURE - treemap covering categories, techniques and authors by volume and overbid
+toc.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
+
+df2 = df[df["technique"].isin(top_10_categories)]
+df2 = df2[df["author"].isin(top_authors)]
+table_data = create_table(df, category_column="author", category_list=top_authors, calculate_volume=False, table_height=250)
+df2["yearly_performance"] = [table_data[table_data["Kategooria"] == x]["Iga-aastane kasv (%)"] for x in df2["author"]]
+
+df2 = df2.groupby(['author', 'technique']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
+df2.columns = ['total_sales', 'yearly_performance']
+df2 = df2.reset_index()
+
+fig = px.treemap(df2, path=[px.Constant("Techniques"), 'technique', 'author'], values='total_sales',
+                  color='yearly_performance',
+                  color_continuous_scale='RdBu',
+                  range_color = (-20, 100),
+                  labels={
+                     "yearly_performance": "Aasta tootlus",
+                     "total_sales": "Kogumüük",
+                     "author": "Autor",
+                  })
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
+fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Aasta tootlus (%): %{color:.2f}',)
+st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''...
+''')
+
+
 # TABLE - best authors volume
 toc.subheader('Tabel - Volüümi kasv Top 10 kunstnikul')
 table_data = create_table(df, category_column="author", category_list=top_authors, calculate_volume=True, table_height=250)    

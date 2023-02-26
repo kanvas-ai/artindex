@@ -133,6 +133,31 @@ create_paragraph('''Categories and artists, where the color scale gives us an ov
 For example, the blue color shows artists and mediums, which had the highest overbidding percentage. Volume is also shown next to the artist’s name. For example, Konrad Mägi has the highest art piece sold, but this table shows that the highest overbidding goes to the works of Olev Subbi, in regards to the tempera medium. (711.69 % price increase from the starting price, while the numbers for Konrad Mägi are 59.06 % for oil on cardboard and 85.44% for oil on canvas medium). Although Konrad Mägi still has the edge over Subbi in terms of volume.
 ''')
 
+# FIGURE - treemap covering categories, techniques and authors by volume and overbid
+toc.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
+
+table_data = create_table(df, category_column="author", category_list=list(df["author"].unique()), calculate_volume=False, table_height=250)
+df["yearly_performance"] = [table_data[table_data["Kategooria"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
+df['art_work_age'] = df['date'] - df['year']
+df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
+df2.columns = ['total_sales', 'yearly_performance']
+df2 = df2.reset_index()
+
+fig = px.treemap(df2, path=[px.Constant("Categories"), 'category', 'technique', 'author'], values='total_sales',
+                  color='yearly_performance',
+                  color_continuous_scale='RdBu',
+                  range_color = (-20, 100),
+                  labels={
+                     "yearly_performance": "Aasta tootlus",
+                     "total_sales": "Kogumüük",
+                     "author": "Autor",
+                  })
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
+fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Aasta tootlus (%): %{color:.2f}',)
+st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''...
+''')
+
 # TABLE - best authors average price
 author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
 top_authors = author_sum.sort_values(ascending=False)[:10]
