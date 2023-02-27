@@ -69,6 +69,8 @@ def create_table(df, category_column:str, category_list:list, calculate_volume:b
 
         prices = []
         start_year = df_cat["date"].min()
+        if pd.isna(start_year):
+            continue
         df_cat_date = df_cat[df_cat["date"]==start_year]
         if calculate_volume: 
             prices.append(df_cat_date["end_price"].sum())
