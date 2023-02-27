@@ -121,7 +121,7 @@ fig = px.area(df_hist, x=df_hist.index, y="volume",
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''Volüümi kasv annab meile ülevaate, kui palju on ajas tõusnud ja langenud oksjonite käive. 
-Näiteks 2001 aastal oli oksjoni käive 174 000- euro ringis, siis 2021 aastal oli oksjonite käive 4.5miljonit. Kindlasti on väga oluline roll krooni asendumisel euroga ja juurde on tulnud oksjoni galeriisid. Sellegipoolest on kunsti müük märkimisväärse hüppe teinud alates 2019, mis on 20 aasta lõikes kõige suurem. Viimane suurem muutus toimus 2006-2009 majanduskriisi mõjutustest.
+Näiteks 2001 aastal oli oksjoni käive 174 000- euro ringis, siis 2021 aastal oli oksjonite käive 4.5miljonit. Kindlasti on väga oluline roll krooni asendumisel euroga ja juurde on tulnud oksjonimaju. Sellegipoolest on kunsti müük märkimisväärse hüppe teinud alates 2019, mis on 20 aasta lõikes kõige suurem. Viimane suurem muutus toimus 2006-2009 majanduskriisi mõjutustest.
 ''')
 
 # TABLE - categories volume
@@ -189,7 +189,7 @@ top_authors = author_sum.sort_values(ascending=False)[:10]
 toc.subheader('Tabel - Top 10 parimat kunstnikku')
 table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=False, table_height=250)    
 st.table(table_data)
-create_paragraph('''Selles tabelis on näha, millised kunstnikud on kõige populaarsemad ning nende kasvuprotsent. Protsent on arvutatud aastate vältel keskmise haamri hinna põhjal.
+create_paragraph('''Selles tabelis on näha, millised kunstnikud on kõige populaarsemad ning nende kasvuprotsent. Protsent on arvutatud aastate vältel keskmise haamrihinna põhjal.
 
 Selles tabelis on esikohal Konrad Mägi, kelle teoste väärtuse kasvuprotsent on keskmiselt 198,95%. Konrad Mäe kõrget kasvu protsenti on mõjutanud, kindlasti tema unikaalsus. Oksjonil esineb Konrad Mäe töid pigem harva. Teiselt kohalt leiame Eduard Wiiralti, kelle töid vastupidiselt Konrad Mäele liigub oksjonitel palju. Wiiralti alghinnad on madalamad ning ta on väga populaarne kogujate hulgas.
 ''')
