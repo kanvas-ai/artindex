@@ -102,6 +102,6 @@ def create_table(df, category_column:str, category_list:list, calculate_volume:b
         year_span = " - ".join(map(str, [round(start_year), round(last_year)]))
         category_returns.append([cat, year_span, total_return, annual_return])
         
-    df_cat_returns = pd.DataFrame(category_returns, columns=["Kategooria", "Aasta vahemik", "Kogukasv algusest (%)", "Iga-aastane kasv (%)"]) 
+    df_cat_returns = pd.DataFrame(category_returns, columns=["Kategooria", "Aastavahemik", "Kogukasv algusest (%)", "Iga-aastane kasv (%)"]) 
     df_cat_returns = df_cat_returns.sort_values(by="Iga-aastane kasv (%)", ascending=False)
     return df_cat_returns.drop("Kogukasv algusest (%)", axis=1)
