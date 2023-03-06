@@ -106,7 +106,7 @@ st.plotly_chart(fig, use_container_width=True)
 create_paragraph('Ülalpoolne kunstiindeks annab ülevaate kunsti hinna tõusust ja langusest. Märgatava hüppe on kunsti hind teinud viimaste aastate jooksul. Alates pandeemiast on oksjoni turul kunsti investeerimise vastu huvi hüppeliselt tõusnud.')
 
 # TABLE - categories average price
-toc.subheader('Tabel - Ajalooline hinnanäitaja kategooriate kaupa')
+toc.subheader('Tabel - Ajalooline hinnanäitaja tehnikate kaupa')
 table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=False, table_height=150)
 st.table(table_data)
 create_paragraph('Meediumite ehk tehnika järgi järjestud vastavalt sellele, missugused meediumid domineerivad kõige kallimalt müüdud teoste hulgas.')
@@ -125,13 +125,13 @@ Näiteks 2001 aastal oli oksjoni käive 174 000- euro ringis, siis 2021 aastal o
 ''')
 
 # TABLE - categories volume
-toc.subheader('Tabel - Ajalooline volüümi kasv kategooriate kaupa')
+toc.subheader('Tabel - Ajalooline volüümi kasv tehnikate kaupa')
 table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=True, table_height=150)
 st.table(table_data)
 create_paragraph('Sellest tabelist näeme, milline meedium on olnud kõige suurema käibega. Antud andmete põhjal võime näiteks näha, et graafika on kõige populaarsem ning kõige suurema käibe tõusu protsendiga.(Keskmiselt 204% 20 aasta jooksul ja õlimaalil samal ajal 35%)')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
-toc.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
+toc.subheader('Joonis - Kunsti müügid tehnika ja kunstniku järgi')
 
 df['start_price'] = df['start_price'].fillna(df['end_price'])
 df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
@@ -152,16 +152,16 @@ fig = px.treemap(df2, path=[px.Constant("Categories"), 'category', 'technique', 
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Ülepakkumine (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
-create_paragraph('''Kategooriad ja kunstnikud, kus värviskaala annab meile protsentuaalse ülevaate, kui palju antud teos on oksjonil oma alghinnast ülepakutud ning kategooria ja eraldi kunstniku teoste käivet. 
+create_paragraph('''Tehnikad ja kunstnikud, kus värviskaala annab meile protsentuaalse ülevaate, kui palju antud teos on oksjonil oma alghinnast ülepakutud ning tehnika ja eraldi kunstniku teoste käivet. 
 
 Näiteks sinise tooniga on kunstnikud ja meediumid, mille puhul on oksjonil alghinnast ülepakkumine olnud kõige suurem. Kunstniku nime juurest võib lisaks ülepakkumis protsendile leida ka tema teoste käibe. Näiteks, kui kõige kallimalt müüdud teos kuulub Konrad Mäele, siis selle tabeli pealt võime välja lugeda, et kõige suurem ülepakkumine on tehtud hoopis Olev Subbi teostele, meediumiks tempera (711,69 % tõus alghinnast haamrihinnani, Konrad Mäel samal ajal vastav number õli papil meedium 59,06 % ja õli lõuendil 85,44%). Konrad Mäe kogu käive jääb siiski Subbi omast kõrgemaks.
 ''')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
-toc.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
+toc.subheader('Joonis - Kunsti müügid tehnika ja kunstniku järgi')
 
 table_data = create_table(df, category_column="author", category_list=list(df["author"].unique()), calculate_volume=False, table_height=250)
-df["yearly_performance"] = [table_data[table_data["Kategooria"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
+df["yearly_performance"] = [table_data[table_data["Tehnika"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
 df['art_work_age'] = df['date'] - df['year']
 df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
 df2.columns = ['total_sales', 'yearly_performance']

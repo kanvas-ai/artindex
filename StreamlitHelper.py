@@ -101,7 +101,11 @@ def create_table(df, category_column:str, category_list:list, calculate_volume:b
             total_return = 0
         year_span = " - ".join(map(str, [round(start_year), round(last_year)]))
         category_returns.append([cat, year_span, total_return, annual_return])
-        
-    df_cat_returns = pd.DataFrame(category_returns, columns=["Kategooria", "Aastavahemik", "Kogukasv algusest (%)", "Iga-aastane kasv (%)"]) 
-    df_cat_returns = df_cat_returns.sort_values(by="Iga-aastane kasv (%)", ascending=False)
+    col = ""
+    if category_column == "author":
+        col = "Autor"
+    else:
+        col = "Tehnika"
+    df_cat_returns = pd.DataFrame(category_returns, columns=[col, "Aastavahemik", "Kogukasv algusest (%)", "Iga-aastane kasv (%)"]) 
+    #df_cat_returns = df_cat_returns.sort_values(by="Iga-aastane kasv (%)", ascending=False)
     return df_cat_returns.drop("Kogukasv algusest (%)", axis=1)

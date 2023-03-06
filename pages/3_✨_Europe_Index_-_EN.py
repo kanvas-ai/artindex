@@ -38,7 +38,7 @@ toc = Toc()
 toc.placeholder(sidebar=True)
 
 df = pd.read_csv('data/europe2.csv')
-df = df[df["auction_year"] >= 2002]
+df = df[df["auction_year"] >= 2000]
 df = df.drop("Unnamed: 0", axis=1)
 df = df[df["dimension"]>0]
 df = df.dropna(subset=["currency"])
@@ -70,7 +70,7 @@ Kunstiindeksi metoodika on praegu väljatöötamisel. Soovituste ja kommentaarid
 prices = []
 volumes = []
 dates = []
-for year in range(df["date"].min(), df["date"].max()):
+for year in range(df["date"].min(), df["date"].max()+1):
     dates.append(year)
     prices.append(df[df["date"] == year]["end_price"].mean())
     volumes.append(df[df["date"] == year]["end_price"].sum())
@@ -172,7 +172,7 @@ toc.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
 df2 = df[df["technique"].isin(top_10_categories)]
 df2 = df2[df["author"].isin(top_authors)]
 table_data = create_table(df2, category_column="author", category_list=top_authors, calculate_volume=False, table_height=250)
-df2["yearly_performance"] = [table_data[table_data["Kategooria"] == x]["Iga-aastane kasv (%)"] for x in df2["author"]]
+df2["yearly_performance"] = [table_data[table_data["Tehnika"] == x]["Iga-aastane kasv (%)"] for x in df2["author"]]
 
 df2 = df2.groupby(['author', 'technique']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
 df2.columns = ['total_sales', 'yearly_performance']

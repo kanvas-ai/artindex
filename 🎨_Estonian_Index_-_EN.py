@@ -136,10 +136,10 @@ For example, the blue color shows artists and mediums, which had the highest ove
 ''')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
-toc.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
+toc.subheader('Joonis - Kunsti müügid tehnika ja kunstniku järgi')
 
 table_data = create_table(df, category_column="author", category_list=list(df["author"].unique()), calculate_volume=False, table_height=250)
-df["yearly_performance"] = [table_data[table_data["Kategooria"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
+df["yearly_performance"] = [table_data[table_data["Tehnika"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
 df['art_work_age'] = df['date'] - df['year']
 df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
 df2.columns = ['total_sales', 'yearly_performance']
