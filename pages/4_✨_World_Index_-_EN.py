@@ -170,7 +170,7 @@ toc.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
 df2 = df[df["technique"].isin(top_10_categories)]
 df2 = df2[df["author"].isin(top_authors)]
 table_data = create_table(df, category_column="author", category_list=top_authors, calculate_volume=False, table_height=250)
-df2["yearly_performance"] = [table_data[table_data["Tehnika"] == x]["Iga-aastane kasv (%)"] for x in df2["author"]]
+df2["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df2["author"]]
 
 df2 = df2.groupby(['author', 'technique']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
 df2.columns = ['total_sales', 'yearly_performance']
