@@ -107,7 +107,7 @@ create_paragraph('Ülalpoolne kunstiindeks annab ülevaate kunsti hinna tõusust
 
 # TABLE - categories average price
 toc.subheader('Tabel - Ajalooline hinnanäitaja tehnikate kaupa')
-table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=False, table_height=150)
+table_data = create_table(df, "category", df["category"].unique(), calculate_volume=False, table_height=150)
 st.table(table_data)
 create_paragraph('Meediumite ehk tehnika järgi järjestud vastavalt sellele, missugused meediumid domineerivad kõige kallimalt müüdud teoste hulgas.')
 
@@ -126,7 +126,7 @@ Näiteks 2001 aastal oli oksjoni käive 174 000- euro ringis, siis 2021 aastal o
 
 # TABLE - categories volume
 toc.subheader('Tabel - Ajalooline volüümi kasv tehnikate kaupa')
-table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=True, table_height=150)
+table_data = create_table(df, "category", df["category"].unique(), calculate_volume=True, table_height=150)
 st.table(table_data)
 create_paragraph('Sellest tabelist näeme, milline meedium on olnud kõige suurema käibega. Antud andmete põhjal võime näiteks näha, et graafika on kõige populaarsem ning kõige suurema käibe tõusu protsendiga.(Keskmiselt 204% 20 aasta jooksul ja õlimaalil samal ajal 35%)')
 
@@ -160,7 +160,7 @@ Näiteks sinise tooniga on kunstnikud ja meediumid, mille puhul on oksjonil algh
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 toc.subheader('Joonis - Kunsti müügid tehnika ja kunstniku järgi')
 
-table_data = create_table(df, category_column="author", category_list=list(df["author"].unique()), calculate_volume=False, table_height=250)
+table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
 df["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
 df['art_work_age'] = df['date'] - df['year']
 df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
@@ -187,7 +187,7 @@ author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
 top_authors = author_sum.sort_values(ascending=False)[:10]
 
 toc.subheader('Tabel - Top 10 parimat kunstnikku')
-table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=False, table_height=250)    
+table_data = create_table(df, "author", top_authors.index, calculate_volume=False, table_height=250)    
 st.table(table_data)
 create_paragraph('''Selles tabelis on näha, millised kunstnikud on kõige populaarsemad ning nende kasvuprotsent. Protsent on arvutatud aastate vältel keskmise haamrihinna põhjal.
 
@@ -196,7 +196,7 @@ Selles tabelis on esikohal Konrad Mägi, kelle teoste väärtuse kasvuprotsent o
 
 # TABLE - best authors volume
 toc.subheader('Tabel - Volüümi kasv Top 10 kunstnikul')
-table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=True, table_height=250)    
+table_data = create_table(df, "author", top_authors.index, calculate_volume=True, table_height=250)    
 st.table(table_data)
 create_paragraph('''Siin on näha kunstnike teoste käive ning selle keskmine tõus aastas. Antud tabelis on Wiiralt kaheksandal kohal ja esimesel Konrad Mägi. Kuna tabelis esitatud protsent on kogu perioodi (2001-2021) käibe peale, siis need kunstnikud, kelle töid on müüdud rohkem on sattunud ka tabeli etteotsa.
 ''')
@@ -246,7 +246,7 @@ create_credits('''Allikad: Eesti avalikud kunsti oksjonid (2001-2021)''')
 create_credits('''Muu: Inspireeritud Riivo Antoni loodud kunstiindeksist; <br>Heldet toetust pakkus <a href="https://tezos.foundation/">Tezos Foundation</a>''')
 toc.generate()
 
-@st.cache
+@st.cache_data
 def convert_df():
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return read_df('data/auctions_clean.csv').to_csv().encode('utf-8')

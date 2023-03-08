@@ -121,7 +121,7 @@ See joonis näitab keskmise kunstiteose hinna kõikumist aastate vältel.
 
 # TABLE - categories average price
 toc.subheader('Tabel - Hinnanäitaja ajas, tehnikate kaupa')
-table_data = create_table(df.dropna(subset=["date"]), category_column="category_parent", category_list=order_categories[:-1], calculate_volume=False, table_height=150)
+table_data = create_table(df.dropna(subset=["date"]), "category_parent", order_categories[:-1], calculate_volume=False, table_height=150)
 st.table(table_data)
 create_paragraph('See tabel näitab üldisemate tehnikate keskmise hinna kõikumist aastate vahemikus.')
 
@@ -145,7 +145,7 @@ See joonis näitab oksjonite müügimahu kõikumisi aastate vältel.
 
 # TABLE - categories volume
 toc.subheader('Tabel - Müügimahu kasv ajas, tehnikate kaupa')
-table_data = create_table(df.dropna(subset=["date"]), category_column="category_parent", category_list=order_categories[:-1], calculate_volume=True, table_height=150)
+table_data = create_table(df.dropna(subset=["date"]), "category_parent", order_categories[:-1], calculate_volume=True, table_height=150)
 st.table(table_data)
 create_paragraph('See tabel näitab üldisemate tehnikate volüümi kõikumist aastate vahemikus.')
 
@@ -207,7 +207,7 @@ See joonis näitab müügi kogutulu autorite ja tehnikate lõikes detailsemalt, 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 toc.subheader('Joonis - Kunsti müügid tehnika ja kunstniku järgi')
 
-table_data = create_table(df, category_column="author", category_list=list(df["author"].unique()), calculate_volume=False, table_height=250)
+table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
 df["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
 df2 = df.groupby(['author', 'technique', 'category', 'category_parent']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
 df2.columns = ['total_sales', 'yearly_performance']
@@ -261,7 +261,7 @@ author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
 top_authors = author_sum.sort_values(ascending=False)[:25]
 
 toc.subheader('Tabel - Top 25 müügimahuga kunstnike teoste hinnakasv')
-table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=False, table_height=250)    
+table_data = create_table(df, "author", top_authors.index, calculate_volume=False, table_height=250)    
 st.table(table_data)
 create_paragraph('''
 See tabel näitab (alates suurima kogutuluga autorist) autorite teoste keskmist hinnakasvu aastas.
@@ -269,7 +269,7 @@ See tabel näitab (alates suurima kogutuluga autorist) autorite teoste keskmist 
 
 # TABLE - best authors volume
 toc.subheader('Tabel - Top 25 müügimahuga kunstnike teoste müügimahu kasv')
-table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=True, table_height=250)    
+table_data = create_table(df, "author", top_authors.index, calculate_volume=True, table_height=250)    
 st.table(table_data)
 create_paragraph('''
 See tabel näitab (alates suurima kogutuluga autorist) autorite teoste kogutulu kasvu aastas.
@@ -367,7 +367,7 @@ create_credits('''Allikad: Haus kunsti oksjonid (1997-2022)''')
 create_credits('''Muu: Inspireeritud Riivo Antoni loodud kunstiindeksist; <br>Heldet toetust pakkus <a href="https://tezos.foundation/">Tezos Foundation</a>''')
 toc.generate()
 
-@st.cache
+@st.cache_data
 def convert_df():
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return read_df('data/haus_cleaned.csv').to_csv().encode('utf-8')

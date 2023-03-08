@@ -84,7 +84,7 @@ create_paragraph('''The Art Index gives an overview of the rise and fall in the 
 
 # TABLE - categories average price
 toc.subheader('Table - Historical Price Performance by Category')
-table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=False, table_height=150)
+table_data = create_table(df, "category", df["category"].unique(), calculate_volume=False, table_height=150)
 st.table(table_data)
 create_paragraph('''Ranked by medium, or technique, according to which medium dominates the highest-selling works.''')
 
@@ -104,7 +104,7 @@ For example, in 2001 the auction turnover was around 174,000 euros, then in 2021
 
 # TABLE - categories volume
 toc.subheader('Table - Historical Volume Growth by Category')
-table_data = create_table(df, category_column="category", category_list=df["category"].unique(), calculate_volume=True, table_height=150)
+table_data = create_table(df, "category", df["category"].unique(), calculate_volume=True, table_height=150)
 st.table(table_data)
 create_paragraph('''From this table, we can see which medium has had the highest turnover. Based on the given data, we can see, for example, that graphics are the most popular and with the highest annual turnover increase percentage (204% annually over 20 years and 35% for oil painting at the same time).''')
 
@@ -138,7 +138,7 @@ For example, the blue color shows artists and mediums, which had the highest ove
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 toc.subheader('Joonis - Kunsti müügid tehnika ja kunstniku järgi')
 
-table_data = create_table(df, category_column="author", category_list=list(df["author"].unique()), calculate_volume=False, table_height=250)
+table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
 df["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
 df['art_work_age'] = df['date'] - df['year']
 df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
@@ -165,7 +165,7 @@ author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
 top_authors = author_sum.sort_values(ascending=False)[:10]
 
 toc.subheader('Table - Top 10 Best Performing Artists')
-table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=False, table_height=250)    
+table_data = create_table(df, "author", top_authors.index, calculate_volume=False, table_height=250)    
 st.table(table_data)
 create_paragraph('''This table shows the most popular artists and their growth percentage. The percentage is calculated based on annual average end price differences.
 
@@ -174,7 +174,7 @@ Leading this table is Konrad Mägi, whose growth percentage is on average 198.95
 
 # TABLE - best authors volume
 toc.subheader('Table - Volume Growth for Top 10 Artists')
-table_data = create_table(df, category_column="author", category_list=top_authors.index, calculate_volume=True, table_height=250)    
+table_data = create_table(df, "author", top_authors.index, calculate_volume=True, table_height=250)    
 st.table(table_data)
 create_paragraph('''This table shows the turnover and average annual growth of art works. Here Wiiralt is positioned at 8th place and Konrad Mägi at 1st. Because the growth percentage is during the whole period (2001-2021) turnover, then the artists, who have the most works bought, are situated at the top of the table.
 ''')
@@ -224,7 +224,7 @@ create_credits('''Other credits: Inspired by the original Estonian Art Index cre
 
 toc.generate()
 
-@st.cache
+@st.cache_data
 def convert_df():
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return read_df('data/auctions_clean.csv').to_csv().encode('utf-8')

@@ -37,7 +37,7 @@ def create_paragraph(text):
 toc = Toc()
 toc.placeholder(sidebar=True)
 
-df = pd.read_csv('data/europe2.csv')
+df = read_df('data/europe2.csv')
 df = df[df["auction_year"] >= 2000]
 df = df.drop("Unnamed: 0", axis=1)
 df = df[df["dimension"]>0]
@@ -91,7 +91,7 @@ create_paragraph('Tekst')
 # TABLE - categories average price
 toc.subheader('Tabel - Ajalooline hinnanäitaja kategooriate kaupa')
 df["category"] = df["technique"]
-table_data = create_table(df, category_column="category", category_list=top_10_categories, calculate_volume=False, table_height=150)
+table_data = create_table(df, "category", top_10_categories, calculate_volume=False, table_height=150)
 st.table(table_data)
 create_paragraph('Meediumite ehk tehnika järgi järjestud vastavalt sellele, missugused meediumid domineerivad kõige kallimalt müüdud teoste hulgas.')
 
@@ -109,7 +109,7 @@ create_paragraph('''Tekst
 
 # TABLE - categories volume
 toc.subheader('Tabel - Ajalooline volüümi kasv kategooriate kaupa')
-table_data = create_table(df, category_column="category", category_list=top_10_categories, calculate_volume=True, table_height=150)
+table_data = create_table(df, "category", top_10_categories, calculate_volume=True, table_height=150)
 st.table(table_data)
 create_paragraph('Sellest tabelist näeme, milline meedium on olnud kõige suurema käibega. Antud andmete põhjal võime näiteks näha, et graafika on kõige populaarsem ning kõige suurema käibe tõusu protsendiga.(Keskmiselt 204% 20 aasta jooksul ja õlimaalil samal ajal 35%)')
 
@@ -133,7 +133,7 @@ for cat in top_10_categories:
     top_10_cat_indexes.extend(list(indexes))
 df2 = df2[df2.index.isin(top_10_cat_indexes)]
 
-@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
+@st.cache_data(ttl=60*60*24*7, max_entries=300)
 def create_treemap():
     return px.treemap(df2, path=[px.Constant("Techniques"), 'technique', 'author'], values='total_sales',
                       color='overbid_%',
@@ -161,7 +161,7 @@ for author in author_sum.sort_values(ascending=False).index:
             break
 
 toc.subheader('Tabel - Top 10 parimat kunstnikku')
-table_data = create_table(df, category_column="author", category_list=top_authors, calculate_volume=False, table_height=250)    
+table_data = create_table(df, "author", top_authors, calculate_volume=False, table_height=250)    
 st.table(table_data)
 create_paragraph('''Tekst
 ''')
@@ -171,7 +171,7 @@ toc.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
 
 df2 = df[df["technique"].isin(top_10_categories)]
 df2 = df2[df["author"].isin(top_authors)]
-table_data = create_table(df2, category_column="author", category_list=top_authors, calculate_volume=False, table_height=250)
+table_data = create_table(df2, "author", top_authors, calculate_volume=False, table_height=250)
 df2["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df2["author"]]
 
 df2 = df2.groupby(['author', 'technique']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
@@ -195,7 +195,7 @@ create_paragraph('''...
 
 # TABLE - best authors volume
 toc.subheader('Tabel - Volüümi kasv Top 10 kunstnikul')
-table_data = create_table(df, category_column="author", category_list=top_authors, calculate_volume=True, table_height=250)    
+table_data = create_table(df, "author", top_authors, calculate_volume=True, table_height=250)    
 st.table(table_data)
 create_paragraph('''Tekst
 ''')
@@ -229,7 +229,7 @@ create_credits('''Allikad: Eesti avalikud kunsti oksjonid (2001-2021)''')
 create_credits('''Muu: Inspireeritud Riivo Antoni loodud kunstiindeksist; <br>Heldet toetust pakkus <a href="https://tezos.foundation/">Tezos Foundation</a>''')
 toc.generate()
 
-@st.cache
+@st.cache_data
 def convert_df():
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return read_df('data/europe2.csv').to_csv().encode('utf-8')
