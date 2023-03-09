@@ -150,7 +150,7 @@ st.table(table_data)
 create_paragraph('See tabel näitab üldisemate tehnikate volüümi kõikumist aastate vahemikus.')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
-toc.subheader('Joonis - Müügid tehnika ja kunstniku järgi')
+toc.subheader('Joonis - Haamrihinnad tehnika ja kunstniku järgi (alghinna ja haamrihinna võrdlus)')
 
 df['start_price'] = df['start_price'].fillna(df['end_price'])
 df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
@@ -205,7 +205,7 @@ See joonis näitab müügi kogutulu autorite ja tehnikate lõikes detailsemalt, 
 ''')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
-toc.subheader('Joonis - Kunsti müügid tehnika ja kunstniku järgi')
+toc.subheader('Joonis - Haamrihinnad tehnika ja kunstniku järgi (aastatulu)')
 
 table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
 df["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
@@ -260,7 +260,7 @@ See joonis näitab müügi kogutulu autorite ja tehnikate lõikes detailsemalt, 
 author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
 top_authors = author_sum.sort_values(ascending=False)[:25]
 
-toc.subheader('Tabel - Top 25 müügimahuga kunstnike teoste hinnakasv')
+toc.subheader('Tabel - Top 25 enim müüdud kunstnike teoste hinnakasv')
 table_data = create_table(df, "author", top_authors.index, calculate_volume=False, table_height=250)    
 st.table(table_data)
 create_paragraph('''
@@ -268,7 +268,7 @@ See tabel näitab (alates suurima kogutuluga autorist) autorite teoste keskmist 
 ''')
 
 # TABLE - best authors volume
-toc.subheader('Tabel - Top 25 müügimahuga kunstnike teoste müügimahu kasv')
+toc.subheader('Tabel - Top 25 enim müüdud kunstnike teoste müügimahu kasv')
 table_data = create_table(df, "author", top_authors.index, calculate_volume=True, table_height=250)    
 st.table(table_data)
 create_paragraph('''
