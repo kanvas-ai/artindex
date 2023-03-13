@@ -116,29 +116,35 @@ create_paragraph('''From this table, we can see which medium has had the highest
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 toc.subheader('Figure - Art Sales by Technique and Artist (Start and End Price Difference)')
 
-df['start_price'] = df['start_price'].fillna(df['end_price'])
-df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
-df['art_work_age'] = df['date'] - df['year']
-df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'overbid_%':['mean']})
-df2.columns = ['total_sales', 'overbid_%']
-df2 = df2.reset_index()
 
-# temp fix
-df2.loc[df2["category"] == "Mixed medium", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Mixed medium", "author"] = None
+@st.cache_data(ttl=60*60*24*7, max_entries=300)
+def create_treemap_overbid():
+    df['start_price'] = df['start_price'].fillna(df['end_price'])
+    df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
+    df['art_work_age'] = df['date'] - df['year']
+    df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'overbid_%':['mean']})
+    df2.columns = ['total_sales', 'overbid_%']
+    df2 = df2.reset_index()
 
-df2.loc[df2["category"] == "Drawing", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Drawing", "author"] = None
+    # temp fix
+    df2.loc[df2["category"] == "Mixed medium", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Mixed medium", "author"] = None
 
-fig = px.treemap(df2, path=[px.Constant("Techniques"), 'category', 'technique', 'author'], values='total_sales',
-                  color='overbid_%',
-                  color_continuous_scale='RdBu',
-                  range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std() / 2),
-                  labels={
-                     "overbid_%": "Overbid (%)",
-                     "total_sales": "Total Sales",
-                     "author": "Author",
-                  })
+    df2.loc[df2["category"] == "Drawing", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Drawing", "author"] = None
+
+    fig = px.treemap(df2, path=[px.Constant("Techniques"), 'category', 'technique', 'author'], values='total_sales',
+                      color='overbid_%',
+                      color_continuous_scale='RdBu',
+                      range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std() / 2),
+                      labels={
+                         "overbid_%": "Overbid (%)",
+                         "total_sales": "Total Sales",
+                         "author": "Author",
+                      })
+    return fig
+
+fig = create_treemap_overbid()
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Total Sales: %{value}<br> Overbid (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
@@ -150,29 +156,33 @@ For example, the blue color shows artists and mediums, which had the highest ove
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 toc.subheader('Figure - Art Sales by Technique and Artist (Yearly Performance)')
 
-table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
-df["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
-df['art_work_age'] = df['date'] - df['year']
-df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
-df2.columns = ['total_sales', 'yearly_performance']
-df2 = df2.reset_index()
+@st.cache_data(ttl=60*60*24*7, max_entries=300)
+def create_treemap_yearly():
+    table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
+    df["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
+    df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
+    df2.columns = ['total_sales', 'yearly_performance']
+    df2 = df2.reset_index()
 
-# temp fix
-df2.loc[df2["category"] == "Mixed medium", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Mixed medium", "author"] = None
+    # temp fix
+    df2.loc[df2["category"] == "Mixed medium", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Mixed medium", "author"] = None
 
-df2.loc[df2["category"] == "Drawing", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Drawing", "author"] = None
+    df2.loc[df2["category"] == "Drawing", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Drawing", "author"] = None
 
-fig = px.treemap(df2, path=[px.Constant("Techniques"), 'category', 'technique', 'author'], values='total_sales',
-                  color='yearly_performance',
-                  color_continuous_scale='RdBu',
-                  range_color = (-20, 100),
-                  labels={
-                     "yearly_performance": "Aasta tootlus",
-                     "total_sales": "Kogumüük",
-                     "author": "Autor",
-                  })
+    fig = px.treemap(df2, path=[px.Constant("Techniques"), 'category', 'technique', 'author'], values='total_sales',
+                      color='yearly_performance',
+                      color_continuous_scale='RdBu',
+                      range_color = (-20, 100),
+                      labels={
+                         "yearly_performance": "Aasta tootlus",
+                         "total_sales": "Kogumüük",
+                         "author": "Autor",
+                      })
+    return fig
+
+fig = create_treemap_yearly()
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Aasta tootlus (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
@@ -200,6 +210,7 @@ create_paragraph('''This table shows the turnover and average annual growth of a
 
 # FIGURE - date and price
 toc.subheader('Figure - Age of Art Work vs Price')
+df['art_work_age'] = df['date'] - df['year']
 fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", color="category",
                  animation_frame="date", animation_group="technique", hover_name="technique",
                  size='date', hover_data=['author'], size_max=15, range_x=[-2,130], range_y=[-1000,100000],

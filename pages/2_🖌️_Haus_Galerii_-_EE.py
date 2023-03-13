@@ -153,51 +153,55 @@ create_paragraph('See tabel näitab üldisemate tehnikate volüümi kõikumist a
 toc.subheader('Joonis - Haamrihinnad tehnika ja kunstniku järgi (alghinna ja haamrihinna võrdlus)')
 
 df['start_price'] = df['start_price'].fillna(df['end_price'])
-df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
-df2 = df[df["technique"] != " "]
-df2.loc[df2["category"] == "Muu maalitehnika", "category"] = df2["technique"]
+@st.cache_data(ttl=60*60*24*7, max_entries=300)
+def create_treemap_overbid():
+    df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
+    df2 = df[df["technique"] != " "]
+    df2.loc[df2["category"] == "Muu maalitehnika", "category"] = df2["technique"]
 
-df2 = df2.groupby(['author', 'technique', 'category', 'category_parent']).agg({'end_price':['sum'], 'overbid_%':['mean']})
-df2.columns = ['total_sales', 'overbid_%']
-df2 = df2.reset_index()
+    df2 = df2.groupby(['author', 'technique', 'category', 'category_parent']).agg({'end_price':['sum'], 'overbid_%':['mean']})
+    df2.columns = ['total_sales', 'overbid_%']
+    df2 = df2.reset_index()
 
-# fix treemap parenting
-df2.loc[df2["category"] == "Muu maalitehnika", "category"] = df2["technique"]
-df2.loc[df2["technique"] == "Tempera", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Tempera", "author"] = None
+    # fix treemap parenting
+    df2.loc[df2["category"] == "Muu maalitehnika", "category"] = df2["technique"]
+    df2.loc[df2["technique"] == "Tempera", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Tempera", "author"] = None
 
-df2.loc[df2["technique"] == "Akvarell", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Akvarell", "author"] = None
+    df2.loc[df2["technique"] == "Akvarell", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Akvarell", "author"] = None
 
-df2.loc[df2["technique"] == "Pastell", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Pastell", "author"] = None
+    df2.loc[df2["technique"] == "Pastell", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Pastell", "author"] = None
 
-df2.loc[df2["technique"] == "Akrüül", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Akrüül", "author"] = None
+    df2.loc[df2["technique"] == "Akrüül", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Akrüül", "author"] = None
 
-df2.loc[df2["technique"] == "Guašš", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Guašš", "author"] = None
+    df2.loc[df2["technique"] == "Guašš", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Guašš", "author"] = None
 
-df2.loc[df2["category"] == "Joonistustehnika", "category"] = df2["author"]
-df2.loc[df2["category_parent"] == "Joonistus", "author"] = None
+    df2.loc[df2["category"] == "Joonistustehnika", "category"] = df2["author"]
+    df2.loc[df2["category_parent"] == "Joonistus", "author"] = None
 
-df2.loc[df2["category"] == "Muu", "category"] = df2["technique"]
-df2.loc[df2["category_parent"] == "Eritehnika", "technique"] = df2["author"]
-df2.loc[df2["category_parent"] == "Eritehnika", "author"] = None
+    df2.loc[df2["category"] == "Muu", "category"] = df2["technique"]
+    df2.loc[df2["category_parent"] == "Eritehnika", "technique"] = df2["author"]
+    df2.loc[df2["category_parent"] == "Eritehnika", "author"] = None
 
-df2.loc[df2["category"] == "Segatehnika", "category"] = df2["author"]
-df2.loc[df2["category_parent"] == "Segatehnika", "technique"] = None
-df2.loc[df2["category_parent"] == "Segatehnika", "author"] = None
+    df2.loc[df2["category"] == "Segatehnika", "category"] = df2["author"]
+    df2.loc[df2["category_parent"] == "Segatehnika", "technique"] = None
+    df2.loc[df2["category_parent"] == "Segatehnika", "author"] = None
 
-fig = px.treemap(df2, path=[px.Constant("Tehnikad"), 'category_parent', 'category', 'technique', 'author'], values='total_sales',
-                  color='overbid_%',
-                  color_continuous_scale='RdBu',
-                  range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std()),
-                  labels={
-                     "overbid_%": "Ülepakkumine (%)",
-                     "total_sales": "Kogumüük",
-                     "author": "Autor",
-                  })
+    fig = px.treemap(df2, path=[px.Constant("Tehnikad"), 'category_parent', 'category', 'technique', 'author'], values='total_sales',
+                      color='overbid_%',
+                      color_continuous_scale='RdBu',
+                      range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std()),
+                      labels={
+                         "overbid_%": "Ülepakkumine (%)",
+                         "total_sales": "Kogumüük",
+                         "author": "Autor",
+                      })
+    return fig
+fig = create_treemap_overbid()
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Ülepakkumine (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
@@ -208,49 +212,54 @@ See joonis näitab müügi kogutulu autorite ja tehnikate lõikes detailsemalt, 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 toc.subheader('Joonis - Haamrihinnad tehnika ja kunstniku järgi (aastatulu)')
 
-table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
-df["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
-df2 = df.groupby(['author', 'technique', 'category', 'category_parent']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
-df2.columns = ['total_sales', 'yearly_performance']
-df2 = df2.reset_index()
+@st.cache_data(ttl=60*60*24*7, max_entries=300)
+def create_treemap_yearly():
+    table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
+    df["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
+    df2 = df.groupby(['author', 'technique', 'category', 'category_parent']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
+    df2.columns = ['total_sales', 'yearly_performance']
+    df2 = df2.reset_index()
 
-# fix treemap parenting
-df2.loc[df2["category"] == "Muu maalitehnika", "category"] = df2["technique"]
-df2.loc[df2["technique"] == "Tempera", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Tempera", "author"] = None
+    # fix treemap parenting
+    df2.loc[df2["category"] == "Muu maalitehnika", "category"] = df2["technique"]
+    df2.loc[df2["technique"] == "Tempera", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Tempera", "author"] = None
 
-df2.loc[df2["technique"] == "Akvarell", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Akvarell", "author"] = None
+    df2.loc[df2["technique"] == "Akvarell", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Akvarell", "author"] = None
 
-df2.loc[df2["technique"] == "Pastell", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Pastell", "author"] = None
+    df2.loc[df2["technique"] == "Pastell", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Pastell", "author"] = None
 
-df2.loc[df2["technique"] == "Akrüül", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Akrüül", "author"] = None
+    df2.loc[df2["technique"] == "Akrüül", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Akrüül", "author"] = None
 
-df2.loc[df2["technique"] == "Guašš", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Guašš", "author"] = None
+    df2.loc[df2["technique"] == "Guašš", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Guašš", "author"] = None
 
-df2.loc[df2["category"] == "Joonistustehnika", "category"] = df2["author"]
-df2.loc[df2["category_parent"] == "Joonistus", "author"] = None
+    df2.loc[df2["category"] == "Joonistustehnika", "category"] = df2["author"]
+    df2.loc[df2["category_parent"] == "Joonistus", "author"] = None
 
-df2.loc[df2["category"] == "Muu", "category"] = df2["technique"]
-df2.loc[df2["category_parent"] == "Eritehnika", "technique"] = df2["author"]
-df2.loc[df2["category_parent"] == "Eritehnika", "author"] = None
+    df2.loc[df2["category"] == "Muu", "category"] = df2["technique"]
+    df2.loc[df2["category_parent"] == "Eritehnika", "technique"] = df2["author"]
+    df2.loc[df2["category_parent"] == "Eritehnika", "author"] = None
 
-df2.loc[df2["category"] == "Segatehnika", "category"] = df2["author"]
-df2.loc[df2["category_parent"] == "Segatehnika", "technique"] = None
-df2.loc[df2["category_parent"] == "Segatehnika", "author"] = None
+    df2.loc[df2["category"] == "Segatehnika", "category"] = df2["author"]
+    df2.loc[df2["category_parent"] == "Segatehnika", "technique"] = None
+    df2.loc[df2["category_parent"] == "Segatehnika", "author"] = None
 
-fig = px.treemap(df2, path=[px.Constant("Tehnikad"), 'category_parent', 'category', 'technique', 'author'], values='total_sales',
-                  color='yearly_performance',
-                  color_continuous_scale='RdBu',
-                  range_color = (-20, 100),
-                  labels={
-                     "yearly_performance": "Aasta tootlus (%)",
-                     "total_sales": "Kogumüük",
-                     "author": "Autor",
-                  })
+    fig = px.treemap(df2, path=[px.Constant("Tehnikad"), 'category_parent', 'category', 'technique', 'author'], values='total_sales',
+                      color='yearly_performance',
+                      color_continuous_scale='RdBu',
+                      range_color = (-20, 100),
+                      labels={
+                         "yearly_performance": "Aasta tootlus (%)",
+                         "total_sales": "Kogumüük",
+                         "author": "Autor",
+                      })
+    return fig
+
+fig = create_treemap_yearly()
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Aasta tootlus (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)

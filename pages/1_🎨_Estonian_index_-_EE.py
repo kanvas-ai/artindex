@@ -139,31 +139,34 @@ create_paragraph('Sellest tabelist näeme, milline meedium on olnud kõige suure
 toc.subheader('Joonis - Haamrihinnad tehnika ja kunstniku järgi (alghinna ja haamrihinna võrdlus)')
 
 df['start_price'] = df['start_price'].fillna(df['end_price'])
-df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
-df['art_work_age'] = df['date'] - df['year']
-df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'overbid_%':['mean']})
-df2.columns = ['total_sales', 'overbid_%']
-df2 = df2.reset_index()
+@st.cache_data(ttl=60*60*24*7, max_entries=300)
+def create_treemap_overbid():
+    df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
+    df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'overbid_%':['mean']})
+    df2.columns = ['total_sales', 'overbid_%']
+    df2 = df2.reset_index()
 
-# temp fix
-df2.loc[df2["category"] == "Segatehnika", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Segatehnika", "author"] = None
+    # temp fix
+    df2.loc[df2["category"] == "Segatehnika", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Segatehnika", "author"] = None
 
-df2.loc[df2["category"] == "Joonistus", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Joonistus", "author"] = None
+    df2.loc[df2["category"] == "Joonistus", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Joonistus", "author"] = None
 
 
-#df2 = df2[(df2["category"] != "Õlimaal") | (df2["category"] == "Õlimaal") & (df2["total_sales"] > 5000)]
+    #df2 = df2[(df2["category"] != "Õlimaal") | (df2["category"] == "Õlimaal") & (df2["total_sales"] > 5000)]
 
-fig = px.treemap(df2, path=[px.Constant("Tehnikad"), 'category', 'technique', 'author'], values='total_sales',
-                  color='overbid_%',
-                  color_continuous_scale='RdBu',
-                  range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std() / 2),
-                  labels={
-                     "overbid_%": "Ülepakkumine (%)",
-                     "total_sales": "Kogumüük",
-                     "author": "Autor",
-                  })
+    fig = px.treemap(df2, path=[px.Constant("Tehnikad"), 'category', 'technique', 'author'], values='total_sales',
+                      color='overbid_%',
+                      color_continuous_scale='RdBu',
+                      range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std() / 2),
+                      labels={
+                         "overbid_%": "Ülepakkumine (%)",
+                         "total_sales": "Kogumüük",
+                         "author": "Autor",
+                      })
+    return fig
+fig = create_treemap_overbid()
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Ülepakkumine (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
@@ -175,29 +178,33 @@ Näiteks sinise tooniga on kunstnikud ja meediumid, mille puhul on oksjonil algh
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 toc.subheader('Joonis - Haamrihinnad tehnika ja kunstniku järgi (aastatulu)')
 
-table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
-df["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
-df['art_work_age'] = df['date'] - df['year']
-df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
-df2.columns = ['total_sales', 'yearly_performance']
-df2 = df2.reset_index()
+@st.cache_data(ttl=60*60*24*7, max_entries=300)
+def create_treemap_yearly():
+    table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
+    df["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
+    df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
+    df2.columns = ['total_sales', 'yearly_performance']
+    df2 = df2.reset_index()
 
-# temp fix
-df2.loc[df2["category"] == "Segatehnika", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Segatehnika", "author"] = None
+    # temp fix
+    df2.loc[df2["category"] == "Segatehnika", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Segatehnika", "author"] = None
 
-df2.loc[df2["category"] == "Joonistus", "technique"] = df2["author"]
-df2.loc[df2["category"] == "Joonistus", "author"] = None
+    df2.loc[df2["category"] == "Joonistus", "technique"] = df2["author"]
+    df2.loc[df2["category"] == "Joonistus", "author"] = None
 
-fig = px.treemap(df2, path=[px.Constant("Tehnikad"), 'category', 'technique', 'author'], values='total_sales',
-                  color='yearly_performance',
-                  color_continuous_scale='RdBu',
-                  range_color = (-20, 100),
-                  labels={
-                     "yearly_performance": "Aasta tootlus (%)",
-                     "total_sales": "Kogumüük",
-                     "author": "Autor",
-                  })
+    fig = px.treemap(df2, path=[px.Constant("Tehnikad"), 'category', 'technique', 'author'], values='total_sales',
+                      color='yearly_performance',
+                      color_continuous_scale='RdBu',
+                      range_color = (-20, 100),
+                      labels={
+                         "yearly_performance": "Aasta tootlus (%)",
+                         "total_sales": "Kogumüük",
+                         "author": "Autor",
+                      })
+    return fig
+
+fig = create_treemap_yearly()
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Aasta tootlus (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
@@ -225,6 +232,7 @@ create_paragraph('''Siin on näha kunstnike teoste käive ning selle keskmine t�
 
 # FIGURE - date and price
 toc.subheader('Joonis - Kunstiteose vanus vs hind')
+df['art_work_age'] = df['date'] - df['year']
 fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", color="category",
                  animation_frame="date", animation_group="technique", hover_name="technique",
                  size='date', hover_data=['author'], size_max=15, range_x=[-2,130], range_y=[-1000,100000],
