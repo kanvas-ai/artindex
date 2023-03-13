@@ -44,6 +44,11 @@ df_hist = read_df('data/historical_avg_price.csv')
 df_hist = df_hist[df_hist["date"] >= 2001]
 df_hist = df_hist.groupby("date").sum()
 
+#temp fix
+df.loc[df["technique"] == "Silk print", "category"] = "Graphics"
+df.loc[df["technique"] == "Vitrography", "category"] = "Graphics"
+df.loc[df["technique"] == "Wood cut", "category"] = "Graphics"
+
 # Sidebar Table of Contents
 toc = Toc()
 toc.placeholder(sidebar=True)
@@ -83,7 +88,7 @@ st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''The Art Index gives an overview of the rise and fall in the price of art. The price of art has made a noticeable jump in recent years. Interest in investing in art on the art auction market has skyrocketed since the pandemic.''')
 
 # TABLE - categories average price
-toc.subheader('Table - Historical Price Performance by Category')
+toc.subheader('Table - Historical Price Performance by Technique')
 table_data = create_table(df, "category", df["category"].unique(), calculate_volume=False, table_height=150)
 st.table(table_data)
 create_paragraph('''Ranked by medium, or technique, according to which medium dominates the highest-selling works.''')
@@ -103,13 +108,13 @@ For example, in 2001 the auction turnover was around 174,000 euros, then in 2021
 ''')
 
 # TABLE - categories volume
-toc.subheader('Table - Historical Volume Growth by Category')
+toc.subheader('Table - Historical Volume Growth by Technique')
 table_data = create_table(df, "category", df["category"].unique(), calculate_volume=True, table_height=150)
 st.table(table_data)
 create_paragraph('''From this table, we can see which medium has had the highest turnover. Based on the given data, we can see, for example, that graphics are the most popular and with the highest annual turnover increase percentage (204% annually over 20 years and 35% for oil painting at the same time).''')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
-toc.subheader('Figure - Art Sales by Category and Artist')
+toc.subheader('Figure - Art Sales by Technique and Artist (Start and End Price Difference)')
 
 df['start_price'] = df['start_price'].fillna(df['end_price'])
 df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
@@ -118,10 +123,17 @@ df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 
 df2.columns = ['total_sales', 'overbid_%']
 df2 = df2.reset_index()
 
-fig = px.treemap(df2, path=[px.Constant("Categories"), 'category', 'technique', 'author'], values='total_sales',
+# temp fix
+df2.loc[df2["category"] == "Mixed medium", "technique"] = df2["author"]
+df2.loc[df2["category"] == "Mixed medium", "author"] = None
+
+df2.loc[df2["category"] == "Drawing", "technique"] = df2["author"]
+df2.loc[df2["category"] == "Drawing", "author"] = None
+
+fig = px.treemap(df2, path=[px.Constant("Techniques"), 'category', 'technique', 'author'], values='total_sales',
                   color='overbid_%',
                   color_continuous_scale='RdBu',
-                  range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std()),
+                  range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std() / 2),
                   labels={
                      "overbid_%": "Overbid (%)",
                      "total_sales": "Total Sales",
@@ -130,13 +142,13 @@ fig = px.treemap(df2, path=[px.Constant("Categories"), 'category', 'technique', 
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Total Sales: %{value}<br> Overbid (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
-create_paragraph('''Categories and artists, where the color scale gives us an overview, how much art has been overbidi during auctions ,and volume ranked by category and artist.
+create_paragraph('''Techniques and artists, where the color scale gives us an overview, how much art has been overbid during auctions ,and volume ranked by Technique and artist.
 
 For example, the blue color shows artists and mediums, which had the highest overbidding percentage. Volume is also shown next to the artist’s name. For example, Konrad Mägi has the highest art piece sold, but this table shows that the highest overbidding goes to the works of Olev Subbi, in regards to the tempera medium. (711.69 % price increase from the starting price, while the numbers for Konrad Mägi are 59.06 % for oil on cardboard and 85.44% for oil on canvas medium). Although Konrad Mägi still has the edge over Subbi in terms of volume.
 ''')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
-toc.subheader('Joonis - Kunsti müügid tehnika ja kunstniku järgi')
+toc.subheader('Figure - Art Sales by Technique and Artist (Yearly Performance)')
 
 table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
 df["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
@@ -145,7 +157,14 @@ df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 
 df2.columns = ['total_sales', 'yearly_performance']
 df2 = df2.reset_index()
 
-fig = px.treemap(df2, path=[px.Constant("Categories"), 'category', 'technique', 'author'], values='total_sales',
+# temp fix
+df2.loc[df2["category"] == "Mixed medium", "technique"] = df2["author"]
+df2.loc[df2["category"] == "Mixed medium", "author"] = None
+
+df2.loc[df2["category"] == "Drawing", "technique"] = df2["author"]
+df2.loc[df2["category"] == "Drawing", "author"] = None
+
+fig = px.treemap(df2, path=[px.Constant("Techniques"), 'category', 'technique', 'author'], values='total_sales',
                   color='yearly_performance',
                   color_continuous_scale='RdBu',
                   range_color = (-20, 100),
@@ -164,7 +183,7 @@ create_paragraph('''...
 author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
 top_authors = author_sum.sort_values(ascending=False)[:10]
 
-toc.subheader('Table - Top 10 Best Performing Artists')
+toc.subheader('Table - Top 10 Best Performing Artists (Price Perfomance)')
 table_data = create_table(df, "author", top_authors.index, calculate_volume=False, table_height=250)    
 st.table(table_data)
 create_paragraph('''This table shows the most popular artists and their growth percentage. The percentage is calculated based on annual average end price differences.
@@ -173,7 +192,7 @@ Leading this table is Konrad Mägi, whose growth percentage is on average 198.95
 ''')
 
 # TABLE - best authors volume
-toc.subheader('Table - Volume Growth for Top 10 Artists')
+toc.subheader('Table - Top 10 Best Performing Artist (Volume Growth)')
 table_data = create_table(df, "author", top_authors.index, calculate_volume=True, table_height=250)    
 st.table(table_data)
 create_paragraph('''This table shows the turnover and average annual growth of art works. Here Wiiralt is positioned at 8th place and Konrad Mägi at 1st. Because the growth percentage is during the whole period (2001-2021) turnover, then the artists, who have the most works bought, are situated at the top of the table.
@@ -188,7 +207,7 @@ fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", 
                      "end_price": "Auction Final Sales Price (€)",
                      "art_work_age": "Art Work Age",
                      "author": "Author",
-                     "category": "Category",
+                     "category": "Technique",
                      "decade": "Decade"
                   })
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
@@ -208,7 +227,7 @@ fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", 
                      "end_price": "Auction Final Sales Price (€)",
                      "dimension": "Dimension (m²)",
                      "author": "Author",
-                     "category": "Category",
+                     "category": "Technique",
                   })
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 st.plotly_chart(fig, use_container_width=True)

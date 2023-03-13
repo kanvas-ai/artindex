@@ -186,6 +186,7 @@ df2.loc[df2["category_parent"] == "Eritehnika", "technique"] = df2["author"]
 df2.loc[df2["category_parent"] == "Eritehnika", "author"] = None
 
 df2.loc[df2["category"] == "Segatehnika", "category"] = df2["author"]
+df2.loc[df2["category_parent"] == "Segatehnika", "technique"] = None
 df2.loc[df2["category_parent"] == "Segatehnika", "author"] = None
 
 fig = px.treemap(df2, path=[px.Constant("Tehnikad"), 'category_parent', 'category', 'technique', 'author'], values='total_sales',
@@ -238,6 +239,7 @@ df2.loc[df2["category_parent"] == "Eritehnika", "technique"] = df2["author"]
 df2.loc[df2["category_parent"] == "Eritehnika", "author"] = None
 
 df2.loc[df2["category"] == "Segatehnika", "category"] = df2["author"]
+df2.loc[df2["category_parent"] == "Segatehnika", "technique"] = None
 df2.loc[df2["category_parent"] == "Segatehnika", "author"] = None
 
 fig = px.treemap(df2, path=[px.Constant("Tehnikad"), 'category_parent', 'category', 'technique', 'author'], values='total_sales',
