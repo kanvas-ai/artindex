@@ -172,11 +172,11 @@ fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> 
 st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''Tehnikad ja kunstnikud, kus värviskaala annab meile protsentuaalse ülevaate, kui palju antud teos on oksjonil oma alghinnast ülepakutud ning tehnika ja eraldi kunstniku teoste käivet. 
 
-Näiteks sinise tooniga on kunstnikud ja meediumid, mille puhul on oksjonil alghinnast ülepakkumine olnud kõige suurem. Kunstniku nime juurest võib lisaks ülepakkumis protsendile leida ka tema teoste käibe. Näiteks, kui kõige kallimalt müüdud teos kuulub Konrad Mäele, siis selle tabeli pealt võime välja lugeda, et kõige suurem ülepakkumine on tehtud hoopis Olev Subbi teostele, meediumiks tempera (711,69 % tõus alghinnast haamrihinnani, Konrad Mäel samal ajal vastav number õli papil meedium 59,06 % ja õli lõuendil 85,44%). Konrad Mäe kogu käive jääb siiski Subbi omast kõrgemaks.
+Näiteks sinise tooniga on kunstnikud ja meediumid, mille puhul on oksjonil alghinnast ülepakkumine olnud kõige suurem. Kunstniku nime juurest võib lisaks ülepakkumise protsendile leida ka tema teoste käibe. Näiteks, kui kõige kallimalt müüdud teos kuulub Konrad Mäele, siis selle tabeli pealt võime välja lugeda, et kõige suurem ülepakkumine on tehtud hoopis Olev Subbi teostele, meediumiks tempera (711,69 % tõus alghinnast haamrihinnani, Konrad Mäel samal ajal vastav number õli papil meedium 59,06 % ja õli lõuendil 85,44%). Konrad Mäe kogu käive jääb siiski Subbi omast kõrgemaks.
 ''')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
-toc.subheader('Joonis - Haamrihinnad tehnika ja kunstniku järgi (aastatulu)')
+toc.subheader('Joonis - Haamrihinnad tehnika ja kunstniku järgi (hinnanäitaja ajas)')
 
 @st.cache_data(ttl=60*60*24*7, max_entries=300)
 def create_treemap_yearly():
@@ -208,7 +208,10 @@ fig = create_treemap_yearly()
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Aasta tootlus (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
-create_paragraph('''...
+create_paragraph('''
+Tehnikad ja kunstnikud, kus värviskaala annab meile protsentuaalse ülevaate, kui palju teoste hinnad aastast aastasse tõusevad ning tehnika ja eraldi kunstniku teoste käivet. 
+
+Näiteks sinise tooniga on kunstnikud ja meediumid, mille puhul on keskmine hinnakasv olnud kõige suurem. Kunstniku nime juurest võib lisaks hinnakasvule leida ka tema teoste käibe. Näiteks, kui kõige kallimalt müüdud teos kuulub Konrad Mäele, siis selle tabeli pealt võime välja lugeda, et kõige suurem hinnakasv on hoopis Karin Luts teostel (498.84 % keskmine aastane hinnatõus, Konrad Mäel samal ajal vastav number 198.95 %). Konrad Mäe kogu käive jääb siiski Lutsu omast kõrgemaks.
 ''')
 
 # TABLE - best authors average price
@@ -233,9 +236,12 @@ create_paragraph('''Siin on näha kunstnike teoste käive ning selle keskmine t�
 # FIGURE - date and price
 toc.subheader('Joonis - Kunstiteose vanus vs hind')
 df['art_work_age'] = df['date'] - df['year']
+q_low = df["end_price"].quantile(0.1)
+q_hi  = df["end_price"].quantile(0.9)
+df = df[(df["end_price"] < q_hi) & (df["end_price"] > q_low)]
 fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", color="category",
                  animation_frame="date", animation_group="technique", hover_name="technique",
-                 size='date', hover_data=['author'], size_max=15, range_x=[-2,130], range_y=[-1000,100000],
+                 size='date', hover_data=['author'], size_max=15, range_x=[-4,130], range_y=[-1000,8200],
                  labels={
                      "end_price": "Haamrihind (€)",
                      "art_work_age": "Kunstiteose vanus",
@@ -253,10 +259,13 @@ Kõige vanem teos pärineb aastast 1900, kuid ei ole kõige kallimalt müüdud. 
 
 # FIGURE - size and price
 toc.subheader('Joonis - Kunstiteose suurus vs hind')
-df["dimension"] = df["dimension"] / (1000*1000)
+df["dimension"] = df["dimension"] / (100*100)
+q_low = df["dimension"].quantile(0.1)
+q_hi  = df["dimension"].quantile(0.9)
+df = df[(df["dimension"] < q_hi) & (df["dimension"] > q_low)]
 fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", color="category",
                  animation_frame="date", animation_group="technique", hover_name="technique",
-                 size='date', hover_data=['author'], size_max=15, range_x=[-0.03,0.35], range_y=[-1000,100000],
+                 size='date', hover_data=['author'], size_max=15, range_x=[-0.03, 4], range_y=[-1000,8200],
                  labels={
                      "end_price": "Haamrihind (€)",
                      "dimension": "Pindala (m²)",

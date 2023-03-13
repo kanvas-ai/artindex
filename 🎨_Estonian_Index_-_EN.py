@@ -154,12 +154,11 @@ For example, the blue color shows artists and mediums, which had the highest ove
 ''')
 
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
-toc.subheader('Figure - Art Sales by Technique and Artist (Yearly Performance)')
-
+toc.subheader('Figure - Art Sales by Technique and Artist (Historical Price Performance)')
+table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
+df["yearly_performance"] = [table_data[table_data["Author"] == x]["Yearly growth (%)"] for x in df["author"]]
 @st.cache_data(ttl=60*60*24*7, max_entries=300)
 def create_treemap_yearly():
-    table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
-    df["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df["author"]]
     df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
     df2.columns = ['total_sales', 'yearly_performance']
     df2 = df2.reset_index()
@@ -176,9 +175,9 @@ def create_treemap_yearly():
                       color_continuous_scale='RdBu',
                       range_color = (-20, 100),
                       labels={
-                         "yearly_performance": "Aasta tootlus",
-                         "total_sales": "Kogumüük",
-                         "author": "Autor",
+                         "yearly_performance": "Historical Performance (%)",
+                         "total_sales": "Total Sales",
+                         "author": "Author",
                       })
     return fig
 
@@ -186,7 +185,10 @@ fig = create_treemap_yearly()
 fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
 fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Aasta tootlus (%): %{color:.2f}',)
 st.plotly_chart(fig, use_container_width=True)
-create_paragraph('''...
+create_paragraph('''
+Techniques and artists, where the color scale gives us an overview of historical price performance and volume ranked by Technique and artist.
+
+For example, the blue color shows artists and mediums, which had the highest historical price growth. Volume is also shown next to the artist’s name. For example, Konrad Mägi has the highest art piece sold, but this table shows that the highest average historical price goes to the works of Karin Luts (498.84 % price increase average over the years, while the number for Konrad Mägi is 198.95 %). Although Konrad Mägi still has the edge over Luts in terms of volume.
 ''')
 
 # TABLE - best authors average price
@@ -196,7 +198,7 @@ top_authors = author_sum.sort_values(ascending=False)[:10]
 toc.subheader('Table - Top 10 Best Performing Artists (Price Perfomance)')
 table_data = create_table(df, "author", top_authors.index, calculate_volume=False, table_height=250)    
 st.table(table_data)
-create_paragraph('''This table shows the most popular artists and their growth percentage. The percentage is calculated based on annual average end price differences.
+create_paragraph('''This table shows the most popular artists and their historical price growth percentage. The percentage is calculated based on annual average end price differences.
 
 Leading this table is Konrad Mägi, whose growth percentage is on average 198.95%. This growth percentage is definitely affected by the uniqueness of his works. Konrad Mägi has a limited number of works displayed at auctions. In second place we find Eduard Wiiralt, who in contrast to Konrad Mägi has a lot of his works displayed at auctions. The starting prices of Wiiralt’s works are low and he is very popular amongst collectors.
 ''')
@@ -211,9 +213,12 @@ create_paragraph('''This table shows the turnover and average annual growth of a
 # FIGURE - date and price
 toc.subheader('Figure - Age of Art Work vs Price')
 df['art_work_age'] = df['date'] - df['year']
+q_low = df["end_price"].quantile(0.1)
+q_hi  = df["end_price"].quantile(0.9)
+df = df[(df["end_price"] < q_hi) & (df["end_price"] > q_low)]
 fig = px.scatter(df.dropna(subset=["decade"]), x="art_work_age", y="end_price", color="category",
                  animation_frame="date", animation_group="technique", hover_name="technique",
-                 size='date', hover_data=['author'], size_max=15, range_x=[-2,130], range_y=[-1000,100000],
+                 size='date', hover_data=['author'], size_max=15, range_x=[-4,130], range_y=[-1000,8200],
                  labels={
                      "end_price": "Auction Final Sales Price (€)",
                      "art_work_age": "Art Work Age",
@@ -230,10 +235,13 @@ The oldest work dates back to 1900, but is not the most expensive. In general, i
 
 # FIGURE - size and price
 toc.subheader('Figure - Size of Art Work vs Price')
-df["dimension"] = df["dimension"] / (1000*1000)
+df["dimension"] = df["dimension"] / (100*100)
+q_low = df["dimension"].quantile(0.1)
+q_hi  = df["dimension"].quantile(0.9)
+df = df[(df["dimension"] < q_hi) & (df["dimension"] > q_low)]
 fig = px.scatter(df.dropna(subset=["dimension"]), x="dimension", y="end_price", color="category",
                  animation_frame="date", animation_group="technique", hover_name="technique",
-                 size='date', hover_data=['author'], size_max=15, range_x=[-0.03,0.35], range_y=[-1000,100000],
+                 size='date', hover_data=['author'], size_max=15, range_x=[-0.03, 4], range_y=[-1000,8200],
                  labels={
                      "end_price": "Auction Final Sales Price (€)",
                      "dimension": "Dimension (m²)",
