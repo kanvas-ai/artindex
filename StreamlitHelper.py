@@ -55,11 +55,11 @@ def get_img_with_href(local_img_path, target_url, max_width):
         </a>'''
     return html_code
 
-@st.cache(ttl=60*60*24*7, max_entries=300)
+@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
 def read_df(path:str):
     return pd.read_csv(path)
 
-@st.cache(ttl=60*60*24*7, max_entries=300)
+@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
 def create_table(df, category_column:str, _category_list:list, calculate_volume:bool, table_height:int):
     category_returns = []
     for cat in _category_list:
