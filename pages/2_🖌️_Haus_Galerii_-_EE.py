@@ -96,7 +96,7 @@ pd.options.display.float_format = '{:}'.format
 df_top_50 = read_df('data/haus_top_50.csv')
 df_top_50.index += 1
 df_styled = df_top_50.style.format(formatter="{:}")
-st.dataframe(df_styled, use_container_width=True)
+st.dataframe(df_styled)
 
 prices = []
 volumes = []
