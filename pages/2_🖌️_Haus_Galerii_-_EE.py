@@ -90,6 +90,14 @@ emotsionaalsele väärtusele ka kunsti hinnakasvu väärtust.
 
 create_credits("Indeks on koostatud Kanvas.ai poolt. Kunsti-indeksi metoodika on täiustamisel ja edasiarendamisel ning kõik soovitused ja kommentaarid on oodatud info@kanvas.ai")
 
+# TABLE - 5OP 50
+toc.subheader('Tabel - Top 50 kunstiteost - viimased 10 aastat')
+pd.options.display.float_format = '{:}'.format
+df_top_50 = read_df('data/haus_top_50.csv')
+df_top_50.index += 1
+df_styled = df_top_50.style.format(formatter="{:}")
+st.dataframe(df_styled, use_container_width=True)
+
 prices = []
 volumes = []
 dates = []
