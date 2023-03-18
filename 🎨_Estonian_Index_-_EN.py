@@ -117,7 +117,7 @@ create_paragraph('''From this table, we can see which medium has had the highest
 toc.subheader('Figure - Art Sales by Technique and Artist (Start and End Price Difference)')
 
 
-@st.cache_data(ttl=60*60*24*7, max_entries=300)
+@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
 def create_treemap_overbid():
     df['start_price'] = df['start_price'].fillna(df['end_price'])
     df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
@@ -157,7 +157,7 @@ For example, the blue color shows artists and mediums, which had the highest ove
 toc.subheader('Figure - Art Sales by Technique and Artist (Historical Price Performance)')
 table_data = create_table(df, "author", list(df["author"].unique()), calculate_volume=False, table_height=250)
 df["yearly_performance"] = [table_data[table_data["Author"] == x]["Yearly growth (%)"] for x in df["author"]]
-@st.cache_data(ttl=60*60*24*7, max_entries=300)
+@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
 def create_treemap_yearly():
     df2 = df.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
     df2.columns = ['total_sales', 'yearly_performance']
@@ -262,7 +262,7 @@ create_credits('''Other credits: Inspired by the original Estonian Art Index cre
 
 toc.generate()
 
-@st.cache_data
+@st.cache
 def convert_df():
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return read_df('data/auctions_clean.csv').to_csv().encode('utf-8')
