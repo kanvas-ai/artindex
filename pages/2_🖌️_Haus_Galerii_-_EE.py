@@ -90,12 +90,36 @@ emotsionaalsele väärtusele ka kunsti hinnakasvu väärtust.
 
 create_credits("Indeks on koostatud Kanvas.ai poolt. Kunsti-indeksi metoodika on täiustamisel ja edasiarendamisel ning kõik soovitused ja kommentaarid on oodatud info@kanvas.ai")
 
-# TABLE - 5OP 50
-toc.subheader('Tabel - Top 50 kunstiteost - viimased 10 aastat')
+# TABLE - Koik top 20
+toc.subheader('Tabel - Kõigi aegade top 20')
 pd.options.display.float_format = '{:}'.format
-df_top_50 = read_df('data/haus_top_50.csv')
+df_top_20 = read_df('data/haus_koik_top_20.csv')
+df_top_20.index += 1
+df_styled = df_top_20.style.format(formatter="{:}")
+st.dataframe(df_styled)
+
+# TABLE - Vanem TOP 50
+toc.subheader('Tabel - Vanema kunsti klassika top 50 - viimased 10 aastat')
+pd.options.display.float_format = '{:}'.format
+df_top_50 = read_df('data/haus_vana_top_50.csv')
 df_top_50.index += 1
 df_styled = df_top_50.style.format(formatter="{:}")
+st.dataframe(df_styled)
+
+# TABLE - Moodne TOP 50
+toc.subheader('Tabel - Moodsa kunsti klassika top 50 - viimased 10 aastat')
+pd.options.display.float_format = '{:}'.format
+df_top_50 = read_df('data/haus_moodne_top_50.csv')
+df_top_50.index += 1
+df_styled = df_top_50.style.format(formatter="{:}")
+st.dataframe(df_styled)
+
+# TABLE - Graafika TOP 20
+toc.subheader('Tabel - Graafika top 20 - viimased 10 aastat')
+pd.options.display.float_format = '{:}'.format
+df_top_20 = read_df('data/haus_graafika_top_20.csv')
+df_top_20.index += 1
+df_styled = df_top_20.style.format(formatter="{:}")
 st.dataframe(df_styled)
 
 prices = []
