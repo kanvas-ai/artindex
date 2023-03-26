@@ -1,6 +1,9 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
+import plotly.graph_objects as go
+import numpy as np
+from scipy import stats
 from StreamlitHelper import Toc, get_img_with_href, read_df, create_table
 
 st.set_page_config(
@@ -37,14 +40,42 @@ def create_paragraph(text):
 toc = Toc()
 toc.placeholder(sidebar=True)
 
-df = read_df('data/europe_cleaned.csv')
+df = read_df('data/europe1.csv')
 df = df[df["auction_year"] >= 2000]
-df['date'] = df["auction_year"]
+df = df[df["dimension"]>0]
 df = df.dropna(subset=["currency"])
+df["technique"] = df["technique"].str.capitalize() 
+#df = df[df["author"]!="Tito Salas "]
 df['date'] = df["auction_year"]
+df = df.sort_values(by=["date"])
 
-top_10_categories = list(df['technique'].value_counts().nlargest(11).index)
-top_10_categories.remove("Unknown")
+def change_value(change_from, change_to, column):
+    df.loc[df[column]==change_from, column] = change_to
+# Estonian categories and techniques
+change_value("Paintings", "Maal", "category")
+change_value("Mixed media", "Segatehnika", "category")
+change_value("Graphics", "Graafika", "category")
+change_value("Drawing", "Joonistus", "category")
+change_value("Other", "Muu", "category")
+
+change_value("Oil", "Õli", "technique")
+change_value("Acrylic", "Akrüül", "technique")
+change_value("Gouache", "Guašš", "technique")
+change_value("Painting", "Maal", "technique")
+change_value("Watercolor", "Akvarell", "technique")
+#change_value("Tempera", "Tempera", "technique")
+
+change_value("Aquatint", "Akvatinta", "technique")
+change_value("Linoleum", "Linool", "technique")
+change_value("Drawing", "Joonistus", "technique")
+change_value("Etching", "Etsing", "technique")
+change_value("Graphics", "Graafika", "technique")
+change_value("Mixed", "Segatehnika", "technique")
+change_value("Mixed technique", "Segatehnika", "technique")
+change_value("Silk print", "Siiditrükk", "technique")
+change_value("Vitrography", "Vitrograafia", "technique")
+change_value("Wood cut", "Puugravüür", "technique")
+
 kanvas_logo = get_img_with_href('data/horisontal-BLACK.png', 'https://kanvas.ai', '200px')
 st.sidebar.markdown(kanvas_logo, unsafe_allow_html=True)
 
@@ -68,10 +99,14 @@ Kunstiindeksi metoodika on praegu väljatöötamisel. Soovituste ja kommentaarid
 prices = []
 volumes = []
 dates = []
+
 for year in range(df["date"].min(), df["date"].max()+1):
     dates.append(year)
-    prices.append(df[df["date"] == year]["end_price"].mean())
-    volumes.append(df[df["date"] == year]["end_price"].sum())
+    df2 = df[df["date"] == year]
+    df3 = df2[(np.abs(stats.zscore(df2["end_price"])) < 2)]
+
+    prices.append(df3["end_price"].mean())
+    volumes.append(df3["end_price"].sum())
 data = {'avg_price': prices, 'volume': volumes, 'date': dates}
 df_hist = pd.DataFrame.from_dict(data)
 
@@ -88,10 +123,12 @@ create_paragraph('Tekst')
 
 # TABLE - categories average price
 toc.subheader('Tabel - Ajalooline hinnanäitaja kategooriate kaupa')
-df["category"] = df["technique"]
-table_data = create_table(df, "category", top_10_categories, calculate_volume=False, table_height=150)
+df2 = df[df["category"]!=""]
+categories = list(df2["category"].unique())
+#categories.remove("Segatehnika")
+table_data = create_table(df2, "category", categories, calculate_volume=False, table_height=150)
 st.table(table_data)
-create_paragraph('Meediumite ehk tehnika järgi järjestud vastavalt sellele, missugused meediumid domineerivad kõige kallimalt müüdud teoste hulgas.')
+create_paragraph('Tekst')
 
 # FIGURE - date and volume
 toc.subheader('Joonis - Ajalooline volüümi kasv')
@@ -107,47 +144,10 @@ create_paragraph('''Tekst
 
 # TABLE - categories volume
 toc.subheader('Tabel - Ajalooline volüümi kasv kategooriate kaupa')
-table_data = create_table(df, "category", top_10_categories, calculate_volume=True, table_height=150)
+df2 = df[df["category"]!=""]
+table_data = create_table(df2, "category", categories, calculate_volume=True, table_height=150)
 st.table(table_data)
-create_paragraph('Sellest tabelist näeme, milline meedium on olnud kõige suurema käibega. Antud andmete põhjal võime näiteks näha, et graafika on kõige populaarsem ning kõige suurema käibe tõusu protsendiga.(Keskmiselt 204% 20 aasta jooksul ja õlimaalil samal ajal 35%)')
-
-
-# FIGURE - treemap covering categories, techniques and authors by volume and overbid
-toc.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
-
-df['start_price'] = df['start_price'].fillna(df['end_price'])
-df['overbid_%'] = (df['end_price'] - df['start_price'])/df['start_price'] * 100
-#df['art_work_age'] = df['date'] - df['year']
-df2 = df[df["technique"].isin(top_10_categories)]
-df2 = df2.groupby(['author', 'technique']).agg({'end_price':['sum'], 'overbid_%':['mean']})
-df2.columns = ['total_sales', 'overbid_%']
-df2 = df2[df2["overbid_%"] > 0]
-df2 = df2.reset_index()
-
-top_10_cat_indexes = []
-for cat in top_10_categories:
-    indexes = df2.loc[df2["technique"]==cat, "total_sales"].nlargest(10).index
-    top_10_cat_indexes.extend(list(indexes))
-df2 = df2[df2.index.isin(top_10_cat_indexes)]
-
-@st.cache_data(ttl=60*60*24*7, max_entries=300)
-def create_treemap():
-    return px.treemap(df2, path=[px.Constant("Techniques"), 'technique', 'author'], values='total_sales',
-                      color='overbid_%',
-                      color_continuous_scale='RdBu',
-                      range_color = (0, df['overbid_%'].mean() + df['overbid_%'].std()),
-                      labels={
-                         "overbid_%": "Ülepakkumine (%)",
-                         "total_sales": "Kogumüük",
-                         "author": "Autor",
-                      })
-fig = create_treemap()
-fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
-fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Ülepakkumine (%): %{color:.2f}',)
-st.plotly_chart(fig, use_container_width=True)
-create_paragraph('''Tekst
-''')
-
+create_paragraph('Tekst')
 
 # TABLE - best authors average price
 author_sum = df.groupby(["author"], sort=False)["end_price"].sum()
@@ -167,21 +167,87 @@ create_paragraph('''Tekst
 # FIGURE - treemap covering categories, techniques and authors by volume and overbid
 toc.subheader('Joonis - Kunsti müügid kategooria ja kunstniku järgi')
 
-df2 = df[df["technique"].isin(top_10_categories)]
+df2 = df[df["category"]!=""]
 df2 = df2[df["author"].isin(top_authors)]
-table_data = create_table(df, "author", top_authors, calculate_volume=False, table_height=250)
+table_data = create_table(df2, "author", top_authors, calculate_volume=False, table_height=250)
 df2["yearly_performance"] = [table_data[table_data["Autor"] == x]["Iga-aastane kasv (%)"] for x in df2["author"]]
 
-df2 = df2.groupby(['author', 'technique']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
+df2 = df2.groupby(['author', 'technique', 'category']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
 df2.columns = ['total_sales', 'yearly_performance']
 df2 = df2.reset_index()
 
-fig = px.treemap(df2, path=[px.Constant("Techniques"), 'technique', 'author'], values='total_sales',
+fig = px.treemap(df2, path=[px.Constant("Techniques"), 'category', 'technique', 'author'], values='total_sales',
                   color='yearly_performance',
                   color_continuous_scale='RdBu',
-                  range_color = (-20, 100),
+                  range_color = (-20, df2['yearly_performance'].mean()),
                   labels={
-                     "yearly_performance": "Aasta tootlus",
+                     "yearly_performance": "Aasta tootlus (%)",
+                     "total_sales": "Kogumüük",
+                     "author": "Autor",
+                  })
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
+fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Aasta tootlus (%): %{color:.2f}',)
+st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''Tekst
+''')
+
+# TABLE - best authors volume
+toc.subheader('Tabel - Volüümi kasv Top 10 kunstnikul')
+table_data = create_table(df, "author", top_authors, calculate_volume=True, table_height=250)    
+st.table(table_data)
+create_paragraph('''Tekst
+''')
+
+# FIGURE - treemap covering categories, techniques and authors by volume and overbid
+toc.subheader('Joonis - Kunsti müügid asukoha ja galerii järgi (TOP 5)')
+top_10_loc = list(df["loc"].value_counts().nlargest(5).index)
+
+df2 = df[df["loc"].isin(top_10_loc)]
+#df2 = df2[df2["author"].isin(top_authors)]
+
+
+table_data = create_table(df2, "src", list(df2["src"].unique()), calculate_volume=False, table_height=250)
+df2["yearly_performance"] = [table_data[table_data["Tehnika"] == x]["Iga-aastane kasv (%)"] for x in df2["src"]]
+
+df2 = df2.groupby(['loc', 'src']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
+df2.columns = ['total_sales', 'yearly_performance']
+df2 = df2.reset_index()
+
+fig = px.treemap(df2, path=[px.Constant("Locations"), 'loc', 'src'], values='total_sales',
+                  color='yearly_performance',
+                  color_continuous_scale='RdBu',
+                  range_color = (-20, df2['yearly_performance'].mean()),
+                  labels={
+                     "yearly_performance": "Aasta tootlus (%)",
+                     "total_sales": "Kogumüük",
+                     "author": "Autor",
+                  })
+fig.update_layout(margin=dict(l=5, r=5, t=5, b=5))
+fig.update_traces(hovertemplate='<b>%{label} </b> <br> Kogumüük: %{value}<br> Aasta tootlus (%): %{color:.2f}',)
+st.plotly_chart(fig, use_container_width=True)
+create_paragraph('''Tekst
+''')
+
+# FIGURE - treemap covering categories, techniques and authors by volume and overbid
+toc.subheader('Joonis - Kunsti müügid asukoha ja galerii järgi (Teised)')
+
+df2 = df[~df["loc"].isin(top_10_loc)]
+#df2 = df2[df2["author"].isin(top_authors)]
+
+
+table_data = create_table(df2, "src", list(df2["src"].unique()), calculate_volume=False, table_height=250)
+df2["yearly_performance"] = [table_data[table_data["Tehnika"] == x]["Iga-aastane kasv (%)"] for x in df2["src"]]
+
+df2 = df2.groupby(['loc', 'src']).agg({'end_price':['sum'], 'yearly_performance':['mean']})
+df2.columns = ['total_sales', 'yearly_performance']
+df2 = df2.reset_index()
+
+fig = px.treemap(df2, path=[px.Constant("Locations"), 'loc', 'src'], values='total_sales',
+                  color='yearly_performance',
+                  color_continuous_scale='RdBu',
+                  range_color = (-20, df2['yearly_performance'].mean()),
+                  labels={
+                     "yearly_performance": "Aasta tootlus (%)",
                      "total_sales": "Kogumüük",
                      "author": "Autor",
                   })
@@ -191,19 +257,11 @@ st.plotly_chart(fig, use_container_width=True)
 create_paragraph('''...
 ''')
 
-
-# TABLE - best authors volume
-toc.subheader('Tabel - Volüümi kasv Top 10 kunstnikul')
-table_data = create_table(df, "author", top_authors, calculate_volume=True, table_height=250)    
-st.table(table_data)
-create_paragraph('''Tekst
-''')
-
 def create_credits(text):
     st.markdown('<span style="word-wrap:break-word;font-family:Source Code Pro;font-size: 14px;">' + text + '</span>', unsafe_allow_html=True)
 create_credits('''Copyright: Kanvas.ai''')
 create_credits('''Autorid: Astrid Laupmaa, Julian Kaljuvee, Markus Sulg''')
-create_credits('''Allikad: Eesti avalikud kunsti oksjonid (2001-2021)''')
+create_credits('''Allikad: Euroopa avalikud kunsti oksjonid (2001-2021)''')
 create_credits('''Muu: Inspireeritud Riivo Antoni loodud kunstiindeksist; <br>Heldet toetust pakkus <a href="https://tezos.foundation/">Tezos Foundation</a>''')
 toc.generate()
 
@@ -213,4 +271,4 @@ def convert_df():
     return read_df('data/europe2.csv').to_csv().encode('utf-8')
 
 csv = convert_df()
-st.download_button(label="Download data",data=csv, file_name='europe_art_index.csv', mime='text/csv')
+st.download_button(label="Laadi alla andmed",data=csv, file_name='europe_art_index.csv', mime='text/csv')

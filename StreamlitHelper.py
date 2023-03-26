@@ -3,6 +3,7 @@ import os
 import base64
 import pandas as pd
 import numpy as np
+from scipy import stats
 
 # https://discuss.streamlit.io/t/table-of-contents-widget/3470/12
 class Toc:
@@ -72,6 +73,11 @@ def create_table(df, category_column:str, _category_list:list, calculate_volume:
         if pd.isna(start_year):
             continue
         df_cat_date = df_cat[df_cat["date"]==start_year]
+        # remove outliers
+        if len(df_cat[df_cat["date"]==start_year]["end_price"].value_counts()) > 1:
+            df_cat_date = df_cat_date[(np.abs(stats.zscore(df_cat_date["end_price"])) < 2)]
+            if len(df_cat_date) == 0:
+                df_cat_date = df_cat[df_cat["date"]==date]
         if calculate_volume: 
             prices.append(df_cat_date["end_price"].sum())
         else:
@@ -81,6 +87,11 @@ def create_table(df, category_column:str, _category_list:list, calculate_volume:
         for date in dates[1:]:
             df_cat_date = df_cat[df_cat["date"]==date]
 
+            # remove outliers
+            if len(df_cat[df_cat["date"]==start_year]["end_price"].value_counts()) > 1:
+                df_cat_date = df_cat_date[(np.abs(stats.zscore(df_cat_date["end_price"])) < 2)]
+                if len(df_cat_date) == 0:
+                    df_cat_date = df_cat[df_cat["date"]==date]
             start_sum = prices[-1]
             end_sum = 0
             if calculate_volume: 
