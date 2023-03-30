@@ -126,7 +126,6 @@ prices = []
 volumes = []
 dates = []
 for year in range(df["date"].min(), df["date"].max()+1):
-    print(year)
     dates.append(year)
     prices.append(df[df["date"] == year]["end_price"].mean())
     volumes.append(df[df["date"] == year]["end_price"].sum())
@@ -212,7 +211,8 @@ def create_treemap_overbid():
     df2.loc[df2["technique"] == "Guašš", "technique"] = df2["author"]
     df2.loc[df2["category"] == "Guašš", "author"] = None
 
-    df2.loc[df2["category"] == "Joonistustehnika", "category"] = df2["author"]
+    df2.loc[df2["category"] == "Joonistustehnika", "category"] = df2["technique"]
+    df2.loc[df2["category_parent"] == "Joonistus", "technique"] = df2["author"]
     df2.loc[df2["category_parent"] == "Joonistus", "author"] = None
 
     df2.loc[df2["category"] == "Muu", "category"] = df2["technique"]

@@ -103,7 +103,8 @@ def create_table(df, category_column:str, _category_list:list, calculate_volume:
         category_returns.append([cat, year_span, total_return, annual_return])
     col = ""
     # check if english language
-    is_english = df["category"].str.contains('Graphics').any()
+    is_english = df["category"].str.contains('Graphics').any() or "category_parent" in df.columns and df["category_parent"].str.contains("Graphics").any()
+    
 
     if is_english:
         if category_column == "author":
