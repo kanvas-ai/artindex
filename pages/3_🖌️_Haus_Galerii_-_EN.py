@@ -147,7 +147,7 @@ kanvas_logo = get_img_with_href('data/haus_logo.png', 'https://haus.ee', '200px'
 st.markdown(kanvas_logo, unsafe_allow_html=True)
 
 # TITLE
-st.title('Haus Gallery artindex')
+st.title('Haus Gallery Art Index')
 toc.header('Overview')
 create_paragraph('''This art index, based on the logic of economic analysis and graphically implemented, has been compiled based on the sales results of Haus Gallery's 25 years of art auction.
 
@@ -167,7 +167,7 @@ df_styled = df_top_20.style.format(formatter="{:}")
 st.dataframe(df_styled)
 
 # TABLE - Vanem TOP 50
-toc.subheader('Table - Top 50 classics of older art (last 10 years)')
+toc.subheader('Table - Top 50 Classics of Earlier Art (Last 10 Years)')
 pd.options.display.float_format = '{:}'.format
 df_top_50 = pd.read_csv('data/haus_vana_top_50-eng.csv')
 df_top_50.index += 1
@@ -175,7 +175,7 @@ df_styled = df_top_50.style.format(formatter="{:}")
 st.dataframe(df_styled)
 
 # TABLE - Moodne TOP 50
-toc.subheader('Table - Top 50 classics of modern art (last 10 years)')
+toc.subheader('Table - Top 50 Classics of Modern Art (Last 10 Years)')
 pd.options.display.float_format = '{:}'.format
 df_top_50 = pd.read_csv('data/haus_moodne_top_50-eng.csv')
 df_top_50.index += 1
@@ -183,7 +183,7 @@ df_styled = df_top_50.style.format(formatter="{:}")
 st.dataframe(df_styled)
 
 # TABLE - Graafika TOP 20
-toc.subheader('Table - Graphics top 20 (last 10 years)')
+toc.subheader('Table - Graphics Top 20 (Last 10 Years)')
 pd.options.display.float_format = '{:}'.format
 df_top_20 = pd.read_csv('data/haus_graafika_top_20-eng.csv')
 df_top_20.index += 1
