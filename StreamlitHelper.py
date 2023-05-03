@@ -55,14 +55,14 @@ def get_img_with_href(local_img_path, target_url, max_width):
         </a>'''
     return html_code
 
-@st.cache(ttl=60*60*24*7, max_entries=300)
+@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
 def read_df(path:str):
     return pd.read_csv(path)
 
-@st.cache(ttl=60*60*24*7, max_entries=300)
-def create_table(df, category_column:str, category_list:list, calculate_volume:bool, table_height:int):
+@st.cache(ttl=60*60*24*7, max_entries=300, allow_output_mutation=True)
+def create_table(df, category_column:str, _category_list:list, calculate_volume:bool, table_height:int):
     category_returns = []
-    for cat in category_list:
+    for cat in _category_list:
         df_cat = df[df[category_column]==cat]
 
         dates = np.sort(df_cat["date"].unique())
@@ -101,7 +101,24 @@ def create_table(df, category_column:str, category_list:list, calculate_volume:b
             total_return = 0
         year_span = " - ".join(map(str, [round(start_year), round(last_year)]))
         category_returns.append([cat, year_span, total_return, annual_return])
-        
-    df_cat_returns = pd.DataFrame(category_returns, columns=["Kategooria", "Aastavahemik", "Kogukasv algusest (%)", "Iga-aastane kasv (%)"]) 
-    df_cat_returns = df_cat_returns.sort_values(by="Iga-aastane kasv (%)", ascending=False)
-    return df_cat_returns.drop("Kogukasv algusest (%)", axis=1)
+    col = ""
+    # check if english language
+    is_english = df["category"].str.contains('Graphics').any() or "category_parent" in df.columns and df["category_parent"].str.contains("Graphics").any()
+    
+
+    if is_english:
+        if category_column == "author":
+            col = "Author"
+        else:
+            col = "Technique"
+        df_cat_returns = pd.DataFrame(category_returns, columns=[col, "Time span", "Kogukasv algusest (%)", "Yearly growth (%)"]) 
+        return df_cat_returns.drop("Kogukasv algusest (%)", axis=1)
+    else:
+        if category_column == "author":
+            col = "Autor"
+        else:
+            col = "Tehnika"
+        df_cat_returns = pd.DataFrame(category_returns, columns=[col, "Aastavahemik", "Kogukasv algusest (%)", "Iga-aastane kasv (%)"]) 
+
+    #df_cat_returns = df_cat_returns.sort_values(by="Iga-aastane kasv (%)", ascending=False)
+        return df_cat_returns.drop("Kogukasv algusest (%)", axis=1)
