@@ -12,35 +12,17 @@ openai_api_key = os.getenv("OPENAI_API_KEY")
 # Define model
 model = 'gpt-4-1106-preview'
 
-# Supported file formats
-file_formats = {
-    "csv": pd.read_csv,
-    "xls": pd.read_excel,
-    "xlsx": pd.read_excel,
-    "xlsm": pd.read_excel,
-    "xlsb": pd.read_excel,
-}
-
 # Page configuration
 st.set_page_config(page_title="Art Index by Kanvas.ai")
 st.title("AI Art Advisor")
 
-# Function to clear submit state
-def clear_submit():
-    st.session_state["submit"] = False
+# Function to read the DataFrame
+@st.cache(allow_output_mutation=True)
+def read_df(file_path):
+    return pd.read_csv(file_path)
 
-# Function to load data from file
-@st.cache_data(ttl="2h")
-def load_data(uploaded_file):
-    try:
-        ext = os.path.splitext(uploaded_file.name)[1][1:].lower()
-    except:
-        ext = uploaded_file.split(".")[-1]
-    if ext in file_formats:
-        return file_formats[ext](uploaded_file)
-    else:
-        st.error(f"Unsupported file format: {ext}")
-        return None
+# Load the data
+df = read_df('data/auctions_clean.csv')
 
 # Function to process a question
 def process_question(question):
@@ -67,24 +49,6 @@ def process_question(question):
         st.session_state.messages.append({"role": "assistant", "content": response})
         st.write(response)
 
-
-
-# File uploader
-uploaded_file = st.file_uploader(
-    "Upload a Data file",
-    type=list(file_formats.keys()),
-    help="Various File formats are Supported",
-    on_change=clear_submit,
-)
-
-# Check if file is uploaded
-if not uploaded_file:
-    st.warning("Please upload any CSV or XSLX file to ask questions on.")
-
-# Load data if file is uploaded
-if uploaded_file:
-    df = load_data(uploaded_file)
-
 # Initialize or clear conversation history
 if "messages" not in st.session_state or st.sidebar.button("Clear conversation history"):
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
@@ -94,8 +58,8 @@ for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
 # Sample questions
-sample_questions = ["Which artist had the highest auction end price in 2021?", "What is the most expensive work of Eduard Wiiralt?", "What was the largest piece sold by dimension in 2020?",
-                    "What is the average price of Jüri Arrak works in 2021?", "How many pieces in category graphics were sold in most recent year?"]
+sample_questions = ["Display list of columns in this data set.", "What is the average value in each column?", "Show the maximum values in each column.",
+                    "Are there any outliers in the second column?", "Display the minimum values for each column."]
 
 # Create columns for sample questions
 num_columns = 3
