@@ -58,8 +58,8 @@ for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
 # Sample questions
-sample_questions = ["Display list of columns in this data set.", "What is the average value in each column?", "Show the maximum values in each column.",
-                    "Are there any outliers in the second column?", "Display the minimum values for each column."]
+sample_questions = ["Which author or artist had the highest end price in 2021?", "Which was the most popular decade of works sold in 2021?", "How many graphics works were sold in 2020?",
+                    "What was the avearage start price of Juri Arrak's works in 2021?", "Which author had the largest work by dimension sold in 2019?"]
 
 # Create columns for sample questions
 num_columns = 3
