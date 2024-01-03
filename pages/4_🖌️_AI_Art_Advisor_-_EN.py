@@ -22,8 +22,8 @@ file_formats = {
 }
 
 # Page configuration
-st.set_page_config(page_title="VMAT - Vaxart Manufacturing Analysis Tool")
-st.title("Vaxart AI Data Copilot")
+st.set_page_config(page_title="Art Index by Kanvas.ai")
+st.title("AI Art Advisor")
 
 # Function to clear submit state
 def clear_submit():
