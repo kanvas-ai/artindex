@@ -4,3 +4,7 @@ deta
 pandas
 streamlit
 numpy
+langchain
+langchain-experimental
+openai
+tabulate
