@@ -17,7 +17,7 @@ st.set_page_config(page_title="Art Index by Kanvas.ai")
 st.title("AI Art Advisor")
 
 # Function to read the DataFrame
-@st.cache(allow_output_mutation=True)
+@st.cache_data(allow_output_mutation=True)
 def read_df(file_path):
     return pd.read_csv(file_path)
 
