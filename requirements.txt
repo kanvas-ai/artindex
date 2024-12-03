@@ -1,6 +1,5 @@
 plotly_express
 plotly
-deta
 pandas
 streamlit
 numpy
@@ -8,3 +7,4 @@ langchain
 langchain-experimental
 openai
 tabulate
+langchain-community

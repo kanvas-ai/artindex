@@ -1,7 +1,7 @@
 from langchain.agents import AgentType
 from langchain_experimental.agents import create_pandas_dataframe_agent
-from langchain.callbacks import StreamlitCallbackHandler
-from langchain.chat_models import ChatOpenAI
+from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
+from langchain_community.chat_models import ChatOpenAI
 import streamlit as st
 import pandas as pd
 import os
@@ -10,7 +10,7 @@ import os
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Define model
-model = 'gpt-4-1106-preview'
+model = 'gpt-4'
 
 # Page configuration
 st.set_page_config(page_title="Art Index by Kanvas.ai")
