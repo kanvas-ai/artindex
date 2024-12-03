@@ -10,7 +10,7 @@ import os
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Define model
-model = 'gpt-4'
+model = 'gpt-4-1106-preview'
 
 # Page configuration
 st.set_page_config(page_title="Art Index by Kanvas.ai")
