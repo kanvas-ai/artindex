@@ -6,14 +6,34 @@ import streamlit as st
 import pandas as pd
 import os
 
-# Initialize OpenAI API Key
-openai_api_key = os.getenv("OPENAI_API_KEY")
-
-# Define model
-model = 'gpt-4o'
-
-# Page configuration
+# Page configuration must be the first Streamlit command
 st.set_page_config(page_title="Art Index by Kanvas.ai")
+
+# Initialize OpenAI API Key
+openai_api_key = os.getenv("OPENAI_API_KEY", "")
+
+# Add API key input to sidebar
+with st.sidebar:
+    st.markdown("## Settings")
+    input_api_key = st.text_input("Enter your OpenAI API key:", value=openai_api_key, type="password")
+    if input_api_key:
+        openai_api_key = input_api_key
+        os.environ["OPENAI_API_KEY"] = input_api_key  # Save to environment variable
+    
+    if not openai_api_key:
+        st.warning("Please enter your OpenAI API key!", icon="⚠️")
+    else:
+        st.success("API key is set!", icon="✅")
+    
+    # Clear button with unique key
+    if st.button("Clear conversation history", key="clear_history_button"):
+        st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+        
+    # Add signup message with hyperlink
+    st.markdown("---")  # Add a separator
+    st.markdown("### Stay Updated!")
+    st.markdown("Sign up for updates at [blog.kanvas.ai](https://blog.kanvas.ai)")
+
 st.title("AI Art Advisor")
 
 # Function to read the DataFrame
@@ -23,6 +43,9 @@ def read_df(file_path):
 
 # Load the data
 df = read_df('data/auctions_clean.csv')
+
+# Define model
+model = 'gpt-4o'
 
 # Function to process a question
 def process_question(question):
@@ -37,7 +60,7 @@ def process_question(question):
     pandas_df_agent = create_pandas_dataframe_agent(
         llm,
         df,
-        verbose=True,
+        verbose=False,
         agent_type=AgentType.OPENAI_FUNCTIONS,
         handle_parsing_errors=True,
         allow_dangerous_code=True
@@ -45,13 +68,15 @@ def process_question(question):
 
     st.session_state.messages.append({"role": "user", "content": question})
     with st.chat_message("assistant"):
-        st_cb = StreamlitCallbackHandler(st.container(), expand_new_thoughts=False)
-        response = pandas_df_agent.run(st.session_state.messages, callbacks=[st_cb])
-        st.session_state.messages.append({"role": "assistant", "content": response})
-        st.write(response)
+        # Add spinner while processing
+        with st.spinner('Thinking...'):
+            # Run the agent without displaying intermediate steps
+            response = pandas_df_agent.run(question)  # Changed to just pass the question
+            st.session_state.messages.append({"role": "assistant", "content": response})
+            st.write(response)
 
 # Initialize or clear conversation history
-if "messages" not in st.session_state or st.sidebar.button("Clear conversation history"):
+if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
 
 # Display conversation history
@@ -74,7 +99,7 @@ for i in range(num_questions):
     row_index = i // num_columns
 
     with columns[col_index]:
-        if columns[col_index].button(sample_questions[i]):
+        if columns[col_index].button(sample_questions[i], key=f"sample_q_{i}"):
             process_question(sample_questions[i])
 
 # User input for new questions
